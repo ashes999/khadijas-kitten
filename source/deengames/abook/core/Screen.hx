@@ -1,4 +1,4 @@
-package deengames.abook;
+package deengames.abook.core;
 
 import flixel.FlxG;
 import flixel.FlxObject;

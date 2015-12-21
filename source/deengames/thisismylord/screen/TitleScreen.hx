@@ -14,7 +14,7 @@ import flixel.plugin.MouseEventManager;
 
 import deengames.io.GestureManager;
 import deengames.io.AudioManager;
-import deengames.abook.Screen;
+import deengames.abook.core.Screen;
 import deengames.thisismylord.screen.CreditsScreen;
 
 class TitleScreen extends Screen

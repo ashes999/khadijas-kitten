@@ -13,7 +13,7 @@ import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
 
 import deengames.io.GestureManager;
-import deengames.abook.Screen;
+import deengames.abook.core.Screen;
 import deengames.abook.FlurryWrapper;
 
 class TheEndScreen extends Screen

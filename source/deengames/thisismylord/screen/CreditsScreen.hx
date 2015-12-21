@@ -11,7 +11,7 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
-import deengames.abook.Screen;
+import deengames.abook.core.Screen;
 
 class CreditsScreen extends Screen
 {

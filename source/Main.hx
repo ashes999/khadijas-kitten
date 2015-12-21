@@ -27,7 +27,7 @@ class Main extends Sprite
 	{
 		Lib.current.addChild(new Main());
 		FlxG.autoPause = false; // Necessary to tap into onFocusLost
-		// Duplicated in Scene.onFocus
+		// Duplicated in Screen.onFocus
 		FlurryWrapper.startSession(Reg.flurryKey);
 		FlurryWrapper.logEvent('New Game');
 	}

@@ -2,7 +2,7 @@ package deengames.thisismylord;
 
 import flixel.FlxG;
 import flixel.FlxState;
-import deengames.abook.Screen;
+import deengames.abook.core.Screen;
 import deengames.thisismylord.screen.*;
 
 class SetupOrder extends FlxState
