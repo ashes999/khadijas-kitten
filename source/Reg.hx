@@ -4,8 +4,8 @@ import flixel.util.FlxSave;
 
 class Reg
 {
-	public static var flurryKey = 'XNNKX5DCSZB96PT2V9NC';
-	public static var googleAnalyticsUrl = '/this-is-my-lord.html';
+	public static var flurryKey = 'INSERT FLURRY KEY HERE';
+	public static var googleAnalyticsUrl = '/stats/khadijas-kitten.html';
 
 	// 0 if we already finished viewing all the scenes; set to
 	// Date.now().getTime() on first scene.

@@ -29,12 +29,12 @@ import openfl.Assets;
 /**
 * A common base state used for all scenes.
 */
-class Scene extends FlxState
+class Screen extends FlxState
 {
-  public static var scenes:Array<Class<Scene>> = new Array<Class<Scene>>();
+  public static var screens:Array<Class<Screen>> = new Array<Class<Screen>>();
 
-  private var nextScene:Scene;
-  private var previousScene:Scene;
+  private var nextScreen:Screen;
+  private var previousScreen:Screen;
   private var gestureManager:GestureManager = new GestureManager();
   private var audio:FlxSound;
   private var audioButton:FlxSprite;
@@ -55,16 +55,16 @@ class Scene extends FlxState
       MouseEventManager.add(audioButton, null, clickedAudioButton);
     }
 
-    var c:Class<Scene> = Type.getClass(this);
+    var c:Class<Screen> = Type.getClass(this);
 
-    var next = Scene.getNextScene(c);
+    var next = Screen.getnextScreen(c);
     if (next != null) {
-      this.nextScene = next;
+      this.nextScreen = next;
     }
 
-    var previous = Scene.getPreviousScene(c);
+    var previous = Screen.getpreviousScreen(c);
     if (previous != null) {
-      this.previousScene = previous;
+      this.previousScreen = previous;
     }
 
     super.create();
@@ -81,8 +81,8 @@ class Scene extends FlxState
     var elapsedSeconds = sceneEnd - this.sceneStart;
     // ms granularity on Android
     elapsedSeconds = Math.round(elapsedSeconds / 1000);
-    FlurryWrapper.logEvent('Viewed Scene', {
-      'Scene': getName(this), 'View Time (seconds)' : elapsedSeconds });
+    FlurryWrapper.logEvent('Viewed Screen', {
+      'Screen': getName(this), 'View Time (seconds)' : elapsedSeconds });
 
     super.destroy();
   }
@@ -113,27 +113,27 @@ class Scene extends FlxState
    */
   override public function onFocusLost() : Void
   {
-    FlurryWrapper.logEvent('Shutdown', { 'Final Scene': getName(this) });
+    FlurryWrapper.logEvent('Shutdown', { 'Final Screen': getName(this) });
     FlurryWrapper.endSession();
     super.onFocusLost();
   }
 
-  private static function getNextScene(currentType:Class<Scene>) : Scene
+  private static function getnextScreen(currentType:Class<Screen>) : Screen
   {
-    var arrayIndex = Scene.scenes.indexOf(currentType);
-    if (arrayIndex < Scene.scenes.length - 1) {
-      var c:Class<Scene> = Scene.scenes[arrayIndex + 1];
+    var arrayIndex = Screen.screens.indexOf(currentType);
+    if (arrayIndex < Screen.screens.length - 1) {
+      var c:Class<Screen> = Screen.screens[arrayIndex + 1];
       return Type.createInstance(c, []);
     } else {
       return null;
     }
   }
 
-  private static function getPreviousScene(currentType:Class<Scene>) : Scene
+  private static function getpreviousScreen(currentType:Class<Screen>) : Screen
   {
-    var arrayIndex = Scene.scenes.indexOf(currentType);
+    var arrayIndex = Screen.screens.indexOf(currentType);
     if (arrayIndex > 0) {
-      var c:Class<Scene> = Scene.scenes[arrayIndex - 1];
+      var c:Class<Screen> = Screen.screens[arrayIndex - 1];
       return Type.createInstance(c, []);
     } else {
       return null;
@@ -208,32 +208,32 @@ class Scene extends FlxState
 
   private function onSwipe(direction:SwipeDirection) : Void
   {
-    if (direction == SwipeDirection.Left && this.nextScene != null) {
-      //FlxG.camera.fade(FlxColor.BLACK, 0.5, false, showNextScene);
-      showNextScene();
-    } else if (direction == SwipeDirection.Right && this.previousScene != null) {
-      //FlxG.camera.fade(FlxColor.BLACK, 0.5, false, showPreviousScene);
-      showPreviousScene();
+    if (direction == SwipeDirection.Left && this.nextScreen != null) {
+      //FlxG.camera.fade(FlxColor.BLACK, 0.5, false, shownextScreen);
+      shownextScreen();
+    } else if (direction == SwipeDirection.Right && this.previousScreen != null) {
+      //FlxG.camera.fade(FlxColor.BLACK, 0.5, false, showpreviousScreen);
+      showpreviousScreen();
     }
   }
 
-  private function showNextScene() : Void
+  private function shownextScreen() : Void
   {
-    logScene(this.nextScene, 'Next');
-    FlxG.switchState(this.nextScene);
+    logScene(this.nextScreen, 'Next');
+    FlxG.switchState(this.nextScreen);
   }
 
-  private function showPreviousScene() : Void
+  private function showpreviousScreen() : Void
   {
-    logScene(this.previousScene, 'Previous');
-    FlxG.switchState(this.previousScene);
+    logScene(this.previousScreen, 'Previous');
+    FlxG.switchState(this.previousScreen);
   }
 
-  private function logScene(s:Scene, direction:String) {
-    FlurryWrapper.logEvent('ShowScene', { 'Scene': getName(s), 'Direction': direction });
+  private function logScene(s:Screen, direction:String) {
+    FlurryWrapper.logEvent('ShowScreen', { 'Screen': getName(s), 'Direction': direction });
   }
 
-  private function getName(s:Scene) : String {
+  private function getName(s:Screen) : String {
     var name:String = (Type.getClassName(Type.getClass(s)));
     return name.substring(name.lastIndexOf('.') + 1, name.length);
   }

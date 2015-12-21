@@ -2,19 +2,19 @@ package deengames.thisismylord;
 
 import flixel.FlxG;
 import flixel.FlxState;
-import deengames.abook.Scene;
-import deengames.thisismylord.scene.*;
+import deengames.abook.Screen;
+import deengames.thisismylord.screen.*;
 
 class SetupOrder extends FlxState
 {
   override public function create():Void
   {
-    var scenes:Array<Class<Scene>> = [
+    var screens:Array<Class<Screen>> = [
       TitleScreen,
       TheEndScreen
     ];
 
-    Scene.scenes = scenes;
+    Screen.screens = screens;
     FlxG.switchState(new deengames.abook.SplashScreen());
 
     super.create();

@@ -1,4 +1,4 @@
-package deengames.thisismylord.scene;
+package deengames.thisismylord.screen;
 
 import flash.display.Sprite;
 import flash.display.StageAlign;
@@ -13,10 +13,10 @@ import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
 
 import deengames.io.GestureManager;
-import deengames.abook.Scene;
+import deengames.abook.Screen;
 import deengames.abook.FlurryWrapper;
 
-class TheEndScreen extends Scene
+class TheEndScreen extends Screen
 {
   /**
   * Function that is called up when to state is created to set it up.

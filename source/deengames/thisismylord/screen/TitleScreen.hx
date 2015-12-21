@@ -1,4 +1,4 @@
-package deengames.thisismylord.scene;
+package deengames.thisismylord.screen;
 
 import flash.display.Sprite;
 import flash.display.StageAlign;
@@ -14,10 +14,10 @@ import flixel.plugin.MouseEventManager;
 
 import deengames.io.GestureManager;
 import deengames.io.AudioManager;
-import deengames.abook.Scene;
-import deengames.thisismylord.scene.CreditsScreen;
+import deengames.abook.Screen;
+import deengames.thisismylord.screen.CreditsScreen;
 
-class TitleScreen extends Scene
+class TitleScreen extends Screen
 {
   /**
   * Function that is called up when to state is created to set it up.

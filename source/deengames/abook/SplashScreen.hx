@@ -8,13 +8,13 @@ import flash.Lib;
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.FlxSprite;
-import deengames.abook.Scene;
+import deengames.abook.Screen;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
 import deengames.io.GestureManager;
 
-class SplashScreen extends Scene
+class SplashScreen extends Screen
 {
   var startTime:Float = 0;
 
@@ -54,7 +54,7 @@ class SplashScreen extends Scene
       // Fade out over 0.5s
       FlxG.camera.fade(FlxColor.BLACK, 1
         , false,function() {
-        FlxG.switchState(Type.createInstance(Scene.scenes[0], []));
+        FlxG.switchState(Type.createInstance(Screen.screens[0], []));
       });
     }
     super.update();
