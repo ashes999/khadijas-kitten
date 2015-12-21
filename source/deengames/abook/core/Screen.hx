@@ -57,12 +57,12 @@ class Screen extends FlxState
 
     var c:Class<Screen> = Type.getClass(this);
 
-    var next = Screen.getnextScreen(c);
+    var next = Screen.getNextScreen(c);
     if (next != null) {
       this.nextScreen = next;
     }
 
-    var previous = Screen.getpreviousScreen(c);
+    var previous = Screen.getPreviousScreen(c);
     if (previous != null) {
       this.previousScreen = previous;
     }
@@ -118,7 +118,7 @@ class Screen extends FlxState
     super.onFocusLost();
   }
 
-  private static function getnextScreen(currentType:Class<Screen>) : Screen
+  private static function getNextScreen(currentType:Class<Screen>) : Screen
   {
     var arrayIndex = Screen.screens.indexOf(currentType);
     if (arrayIndex < Screen.screens.length - 1) {
@@ -129,7 +129,7 @@ class Screen extends FlxState
     }
   }
 
-  private static function getpreviousScreen(currentType:Class<Screen>) : Screen
+  private static function getPreviousScreen(currentType:Class<Screen>) : Screen
   {
     var arrayIndex = Screen.screens.indexOf(currentType);
     if (arrayIndex > 0) {
@@ -210,26 +210,26 @@ class Screen extends FlxState
   {
     if (direction == SwipeDirection.Left && this.nextScreen != null) {
       //FlxG.camera.fade(FlxColor.BLACK, 0.5, false, shownextScreen);
-      shownextScreen();
+      showNextScreen();
     } else if (direction == SwipeDirection.Right && this.previousScreen != null) {
       //FlxG.camera.fade(FlxColor.BLACK, 0.5, false, showpreviousScreen);
-      showpreviousScreen();
+      showPreviousScreen();
     }
   }
 
-  private function shownextScreen() : Void
+  private function showNextScreen() : Void
   {
-    logScene(this.nextScreen, 'Next');
+    logScreen(this.nextScreen, 'Next');
     FlxG.switchState(this.nextScreen);
   }
 
-  private function showpreviousScreen() : Void
+  private function showPreviousScreen() : Void
   {
-    logScene(this.previousScreen, 'Previous');
+    logScreen(this.previousScreen, 'Previous');
     FlxG.switchState(this.previousScreen);
   }
 
-  private function logScene(s:Screen, direction:String) {
+  private function logScreen(s:Screen, direction:String) {
     FlurryWrapper.logEvent('ShowScreen', { 'Screen': getName(s), 'Direction': direction });
   }
 

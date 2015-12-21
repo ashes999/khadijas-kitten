@@ -1,4 +1,38 @@
 {
+  "comment": "width and height are ignored. they will be incorporated later.",
   "with": 1024,
-  "height": 576
+  "height": 576,
+  "screens": [
+    {
+      "name": "title screen",
+      "comment": "images are relative to assets/images; assume PNG if no extension",
+      "backgroundImage": "titlescreen",
+      "comment": "audio are relative to assets/audio; we know the extension",
+      "audio": "speech/title",
+      "elements": [
+        { "image": "credits.png", "x": 64, "y": -96,
+          "comment": "this element is positioned at screen.height - self.height - 96,  when clicked, we parse 'show(x)' and try to find a screen in our list  screens here named X. If there is none, throw an error.",
+          "anchor": "bottom-right", "onClick": "show(credits screen)"
+        }
+      ]
+    },
+    {
+      "name": "to-die screen",
+      "backgroundImage": "scene-14-to-die.png",
+      "audio": "scene-14-to-die"
+    },
+    {
+      "name": "the end screen",
+      "class": "TheEndScreen",
+      "comment": "may need to include fully qualified package"
+    },
+    {
+      "name": "credits screen",
+      "show": false, "comment": "don't show this screen as the next button on the previous screen. This property ('show') may need a better name, but what? showInRotation? showInOrder?",
+      "backgroundImage": "credits-bg.png",
+      "elements": [
+        { "image": "back.png", "x": -32, "y": "-32", "anchor": "bottom-right", "onClick": "show(title screen)"}
+      ]
+    }
+  ]
 }
