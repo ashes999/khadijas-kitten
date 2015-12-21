@@ -16,6 +16,8 @@ import deengames.io.GestureManager;
 import deengames.abook.FlurryWrapper;
 import deengames.abook.GoogleAnalyticsWrapper;
 
+using StringTools;
+
 /**
  * The below block is for animated GIFs (yagp)
 import com.yagp.GifDecoder;
@@ -27,19 +29,24 @@ import openfl.Assets;
 */
 
 /**
-* A common base state used for all scenes.
+* A common base state used for all screens.
 */
 class Screen extends FlxState
 {
   public static var screens:Array<Class<Screen>> = new Array<Class<Screen>>();
 
+  // Belongs to screen
   private var nextScreen:Screen;
   private var previousScreen:Screen;
   private var gestureManager:GestureManager = new GestureManager();
+
+  // Stuff to do with audio(button)
   private var audio:FlxSound;
   private var audioButton:FlxSprite;
   private var showAudioButton:Bool = true;
-  private var sceneStart:Float = 0;
+
+  // Analytics-related
+  private var screenStartTime:Float = 0;
 
   /**
   * Function that is called up when to state is created to set it up.
@@ -68,7 +75,7 @@ class Screen extends FlxState
     }
 
     super.create();
-    this.sceneStart = Date.now().getTime();
+    this.screenStartTime = Date.now().getTime();
   }
 
   /**
@@ -77,8 +84,8 @@ class Screen extends FlxState
   */
   override public function destroy():Void
   {
-    var sceneEnd:Float = Date.now().getTime();
-    var elapsedSeconds = sceneEnd - this.sceneStart;
+    var screenEndTime:Float = Date.now().getTime();
+    var elapsedSeconds = screenEndTime - this.screenStartTime;
     // ms granularity on Android
     elapsedSeconds = Math.round(elapsedSeconds / 1000);
     FlurryWrapper.logEvent('Viewed Screen', {
@@ -102,7 +109,7 @@ class Screen extends FlxState
   {
     FlurryWrapper.startSession(Reg.flurryKey);
     GoogleAnalyticsWrapper.init(Reg.googleAnalyticsUrl);
-    FlurryWrapper.logEvent('Resume', { 'Scene': getName(this) });
+    FlurryWrapper.logEvent('Resume', { 'Screen': getName(this) });
   }
 
   /**
@@ -142,6 +149,7 @@ class Screen extends FlxState
 
   private function addAndCenter(fileName:String) : FlxSprite
   {
+    fileName = addExtension(fileName);
     var sprite = this.addSprite(fileName);
     centerOnScreen(sprite);
     return sprite;
@@ -149,14 +157,26 @@ class Screen extends FlxState
 
   private function addSprite(fileName:String) : FlxSprite
   {
+    fileName = addExtension(fileName);
     var sprite = new FlxSprite();
     sprite.loadGraphic(fileName);
     add(sprite);
     return sprite;
   }
 
+  // Given an image file name, adds .png if it doesn't have an extension.
+  private function addExtension(fileName:String):String
+  {
+    if (fileName.indexOf('.') == -1) {
+      return '${fileName}.png';
+    } else {
+      return fileName;
+    }
+  }
+
   private function addAndCenterAnimation(spriteSheet:String, width:Int, height:Int, frames:Int, fps:Int) : FlxSprite
   {
+    spriteSheet = addExtension(spriteSheet);
     var sprite:FlxSprite = new FlxSprite();
     sprite.loadGraphic(spriteSheet, true, width, height);
     var range = [for (i in 0 ... frames) i];
@@ -243,7 +263,7 @@ class Screen extends FlxState
     playAudio();
   }
 
-  // Called from subclass scenes
+  // Called from subclass screens
   private function loadAndPlay(file:String) : Void
   {
     if (this.audio != null) {
@@ -254,7 +274,7 @@ class Screen extends FlxState
     this.playAudio();
   }
 
-  // Called in scenes
+  // Called in screens
   private function playAudio() : Void {
     if (this.audio != null) {
       this.audio.stop();

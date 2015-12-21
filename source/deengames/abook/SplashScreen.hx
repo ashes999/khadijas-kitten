@@ -24,7 +24,7 @@ class SplashScreen extends Screen
   override public function create():Void
   {
     this.hideAudioButton();
-    var title:FlxSprite = this.addAndCenter('assets/images/dg-logo.png');
+    var title:FlxSprite = this.addAndCenter('assets/images/dg-logo');
     this.loadAndPlay('assets/audio/giggle');
 
     // Fade in over 0.5s

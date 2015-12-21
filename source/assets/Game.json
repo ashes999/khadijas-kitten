@@ -12,7 +12,7 @@
       "elements": [
         { "image": "credits.png", "x": 64, "y": -96,
           "comment": "this element is positioned at screen.height - self.height - 96,  when clicked, we parse 'show(x)' and try to find a screen in our list  screens here named X. If there is none, throw an error.",
-          "anchor": "bottom-right", "onClick": "show(credits screen)"
+          "placement": "bottom-right", "onClick": "show(credits screen)"
         }
       ]
     },
@@ -31,7 +31,7 @@
       "show": false, "comment": "don't show this screen as the next button on the previous screen. This property ('show') may need a better name, but what? showInRotation? showInOrder?",
       "backgroundImage": "credits-bg.png",
       "elements": [
-        { "image": "back.png", "x": -32, "y": "-32", "anchor": "bottom-right", "onClick": "show(title screen)"}
+        { "image": "back.png", "x": -32, "y": "-32", "placement": "bottom-right", "onClick": "show(title screen)"}
       ]
     }
   ]
