@@ -5,6 +5,7 @@
   "screens": [
     {
       "name": "title screen",
+      "titlescreen": true, "comment": "this is the title screen. implies show=>false and hide audio button"
       "comment": "images are relative to assets/images; assume PNG if no extension",
       "backgroundImage": "titlescreen",
       "comment": "audio are relative to assets/audio; we know the extension",
@@ -29,6 +30,7 @@
     {
       "name": "credits screen",
       "show": false, "comment": "don't show this screen as the next button on the previous screen. This property ('show') may need a better name, but what? showInRotation? showInOrder?",
+      "hideAudioButton": true,
       "backgroundImage": "credits-bg.png",
       "elements": [
         { "image": "back.png", "x": -32, "y": "-32", "placement": "bottom-right", "onClick": "show(title screen)"}

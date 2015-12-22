@@ -59,7 +59,9 @@ class Screen extends FlxState
       this.audioButton = this.addAndCenter('assets/images/play-sound.png');
       audioButton.x = FlxG.width - audioButton.width - 32;
       audioButton.y = FlxG.height - audioButton.height - 32;
-      MouseEventManager.add(audioButton, null, clickedAudioButton);
+      MouseEventManager.add(audioButton, null, function(sprite:FlxSprite) {
+        playAudio();
+      });
     }
 
     var c:Class<Screen> = Type.getClass(this);
@@ -256,11 +258,6 @@ class Screen extends FlxState
   private function getName(s:Screen) : String {
     var name:String = (Type.getClassName(Type.getClass(s)));
     return name.substring(name.lastIndexOf('.') + 1, name.length);
-  }
-
-  // Called by clicking on button
-  private function clickedAudioButton(sprite:FlxSprite) : Void {
-    playAudio();
   }
 
   // Called from subclass screens
