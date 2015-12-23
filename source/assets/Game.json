@@ -1,11 +1,11 @@
 {
   "comment": "width and height are ignored. they will be incorporated later.",
-  "with": 1024,
+  "width": 1024,
   "height": 576,
   "screens": [
     {
       "name": "title screen",
-      "titlescreen": true, "comment": "this is the title screen. implies show=>false and hide audio button"
+      "titlescreen": true, "comment": "this is the title screen. implies show=>false and hide audio button",
       "comment": "images are relative to assets/images; assume PNG if no extension",
       "backgroundImage": "titlescreen",
       "comment": "audio are relative to assets/audio; we know the extension",

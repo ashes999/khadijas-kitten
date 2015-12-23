@@ -6,6 +6,7 @@ import flash.display.StageScaleMode;
 import flash.events.Event;
 import flash.Lib;
 import flixel.FlxGame;
+import flixel.text.FlxText;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.FlxG;
@@ -25,13 +26,19 @@ class TitleScreen extends Screen
   override public function create():Void
   {
     var title:FlxSprite = this.addAndCenter('assets/images/titlescreen.png');
-    this.loadAndPlay('assets/audio/speech/title');
+    //this.loadAndPlay('assets/audio/speech/title');
     this.hideAudioButton();
 
-    var creditsButton = this.addAndCenter('assets/images/credits.png');
+    /*var creditsButton = this.addAndCenter('assets/images/credits.png');
     creditsButton.x = 64;
     creditsButton.y = FlxG.height - creditsButton.height - 96;
-    MouseEventManager.add(creditsButton, null, clickedCreditsButton);
+    MouseEventManager.add(creditsButton, null, clickedCreditsButton);*/
+
+    // works, but characters appear left-to-right and broken up
+    var text = new FlxText(16, 16);
+    text.setFormat("assets/arabic.ttf", 48, FlxColor.WHITE);
+    text.text = "بِسْمِ اللَّه الرَّحْمَانِ الرَّحِيمِ";
+    add(text);
 
     super.create();
   }
