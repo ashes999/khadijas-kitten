@@ -13,8 +13,8 @@ import deengames.abook.FlurryWrapper;
 
 class Main extends Sprite
 {
-	var gameWidth:Int = 1024; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var gameHeight:Int = 576; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	var gameWidth:Int = 0; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	var gameHeight:Int = 0; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = deengames.thisismylord.screen.TitleScreen;//SetupOrder; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 60; // How many frames per second the game should run at.
@@ -25,6 +25,9 @@ class Main extends Sprite
 
 	public static function main():Void
 	{
+		var gameWidth = 1024;
+		var gameHeight = 576;
+
 		#if !flash
 		var json = sys.io.File.getContent('assets/Game.json');
 		var game = haxe.Json.parse(json);
@@ -43,7 +46,7 @@ class Main extends Sprite
 	{
 		this.gameWidth = width;
 		this.gameHeight = height;
-		
+
 		super();
 
 		if (stage != null)
