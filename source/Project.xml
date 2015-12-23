@@ -36,7 +36,7 @@
 	<assets path="assets" include="*.gif" type="binary" />
 	<assets path="assets" include="*.mp3" if="flash" />
 	<assets path="assets" include="*.ogg" unless="flash" />
-	<assets path="assets" include="*.png|*.jpg|*.svg" />
+	<assets path="assets" include="*.png|*.jpg|*.svg|*.ttf|*.json" />
 
 	<!--------------------------------LIBRARIES---------------------------------->
 
