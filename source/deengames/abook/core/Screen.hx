@@ -37,7 +37,6 @@ class Screen extends FlxState
 {
   public static var screens:Array<Class<Screen>> = new Array<Class<Screen>>();
 
-  // Belongs to screen
   private var nextScreen:Screen;
   private var previousScreen:Screen;
   private var gestureManager:GestureManager = new GestureManager();
@@ -52,8 +51,6 @@ class Screen extends FlxState
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
     if (!this.showAudioButton) {
-      //this.playAudioButton = new PlayAudioButton(this);
-    //} else {
       this.hideAudioButton();
     }
 
