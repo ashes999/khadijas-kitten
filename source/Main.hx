@@ -13,8 +13,8 @@ import deengames.abook.FlurryWrapper;
 
 class Main extends Sprite
 {
-	var gameWidth:Int = 0; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var gameHeight:Int = 0; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	static var gameWidth:Int = 0; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	static var gameHeight:Int = 0; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = deengames.thisismylord.screen.TitleScreen;//SetupOrder; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 60; // How many frames per second the game should run at.
@@ -25,28 +25,25 @@ class Main extends Sprite
 
 	public static function main():Void
 	{
-		var gameWidth = 1024;
-		var gameHeight = 576;
+		gameWidth = 1024;
+		gameHeight = 576;
 
 		#if !flash
 		var json = sys.io.File.getContent('assets/Game.json');
 		var game = haxe.Json.parse(json);
-		var gameWidth = game.width;
-		var gameHeight = game.height;
+		gameWidth = game.width;
+		gameHeight = game.height;
 		#end
 
-		Lib.current.addChild(new Main(gameWidth, gameHeight));
+		Lib.current.addChild(new Main());
 		FlxG.autoPause = false; // Necessary to tap into onFocusLost
 		// Duplicated in Screen.onFocus
 		FlurryWrapper.startSession(Reg.flurryKey);
 		FlurryWrapper.logEvent('New Game');
 	}
 
-	public function new(width:Int, height:Int)
+	public function new()
 	{
-		this.gameWidth = width;
-		this.gameHeight = height;
-
 		super();
 
 		if (stage != null)
