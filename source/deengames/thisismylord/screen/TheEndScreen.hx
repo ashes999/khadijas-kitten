@@ -14,7 +14,7 @@ import flixel.plugin.MouseEventManager;
 
 import deengames.io.GestureManager;
 import deengames.abook.core.Screen;
-import deengames.abook.FlurryWrapper;
+import deengames.analytics.FlurryWrapper;
 
 class TheEndScreen extends Screen
 {
@@ -23,13 +23,11 @@ class TheEndScreen extends Screen
   */
   override public function create():Void
   {
-    var title:FlxSprite = this.addAndCenter('assets/images/the-end.png');
-
     var restart:FlxSprite = this.addAndCenter('assets/images/restart.png');
     restart.y = FlxG.height - restart.height - 32;
     MouseEventManager.add(restart, null, restartGame, null, null);
 
-    this.loadAndPlay('assets/audio/speech/the-end');
+    this.loadAndPlay('assets/audio/giggle');
     this.hideAudioButton();
 
     var sawLastScene = Date.now().getTime();

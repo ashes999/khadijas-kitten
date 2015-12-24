@@ -9,12 +9,14 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxPoint;
 import flixel.util.FlxColor;
-import flixel.plugin.MouseEventManager;
 import flixel.system.FlxSound;
 
 import deengames.io.GestureManager;
-import deengames.abook.FlurryWrapper;
-import deengames.abook.GoogleAnalyticsWrapper;
+import deengames.abook.controls.PlayAudioButton;
+
+import deengames.analytics.FlurryWrapper;
+import deengames.analytics.GoogleAnalyticsWrapper;
+import deengames.abook.ScreenAnalytics;
 
 using StringTools;
 
@@ -39,10 +41,7 @@ class Screen extends FlxState
   private var nextScreen:Screen;
   private var previousScreen:Screen;
   private var gestureManager:GestureManager = new GestureManager();
-
-  // Stuff to do with audio(button)
-  private var audio:FlxSound;
-  private var audioButton:FlxSprite;
+  private var playAudioButton:PlayAudioButton;
   private var showAudioButton:Bool = true;
 
   /**
@@ -52,13 +51,10 @@ class Screen extends FlxState
   {
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
-    if (this.showAudioButton) {
-      this.audioButton = this.addAndCenter('assets/images/play-sound.png');
-      audioButton.x = FlxG.width - audioButton.width - 32;
-      audioButton.y = FlxG.height - audioButton.height - 32;
-      MouseEventManager.add(audioButton, null, function(sprite:FlxSprite) {
-        playAudio();
-      });
+    if (!this.showAudioButton) {
+      //this.playAudioButton = new PlayAudioButton(this);
+    //} else {
+      this.hideAudioButton();
     }
 
     var c:Class<Screen> = Type.getClass(this);
@@ -74,7 +70,7 @@ class Screen extends FlxState
     }
 
     super.create();
-    FlurryWrapper.trackScreenStartTime();
+    ScreenAnalytics.trackScreenStartTime();
   }
 
   /**
@@ -83,7 +79,7 @@ class Screen extends FlxState
   */
   override public function destroy():Void
   {
-    FlurryWrapper.trackScreenEndTime(getName(this));
+    ScreenAnalytics.trackScreenEndTime(getName(this));
     super.destroy();
   }
 
@@ -140,7 +136,7 @@ class Screen extends FlxState
     }
   }
 
-  private function addAndCenter(fileName:String) : FlxSprite
+  public function addAndCenter(fileName:String) : FlxSprite
   {
     fileName = addExtension(fileName);
     var sprite = this.addSprite(fileName);
@@ -254,27 +250,17 @@ class Screen extends FlxState
   // Called from subclass screens
   private function loadAndPlay(file:String) : Void
   {
-    if (this.audio != null) {
-      this.audio.stop();
+    if (this.playAudioButton == null) {
+      this.playAudioButton = new PlayAudioButton(this);
     }
-
-    this.audio = FlxG.sound.load(file + deengames.io.AudioManager.SOUND_EXT);
-    this.playAudio();
-  }
-
-  // Called in screens
-  private function playAudio() : Void {
-    if (this.audio != null) {
-      this.audio.stop();
-      this.audio.play(true); // force restart
-    }
+    this.playAudioButton.loadAndPlay(file);
   }
 
   private function hideAudioButton() : Void
   {
     this.showAudioButton = false; // if constructor wasn't called yet
-    if (this.audioButton != null) {
-      this.audioButton.destroy();
+    if (this.playAudioButton != null) {
+      this.playAudioButton.destroy();
     }
   }
 }

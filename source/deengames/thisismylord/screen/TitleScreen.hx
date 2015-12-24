@@ -26,8 +26,8 @@ class TitleScreen extends Screen
   override public function create():Void
   {
     var title:FlxSprite = this.addAndCenter('assets/images/titlescreen.png');
-    //this.loadAndPlay('assets/audio/speech/title');
-    this.hideAudioButton();
+    this.loadAndPlay('assets/audio/giggle');
+    //this.hideAudioButton();
 
     /*var creditsButton = this.addAndCenter('assets/images/credits.png');
     creditsButton.x = 64;

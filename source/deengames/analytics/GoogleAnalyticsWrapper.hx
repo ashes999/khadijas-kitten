@@ -1,5 +1,4 @@
-package deengames.abook;
-//import googleAnalytics.Stats;
+package deengames.analytics;
 
 class GoogleAnalyticsWrapper {
 

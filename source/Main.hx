@@ -9,13 +9,13 @@ import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.FlxG;
 
-import deengames.abook.FlurryWrapper;
+import deengames.analytics.FlurryWrapper;
 
 class Main extends Sprite
 {
 	static var gameWidth:Int = 0; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	static var gameHeight:Int = 0; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var initialState:Class<FlxState> = deengames.thisismylord.screen.TitleScreen;//SetupOrder; // The FlxState the game starts with.
+	var initialState:Class<FlxState> = deengames.thisismylord.SetupOrder; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 60; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
