@@ -45,9 +45,6 @@ class Screen extends FlxState
   private var audioButton:FlxSprite;
   private var showAudioButton:Bool = true;
 
-  // Analytics-related
-  private var screenStartTime:Float = 0;
-
   /**
   * Function that is called up when to state is created to set it up.
   */
@@ -77,7 +74,7 @@ class Screen extends FlxState
     }
 
     super.create();
-    this.screenStartTime = Date.now().getTime();
+    FlurryWrapper.trackScreenStartTime();
   }
 
   /**
@@ -86,13 +83,7 @@ class Screen extends FlxState
   */
   override public function destroy():Void
   {
-    var screenEndTime:Float = Date.now().getTime();
-    var elapsedSeconds = screenEndTime - this.screenStartTime;
-    // ms granularity on Android
-    elapsedSeconds = Math.round(elapsedSeconds / 1000);
-    FlurryWrapper.logEvent('Viewed Screen', {
-      'Screen': getName(this), 'View Time (seconds)' : elapsedSeconds });
-
+    FlurryWrapper.trackScreenEndTime(getName(this));
     super.destroy();
   }
 
