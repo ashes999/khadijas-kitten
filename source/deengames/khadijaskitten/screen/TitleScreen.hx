@@ -44,7 +44,8 @@ class TitleScreen extends Screen
 
     super.create();
 
-    add(new Element().withImage('assets/images/house').at(64, 32));
+    add(new Element().withImage('assets/images/house').at(64, 32)
+      .withAnimation('assets/images/monkey_helmet', 50, 55, 8, 8));
   }
 
   private function clickedCreditsButton(sprite:FlxSprite) : Void {
