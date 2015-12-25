@@ -14,6 +14,12 @@
         { "image": "credits.png", "x": 64, "y": -96,
           "comment": "this element is positioned at screen.height - self.height - 96,  when clicked, we parse 'show(x)' and try to find a screen in our list  screens here named X. If there is none, throw an error.",
           "placement": "bottom-right", "onClick": "show(credits screen)"
+        },
+        {
+          "image": "house",
+          "comment": "w, h, frames, FPS",
+          "animation": ["monkey_helmet", 50, 55, 8, 8],
+          "clickAudio": "intro-1"
         }
       ]
     },
