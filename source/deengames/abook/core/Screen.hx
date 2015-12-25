@@ -16,7 +16,6 @@ import deengames.abook.controls.PlayAudioButton;
 
 import deengames.analytics.FlurryWrapper;
 import deengames.analytics.GoogleAnalyticsWrapper;
-import deengames.abook.ScreenAnalytics;
 
 using StringTools;
 using deengames.extensions.StringExtensions;
@@ -36,20 +35,27 @@ import openfl.Assets;
 */
 class Screen extends FlxState
 {
-  public static var screens:Array<Class<Screen>> = new Array<Class<Screen>>();
+  public static var screens:Array<Screen> = new Array<Screen>();
 
   private var nextScreen:Screen;
   private var previousScreen:Screen;
   private var gestureManager:GestureManager = new GestureManager();
   private var playAudioButton:PlayAudioButton;
   private var showAudioButton:Bool = true;
+  private var data:Dynamic;
 
   private static inline var FADE_DURATION_SECONDS = 0.33;
+
+  public function new(?data:Dynamic = null)
+  {
+    super();
+    this.data = data;
+  }
 
   /**
   * Function that is called up when to state is created to set it up.
   */
-  override public function create():Void
+  override public function create() : Void
   {
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
@@ -57,20 +63,24 @@ class Screen extends FlxState
       this.hideAudioButton();
     }
 
-    var c:Class<Screen> = Type.getClass(this);
-
-    var next = Screen.getNextScreen(c);
+    var next = Screen.getNextScreen(this);
     if (next != null) {
       this.nextScreen = next;
     }
 
-    var previous = Screen.getPreviousScreen(c);
+    var previous = Screen.getPreviousScreen(this);
     if (previous != null) {
       this.previousScreen = previous;
     }
 
     super.create();
-    ScreenAnalytics.trackScreenStartTime();
+
+    // Populate data.
+    if (this.data != null) {
+      if (this.data.backgroundImage != null) {
+        this.addAndCenter('assets/images/${this.data.backgroundImage}');
+      }
+    }
 
     // Fade in
     FlxG.camera.flash(FlxColor.BLACK, FADE_DURATION_SECONDS);
@@ -82,7 +92,6 @@ class Screen extends FlxState
   */
   override public function destroy():Void
   {
-    ScreenAnalytics.trackScreenEndTime(getName(this));
     super.destroy();
   }
 
@@ -117,23 +126,21 @@ class Screen extends FlxState
     super.onFocusLost();
   }
 
-  private static function getNextScreen(currentType:Class<Screen>) : Screen
+  private static function getNextScreen(screen:Screen) : Screen
   {
-    var arrayIndex = Screen.screens.indexOf(currentType);
+    var arrayIndex = Screen.screens.indexOf(screen);
     if (arrayIndex < Screen.screens.length - 1) {
-      var c:Class<Screen> = Screen.screens[arrayIndex + 1];
-      return Type.createInstance(c, []);
+      return Screen.screens[arrayIndex + 1];
     } else {
       return null;
     }
   }
 
-  private static function getPreviousScreen(currentType:Class<Screen>) : Screen
+  private static function getPreviousScreen(screen:Screen) : Screen
   {
-    var arrayIndex = Screen.screens.indexOf(currentType);
+    var arrayIndex = Screen.screens.indexOf(screen);
     if (arrayIndex > 0) {
-      var c:Class<Screen> = Screen.screens[arrayIndex - 1];
-      return Type.createInstance(c, []);
+      return Screen.screens[arrayIndex - 1];
     } else {
       return null;
     }

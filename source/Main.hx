@@ -15,7 +15,7 @@ class Main extends Sprite
 {
 	static var gameWidth:Int = 0; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	static var gameHeight:Int = 0; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var initialState:Class<FlxState> = deengames.khadijaskitten.SetupOrder; // The FlxState the game starts with.
+	var initialState:Class<FlxState> = deengames.abook.core.StartupScreen; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 60; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
@@ -28,12 +28,10 @@ class Main extends Sprite
 		gameWidth = 1024;
 		gameHeight = 576;
 
-		#if !flash
-		var json = sys.io.File.getContent('assets/Game.json');
+		var json = openfl.Assets.getText('assets/Game.json');
 		var game = haxe.Json.parse(json);
 		gameWidth = game.width;
 		gameHeight = game.height;
-		#end
 
 		Lib.current.addChild(new Main());
 		FlxG.autoPause = false; // Necessary to tap into onFocusLost

@@ -51,7 +51,7 @@ class SplashScreen extends Screen
       // Fade out over 0.5s
       FlxG.camera.fade(FlxColor.BLACK, 1
         , false,function() {
-        FlxG.switchState(Type.createInstance(Screen.screens[0], []));
+        FlxG.switchState(Screen.screens[0]);
       });
     }
     super.update();
