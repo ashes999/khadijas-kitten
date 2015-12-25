@@ -1,7 +1,9 @@
 package deengames.abook.core;
 
+import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.system.FlxSound;
 import flixel.plugin.MouseEventManager;
 
 using deengames.extensions.StringExtensions;
@@ -15,6 +17,13 @@ class Element extends FlxSprite {
 
   public var imageFile(default, null) : String;
   public var animationFile(default, null) : String;
+  private var clickAudioFile(default, null) : String;
+  private var clickAudioSound:FlxSound;
+
+  public function new() {
+    super();
+    MouseEventManager.add(this, clickHandler);
+  }
 
   public function withImage(imageFile:String) : Element
   {
@@ -42,9 +51,28 @@ class Element extends FlxSprite {
     var range = [for (i in 0 ... frames) i];
     range.push(0); // reset to first image on completion
     this.animation.add('main', range, fps, false); // false => no loop
-    MouseEventManager.add(this, function(obj:FlxObject) {
-      this.animation.play('main');
-    });
+
     return this;
+  }
+
+  public function clickAudio(fileName:String) : Element
+  {
+    this.clickAudioFile = fileName;
+    this.clickAudioSound = FlxG.sound.load(this.clickAudioFile + deengames.io.AudioManager.SOUND_EXT);
+    return this;
+  }
+
+  // Centralize stuff we do on click
+  private function clickHandler(obj:FlxObject) : Void
+  {
+    if (this.animation != null) {
+      this.animation.pause();
+      this.animation.play('main', true); // force restart
+    }
+
+    if (this.clickAudioSound != null) {
+      this.clickAudioSound.stop();
+      this.clickAudioSound.play(true); // force restart
+    }
   }
 }
