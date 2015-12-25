@@ -1,9 +1,9 @@
-package deengames.thisismylord;
+package deengames.khadijaskitten;
 
 import flixel.FlxG;
 import flixel.FlxState;
 import deengames.abook.core.Screen;
-import deengames.thisismylord.screen.*;
+import deengames.khadijaskitten.screen.*;
 
 class SetupOrder extends FlxState
 {

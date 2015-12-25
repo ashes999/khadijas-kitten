@@ -1,6 +1,6 @@
 // Adapted from http://gamepopper.co.uk/2014/08/26/haxeflixel-making-a-custom-preloader/
 
-package deengames.thisismylord;
+package deengames.khadijaskitten;
 
 import flash.Lib;
 import flash.display.Bitmap;

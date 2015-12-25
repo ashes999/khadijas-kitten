@@ -1,4 +1,4 @@
-package deengames.thisismylord.screen;
+package deengames.khadijaskitten.screen;
 
 import flash.display.Sprite;
 import flash.display.StageAlign;
@@ -8,21 +8,31 @@ import flash.Lib;
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.FlxSprite;
-import deengames.abook.core.Screen;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
+import deengames.abook.core.Screen;
 
-class ToDieScene extends Screen
+class CreditsScreen extends Screen
 {
   /**
   * Function that is called up when to state is created to set it up.
   */
   override public function create():Void
   {
-    var title:FlxSprite = this.addAndCenter('assets/images/scene-14-to-die.png');
-    this.loadAndPlay('assets/audio/speech/scene-14-to-die');
+    var title:FlxSprite = this.addAndCenter('assets/images/credits-bg.png');
+    var backButton = this.addAndCenter('assets/images/back.png');
+    backButton.x = FlxG.width - backButton.width - 32;
+    backButton.y = FlxG.height - backButton.height - 32;
+    MouseEventManager.add(backButton, null, clickedBackButton);
+
+    this.hideAudioButton();
+
     super.create();
+  }
+
+  private function clickedBackButton(sprite:FlxSprite) : Void {
+    FlxG.switchState(new TitleScreen());
   }
 
   /**
@@ -41,4 +51,6 @@ class ToDieScene extends Screen
   {
     super.update();
   }
+
+
 }

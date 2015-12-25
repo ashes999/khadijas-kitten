@@ -1,4 +1,4 @@
-package deengames.thisismylord.screen;
+package deengames.khadijaskitten.screen;
 
 import flash.display.Sprite;
 import flash.display.StageAlign;
@@ -6,6 +6,7 @@ import flash.display.StageScaleMode;
 import flash.events.Event;
 import flash.Lib;
 import flixel.FlxGame;
+import flixel.text.FlxText;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.FlxG;
@@ -13,33 +14,37 @@ import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
 
 import deengames.io.GestureManager;
+import deengames.io.AudioManager;
 import deengames.abook.core.Screen;
-import deengames.analytics.FlurryWrapper;
+import deengames.khadijaskitten.screen.CreditsScreen;
 
-class TheEndScreen extends Screen
+class TitleScreen extends Screen
 {
   /**
   * Function that is called up when to state is created to set it up.
   */
   override public function create():Void
   {
-    var restart:FlxSprite = this.addAndCenter('assets/images/restart.png');
-    restart.y = FlxG.height - restart.height - 32;
-    MouseEventManager.add(restart, null, restartGame, null, null);
-
+    var title:FlxSprite = this.addAndCenter('assets/images/titlescreen.png');
     this.loadAndPlay('assets/audio/giggle');
-    this.hideAudioButton();
+    //this.hideAudioButton();
 
-    var sawLastScene = Date.now().getTime();
-    if (Reg.sawFirstScene > 0) {
-      // Millisecond granularity on Android
-      var elapsedSeconds = sawLastScene - Reg.sawFirstScene;
-      elapsedSeconds = Math.round(elapsedSeconds / 1000.0);
-      FlurryWrapper.logEvent('Completed Content', { 'Seconds' : elapsedSeconds });
-      Reg.sawFirstScene = 0;
-    }
+    /*var creditsButton = this.addAndCenter('assets/images/credits.png');
+    creditsButton.x = 64;
+    creditsButton.y = FlxG.height - creditsButton.height - 96;
+    MouseEventManager.add(creditsButton, null, clickedCreditsButton);*/
+
+    // works, but characters appear left-to-right and broken up
+    var text = new FlxText(16, 16);
+    text.setFormat("assets/arabic.ttf", 48, FlxColor.WHITE);
+    text.text = "بِسْمِ اللَّه الرَّحْمَانِ الرَّحِيمِ";
+    add(text);
 
     super.create();
+  }
+
+  private function clickedCreditsButton(sprite:FlxSprite) : Void {
+    FlxG.switchState(new CreditsScreen());
   }
 
   /**
@@ -57,10 +62,5 @@ class TheEndScreen extends Screen
   override public function update():Void
   {
     super.update();
-  }
-
-  private function restartGame(sprite:FlxSprite) : Void
-  {
-    FlxG.switchState(new TitleScreen());
   }
 }
