@@ -41,7 +41,7 @@ class Element extends FlxSprite {
 
   /**
   Don't use this with withImage. It overrides the image from withImage. Note that
-  the animation resets to the first frame after completion.
+  the animation resets to the first frame after completion, and restarts on click.
   */
   public function withAnimation(spriteSheet:String, width:Int, height:Int, frames:Int, fps:Int) : Element
   {
@@ -55,6 +55,9 @@ class Element extends FlxSprite {
     return this;
   }
 
+  /**
+  Play an animation on click. Note that the audio restarts on click.
+  */
   public function clickAudio(fileName:String) : Element
   {
     this.clickAudioFile = fileName;

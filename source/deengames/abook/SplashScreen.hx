@@ -27,9 +27,6 @@ class SplashScreen extends Screen
     var title:FlxSprite = this.addAndCenter('assets/images/dg-logo');
     this.loadAndPlay('assets/audio/giggle');
 
-    // Fade in over 0.5s
-    FlxG.camera.fade(FlxColor.BLACK, 0.5, true);
-
     super.create();
     startTime = Date.now().getTime();
   }

@@ -61,6 +61,6 @@ class TheEndScreen extends Screen
 
   private function restartGame(sprite:FlxSprite) : Void
   {
-    FlxG.switchState(new TitleScreen());
+    Screen.transitionTo(new TitleScreen());
   }
 }

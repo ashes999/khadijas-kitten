@@ -31,11 +31,6 @@ class TitleScreen extends Screen
     this.loadAndPlay('assets/audio/giggle');
     //this.hideAudioButton();
 
-    /*var creditsButton = this.addAndCenter('assets/images/credits.png');
-    creditsButton.x = 64;
-    creditsButton.y = FlxG.height - creditsButton.height - 96;
-    MouseEventManager.add(creditsButton, null, clickedCreditsButton);*/
-
     // works, but characters appear left-to-right and broken up
     var text = new FlxText(16, 16);
     text.setFormat("assets/arabic.ttf", 48, FlxColor.WHITE);
@@ -48,11 +43,7 @@ class TitleScreen extends Screen
       .withAnimation('assets/images/monkey_helmet', 50, 55, 8, 8)
       .clickAudio('assets/audio/intro-1'));
   }
-
-  private function clickedCreditsButton(sprite:FlxSprite) : Void {
-    FlxG.switchState(new CreditsScreen());
-  }
-
+  
   /**
   * Function that is called when this state is destroyed - you might want to
   * consider setting all objects this state uses to null to help garbage collection.

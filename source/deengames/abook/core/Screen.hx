@@ -44,6 +44,8 @@ class Screen extends FlxState
   private var playAudioButton:PlayAudioButton;
   private var showAudioButton:Bool = true;
 
+  private static inline var FADE_DURATION_SECONDS = 0.33;
+
   /**
   * Function that is called up when to state is created to set it up.
   */
@@ -69,6 +71,9 @@ class Screen extends FlxState
 
     super.create();
     ScreenAnalytics.trackScreenStartTime();
+
+    // Fade in
+    FlxG.camera.flash(FlxColor.BLACK, FADE_DURATION_SECONDS);
   }
 
   /**
@@ -137,7 +142,6 @@ class Screen extends FlxState
   public function addAndCenter(fileName:String) : FlxSprite
   {
     fileName = fileName.addExtension();
-    trace('SS AAC ${fileName}');
     var sprite = this.addSprite(fileName);
     centerOnScreen(sprite);
     return sprite;
@@ -218,13 +222,21 @@ class Screen extends FlxState
   private function showNextScreen() : Void
   {
     logScreen(this.nextScreen, 'Next');
-    FlxG.switchState(this.nextScreen);
+    Screen.transitionTo(this.nextScreen);
   }
 
   private function showPreviousScreen() : Void
   {
     logScreen(this.previousScreen, 'Previous');
-    FlxG.switchState(this.previousScreen);
+    Screen.transitionTo(this.previousScreen);
+  }
+
+  public static function transitionTo(target:Screen) : Void
+  {
+    // 1/3s
+    FlxG.camera.fade(FlxColor.BLACK, FADE_DURATION_SECONDS, false, function() {
+      FlxG.switchState(target);
+    });
   }
 
   private function logScreen(s:Screen, direction:String) {
