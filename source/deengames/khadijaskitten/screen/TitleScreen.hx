@@ -16,7 +16,9 @@ import flixel.plugin.MouseEventManager;
 import deengames.io.GestureManager;
 import deengames.io.AudioManager;
 import deengames.abook.core.Screen;
+import deengames.abook.core.Element;
 import deengames.khadijaskitten.screen.CreditsScreen;
+
 
 class TitleScreen extends Screen
 {
@@ -41,6 +43,8 @@ class TitleScreen extends Screen
     add(text);
 
     super.create();
+
+    add(new Element().withImage('assets/images/house').at(64, 32));
   }
 
   private function clickedCreditsButton(sprite:FlxSprite) : Void {

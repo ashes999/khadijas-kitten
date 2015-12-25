@@ -19,6 +19,7 @@ import deengames.analytics.GoogleAnalyticsWrapper;
 import deengames.abook.ScreenAnalytics;
 
 using StringTools;
+using deengames.extensions.StringExtensions;
 
 /**
  * The below block is for animated GIFs (yagp)
@@ -135,7 +136,8 @@ class Screen extends FlxState
 
   public function addAndCenter(fileName:String) : FlxSprite
   {
-    fileName = addExtension(fileName);
+    fileName = fileName.addExtension();
+    trace('SS AAC ${fileName}');
     var sprite = this.addSprite(fileName);
     centerOnScreen(sprite);
     return sprite;
@@ -143,26 +145,16 @@ class Screen extends FlxState
 
   private function addSprite(fileName:String) : FlxSprite
   {
-    fileName = addExtension(fileName);
+    fileName = fileName.addExtension();
     var sprite = new FlxSprite();
     sprite.loadGraphic(fileName);
     add(sprite);
     return sprite;
   }
 
-  // Given an image file name, adds .png if it doesn't have an extension.
-  private function addExtension(fileName:String):String
-  {
-    if (fileName.indexOf('.') == -1) {
-      return '${fileName}.png';
-    } else {
-      return fileName;
-    }
-  }
-
   private function addAndCenterAnimation(spriteSheet:String, width:Int, height:Int, frames:Int, fps:Int) : FlxSprite
   {
-    spriteSheet = addExtension(spriteSheet);
+    spriteSheet = spriteSheet.addExtension();
     var sprite:FlxSprite = new FlxSprite();
     sprite.loadGraphic(spriteSheet, true, width, height);
     var range = [for (i in 0 ... frames) i];
