@@ -12,12 +12,12 @@ class StartupScreen extends Screen {
     // Parse and create screens
     // Populate them into Screen.screens
     var json = openfl.Assets.getText('assets/Game.json');
-    var gameData = haxe.Json.parse(json);
-    var screens = cast(gameData.screens, Array<Dynamic>);
+    var gameData:Dynamic = haxe.Json.parse(json);
+    var screensData:Array<Dynamic> = cast(gameData.screens, Array<Dynamic>);
+
     var i = 0;
-    for (screen in screens) {
-      var s = new Screen(screen);
-      Screen.screens.push(s);
+    for (data in screensData) {
+      Screen.screensData.push(data);
     }
 
     FlxG.switchState(new deengames.abook.SplashScreen());
