@@ -135,9 +135,17 @@ class Screen extends FlxState
   // Returns the data for the next sceen (which is enough to construct it)
   private static function getNextScreen(screen:Screen) : Dynamic
   {
-    var arrayIndex = Screen.screensData.indexOf(screen.data);
-    if (arrayIndex < Screen.screensData.length - 1) {
-      return Screen.screensData[arrayIndex + 1];
+    var datas = Screen.screensData;
+    var arrayIndex = datas.indexOf(screen.data);
+    if (arrayIndex > -1 && arrayIndex < datas.length - 1) {
+      // Return the first screen with show != false
+      for (i in (arrayIndex + 1)...datas.length) {
+        if (datas[i].show != false) {
+          return datas[i];
+        }
+      }
+      // The rest are all show = false. There's no screen.
+      return null;
     } else {
       return null;
     }
@@ -146,9 +154,19 @@ class Screen extends FlxState
   // Returns the data for the previous sceen (which is enough to construct it)
   private static function getPreviousScreen(screen:Screen) : Dynamic
   {
-    var arrayIndex = Screen.screensData.indexOf(screen.data);
+    var datas = Screen.screensData;
+    var arrayIndex = datas.indexOf(screen.data);
     if (arrayIndex > 0) {
-      return Screen.screensData[arrayIndex - 1];
+      // Return the first screen with show != false
+      var i = arrayIndex - 1;
+      while (i >= 0) {
+        if (datas[i].show != false) {
+          return datas[i];
+        }
+        i -= 1;
+      }
+      // The rest are all show = false. There's no screen.
+      return null;
     } else {
       return null;
     }
@@ -167,7 +185,6 @@ class Screen extends FlxState
     fileName = fileName.addExtension();
     var sprite = new FlxSprite();
     sprite.loadGraphic(fileName);
-    trace('Adding sprite ${fileName}');
     add(sprite);
     return sprite;
   }

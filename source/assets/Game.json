@@ -5,11 +5,12 @@
   "screens": [
     {
       "name": "title screen",
-      "titlescreen": true, "comment": "this is the title screen. implies show=>false and hide audio button",
       "comment": "images are relative to assets/images; assume PNG if no extension",
       "backgroundImage": "titlescreen",
       "comment": "audio are relative to assets/audio; we know the extension",
       "audio": "speech/title",
+      "show": false, "comment": "don't show this screen as the next button on the previous screen. This property ('show') may need a better name, but what? showInRotation? showInOrder?",
+      "hideAudioButton": true,
       "elements": [
         { "image": "credits.png", "x": 64, "y": -96,
           "comment": "this element is positioned at screen.height - self.height - 96,  when clicked, we parse 'show(x)' and try to find a screen in our list  screens here named X. If there is none, throw an error.",

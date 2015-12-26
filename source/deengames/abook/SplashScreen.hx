@@ -16,7 +16,7 @@ import deengames.io.GestureManager;
 
 class SplashScreen extends Screen
 {
-  var startTime:Float = 0;
+  private var startTime:Float = 0;
 
   /**
   * Function that is called up when to state is created to set it up.
