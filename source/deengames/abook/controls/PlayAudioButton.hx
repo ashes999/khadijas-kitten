@@ -38,7 +38,7 @@ class PlayAudioButton {
       this.audio.stop();
     }
 
-    this.audio = FlxG.sound.load(file + deengames.io.AudioManager.SOUND_EXT);
+    this.audio = FlxG.sound.load('${file}${deengames.io.AudioManager.SOUND_EXT}');
     this.audio.play(true);
   }
 }

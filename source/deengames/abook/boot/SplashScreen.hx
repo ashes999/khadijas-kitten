@@ -26,7 +26,7 @@ class SplashScreen extends Screen
   {
     super.create();
     this.hideAudioButton();
-    
+
     var title:FlxSprite = this.addAndCenter('assets/images/dg-logo');
     this.loadAndPlay('assets/audio/giggle');
 

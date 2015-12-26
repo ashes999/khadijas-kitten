@@ -1,5 +1,4 @@
 {
-  "comment": "width and height are ignored. they will be incorporated later.",
   "width": 1024,
   "height": 576,
   "screens": [
@@ -26,7 +25,8 @@
     {
       "name": "scene 14",
       "backgroundImage": "scene-14.jpg",
-      "audio": "intro-1"
+      "audio": "intro-1",
+      "backgroundAudio": "brook"
     },
     {
       "name": "scene 27",
@@ -35,14 +35,14 @@
     },
     {
       "name": "the end screen",
+      "comment": "no bg. may need to include fully qualified package for class name.",
       "class": "TheEndScreen",
-      "comment": "no bg. may need to include fully qualified package",
       "audio": "intro-3",
       "hideAudioButton": true
     },
     {
       "name": "credits screen",
-      "show": false, "comment": "don't show this screen as the next button on the previous screen. This property ('show') may need a better name, but what? showInRotation? showInOrder?",
+      "show": false,
       "hideAudioButton": true,
       "backgroundImage": "credits-bg.jpg",
       "elements": [

@@ -45,6 +45,9 @@ class Screen extends FlxState
   private var previousScreenData:Dynamic;
   private var gestureManager:GestureManager = new GestureManager();
   private var playAudioButton:PlayAudioButton;
+
+  private var bgAudio:FlxSound = new FlxSound();
+
   private var data:Dynamic;
 
   private static inline var FADE_DURATION_SECONDS = 0.33;
@@ -147,6 +150,10 @@ class Screen extends FlxState
       }
       if (this.data.hideAudioButton == true) {
         this.hideAudioButton();
+      }
+      if (this.data.backgroundAudio != null) {
+        this.bgAudio.loadEmbedded('assets/audio/${this.data.backgroundAudio}${deengames.io.AudioManager.SOUND_EXT}', true);
+        this.bgAudio.play();
       }
     }
   }
@@ -271,12 +278,14 @@ class Screen extends FlxState
 
   private function showNextScreen() : Void
   {
+    this.bgAudio.stop();
     logScreen(this.nextScreenData, 'Next');
     Screen.transitionTo(new Screen(this.nextScreenData));
   }
 
   private function showPreviousScreen() : Void
   {
+    this.bgAudio.stop();
     logScreen(this.previousScreenData, 'Previous');
     Screen.transitionTo(new Screen(this.previousScreenData));
   }
