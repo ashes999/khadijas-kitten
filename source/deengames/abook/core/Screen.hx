@@ -62,7 +62,6 @@ class Screen extends FlxState
   {
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
-    if (data != null) { trace('${data.name}: ${data.audio}'); }
     if (data != null && data.audio != true) {
       this.hideAudioButton();
     } else {
@@ -81,6 +80,7 @@ class Screen extends FlxState
 
     super.create();
 
+    // Process the JSON data, and create elements, set the background/audio, etc.
     this.processData();
 
     // Fade in
@@ -144,6 +144,9 @@ class Screen extends FlxState
       }
       if (this.data.audio != null) {
         this.loadAndPlay('assets/audio/${this.data.audio}');
+      }
+      if (this.data.hideAudioButton == true) {
+        this.hideAudioButton();
       }
     }
   }

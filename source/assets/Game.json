@@ -26,17 +26,19 @@
     {
       "name": "scene 14",
       "backgroundImage": "scene-14.jpg",
-      "audio": "intro-2"
+      "audio": "intro-1"
     },
     {
       "name": "scene 27",
       "backgroundImage": "scene-27.jpg",
-      "audio": "intro-3"
+      "audio": "intro-2"
     },
     {
       "name": "the end screen",
       "class": "TheEndScreen",
-      "comment": "no bg. may need to include fully qualified package"
+      "comment": "no bg. may need to include fully qualified package",
+      "audio": "intro-3",
+      "hideAudioButton": true
     },
     {
       "name": "credits screen",
