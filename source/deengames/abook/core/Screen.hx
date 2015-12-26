@@ -61,6 +61,8 @@ class Screen extends FlxState
 
     if (!this.showAudioButton) {
       this.hideAudioButton();
+    } else {
+      this.playAudioButton = new PlayAudioButton(this);
     }
 
     var next = Screen.getNextScreen(this);
