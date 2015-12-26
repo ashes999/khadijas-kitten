@@ -1,4 +1,4 @@
-package deengames.abook;
+package deengames.abook.boot;
 
 import flash.display.Sprite;
 import flash.display.StageAlign;
@@ -14,6 +14,7 @@ import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
 import deengames.io.GestureManager;
 
+// Loads from startup screen.
 class SplashScreen extends Screen
 {
   private var startTime:Float = 0;

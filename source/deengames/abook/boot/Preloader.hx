@@ -1,6 +1,7 @@
 // Adapted from http://gamepopper.co.uk/2014/08/26/haxeflixel-making-a-custom-preloader/
-
-package deengames.khadijaskitten;
+// Pre-loads assets. Used for Android and Flash.
+// Delegates to StartupScreen.
+package deengames.abook.boot;
 
 import flash.Lib;
 import flash.display.Bitmap;

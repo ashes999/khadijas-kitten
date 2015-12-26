@@ -1,8 +1,9 @@
-package deengames.abook.core;
+package deengames.abook.boot;
 
 import flixel.FlxG;
 import deengames.abook.core.Screen;
 
+// Runs after preloader.
 // Loads JSON, sets up screens, goes to splash screen
 class StartupScreen extends Screen {
 
@@ -20,7 +21,7 @@ class StartupScreen extends Screen {
       Screen.screensData.push(data);
     }
 
-    FlxG.switchState(new deengames.abook.SplashScreen());
+    FlxG.switchState(new deengames.abook.boot.SplashScreen());
   }
 
 }
