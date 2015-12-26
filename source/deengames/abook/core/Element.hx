@@ -25,25 +25,23 @@ class Element extends FlxSprite {
     MouseEventManager.add(this, clickHandler);
   }
 
-  public function withImage(imageFile:String) : Element
+  public function setImage(imageFile:String) : Void
   {
     this.imageFile = imageFile.addExtension();
     this.loadGraphic(this.imageFile);
-    return this;
   }
 
-  public function at(x:Int, y:Int) : Element
+  public function move(x:Int, y:Int) : Void
   {
     this.x = x;
     this.y = y;
-    return this;
   }
 
   /**
   Don't use this with withImage. It overrides the image from withImage. Note that
   the animation resets to the first frame after completion, and restarts on click.
   */
-  public function withAnimation(spriteSheet:String, width:Int, height:Int, frames:Int, fps:Int) : Element
+  public function setAnimation(spriteSheet:String, width:Int, height:Int, frames:Int, fps:Int) : Void
   {
     spriteSheet = spriteSheet.addExtension();
     this.animationFile = spriteSheet;
@@ -51,18 +49,15 @@ class Element extends FlxSprite {
     var range = [for (i in 0 ... frames) i];
     range.push(0); // reset to first image on completion
     this.animation.add('main', range, fps, false); // false => no loop
-
-    return this;
   }
 
   /**
   Play an animation on click. Note that the audio restarts on click.
   */
-  public function clickAudio(fileName:String) : Element
+  public function setClickAudio(fileName:String) : Void
   {
     this.clickAudioFile = fileName;
     this.clickAudioSound = FlxG.sound.load(this.clickAudioFile + deengames.io.AudioManager.SOUND_EXT);
-    return this;
   }
 
   // Centralize stuff we do on click
