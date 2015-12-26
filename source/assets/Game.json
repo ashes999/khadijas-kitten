@@ -24,20 +24,25 @@
       ]
     },
     {
-      "name": "to-die screen",
-      "backgroundImage": "scene-14-to-die.png",
-      "audio": "scene-14-to-die"
+      "name": "scene 14",
+      "backgroundImage": "scene-14.jpg",
+      "audio": "intro-2"
+    },
+    {
+      "name": "scene 27",
+      "backgroundImage": "scene-27.jpg",
+      "audio": "intro-3"
     },
     {
       "name": "the end screen",
       "class": "TheEndScreen",
-      "comment": "may need to include fully qualified package"
+      "comment": "no bg. may need to include fully qualified package"
     },
     {
       "name": "credits screen",
       "show": false, "comment": "don't show this screen as the next button on the previous screen. This property ('show') may need a better name, but what? showInRotation? showInOrder?",
       "hideAudioButton": true,
-      "backgroundImage": "credits-bg.png",
+      "backgroundImage": "credits-bg.jpg",
       "elements": [
         { "image": "back.png", "x": -32, "y": "-32", "placement": "bottom-right", "onClick": "show(title screen)"}
       ]
