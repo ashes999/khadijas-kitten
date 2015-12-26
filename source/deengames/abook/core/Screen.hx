@@ -71,12 +71,12 @@ class Screen extends FlxState
       this.playAudioButton = new PlayAudioButton(this);
     }
 
-    var next = Screen.getNextScreen(this);
+    var next = Screen.getNextScreenData(this);
     if (next != null) {
       this.nextScreenData = next;
     }
 
-    var previous = Screen.getPreviousScreen(this);
+    var previous = Screen.getPreviousScreenData(this);
     if (previous != null) {
       this.previousScreenData = previous;
     }
@@ -159,7 +159,7 @@ class Screen extends FlxState
   }
 
   // Returns the data for the next sceen (which is enough to construct it)
-  private static function getNextScreen(screen:Screen) : Dynamic
+  private static function getNextScreenData(screen:Screen) : Dynamic
   {
     var datas = Screen.screensData;
     var arrayIndex = datas.indexOf(screen.data);
@@ -178,7 +178,7 @@ class Screen extends FlxState
   }
 
   // Returns the data for the previous sceen (which is enough to construct it)
-  private static function getPreviousScreen(screen:Screen) : Dynamic
+  private static function getPreviousScreenData(screen:Screen) : Dynamic
   {
     var datas = Screen.screensData;
     var arrayIndex = datas.indexOf(screen.data);
@@ -280,14 +280,26 @@ class Screen extends FlxState
   {
     this.bgAudio.stop();
     logScreen(this.nextScreenData, 'Next');
-    Screen.transitionTo(new Screen(this.nextScreenData));
+    var instance = Screen.createInstance(this.nextScreenData);
+    Screen.transitionTo(instance);
   }
 
   private function showPreviousScreen() : Void
   {
     this.bgAudio.stop();
     logScreen(this.previousScreenData, 'Previous');
-    Screen.transitionTo(new Screen(this.previousScreenData));
+    var instance = Screen.createInstance(this.previousScreenData);
+    Screen.transitionTo(instance);
+  }
+
+  private static function createInstance(screenData:Dynamic) : Screen
+  {
+    if (screenData != null && screenData.className != null) {
+      // Create the specified type. Must have a constructor with no args.
+      return Type.createInstance(Type.resolveClass(screenData.className), []);
+    } else {
+      return new Screen(screenData);
+    }
   }
 
   public static function transitionTo(target:Screen) : Void

@@ -36,7 +36,7 @@
     {
       "name": "the end screen",
       "comment": "no bg. may need to include fully qualified package for class name.",
-      "class": "TheEndScreen",
+      "className": "deengames.abook.TheEndScreen",
       "audio": "intro-3",
       "hideAudioButton": true
     },
