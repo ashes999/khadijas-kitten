@@ -8,7 +8,6 @@
       "comment": "images are relative to assets/images; assume PNG if no extension",
       "backgroundImage": "titlescreen",
       "comment": "audio are relative to assets/audio; we know the extension",
-      "audio": "speech/title",
       "show": false, "comment": "don't show this screen as the next button on the previous screen. This property ('show') may need a better name, but what? showInRotation? showInOrder?",
       "hideAudioButton": true,
       "elements": [

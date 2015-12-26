@@ -45,7 +45,6 @@ class Screen extends FlxState
   private var previousScreenData:Dynamic;
   private var gestureManager:GestureManager = new GestureManager();
   private var playAudioButton:PlayAudioButton;
-  private var showAudioButton:Bool = true;
   private var data:Dynamic;
 
   private static inline var FADE_DURATION_SECONDS = 0.33;
@@ -63,7 +62,8 @@ class Screen extends FlxState
   {
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
-    if (!this.showAudioButton) {
+    if (data != null) { trace('${data.name}: ${data.audio}'); }
+    if (data != null && data.audio != true) {
       this.hideAudioButton();
     } else {
       this.playAudioButton = new PlayAudioButton(this);
@@ -81,12 +81,7 @@ class Screen extends FlxState
 
     super.create();
 
-    // Populate data.
-    if (this.data != null) {
-      if (this.data.backgroundImage != null) {
-        this.addAndCenter('assets/images/${this.data.backgroundImage}');
-      }
-    }
+    this.processData();
 
     // Fade in
     FlxG.camera.flash(FlxColor.BLACK, FADE_DURATION_SECONDS);
@@ -116,7 +111,11 @@ class Screen extends FlxState
   {
     FlurryWrapper.startSession(Reg.flurryKey);
     GoogleAnalyticsWrapper.init(Reg.googleAnalyticsUrl);
-    FlurryWrapper.logEvent('Resume', { 'Screen': this.data.name });
+    var name = "Unknown";
+    if (this.data != null && this.data.name != null) {
+      name = this.data.name;
+    }
+    FlurryWrapper.logEvent('Resume', { 'Screen': name });
   }
 
   /**
@@ -127,9 +126,26 @@ class Screen extends FlxState
    */
   override public function onFocusLost() : Void
   {
-    FlurryWrapper.logEvent('Shutdown', { 'Final Screen': this.data.name });
+    var name = "Unknown";
+    if (this.data != null && this.data.name != null) {
+      name = this.data.name;
+    }
+    FlurryWrapper.logEvent('Shutdown', { 'Final Screen': name });
     FlurryWrapper.endSession();
     super.onFocusLost();
+  }
+
+  private function processData() : Void
+  {
+    // Populate functionality based on data.
+    if (this.data != null) {
+      if (this.data.backgroundImage != null) {
+        this.addAndCenter('assets/images/${this.data.backgroundImage}');
+      }
+      if (this.data.audio != null) {
+        this.loadAndPlay('assets/audio/${this.data.audio}');
+      }
+    }
   }
 
   // Returns the data for the next sceen (which is enough to construct it)
@@ -286,7 +302,6 @@ class Screen extends FlxState
 
   private function hideAudioButton() : Void
   {
-    this.showAudioButton = false; // if constructor wasn't called yet
     if (this.playAudioButton != null) {
       this.playAudioButton.destroy();
     }

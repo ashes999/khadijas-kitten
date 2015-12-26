@@ -24,11 +24,12 @@ class SplashScreen extends Screen
   */
   override public function create():Void
   {
+    super.create();
     this.hideAudioButton();
+    
     var title:FlxSprite = this.addAndCenter('assets/images/dg-logo');
     this.loadAndPlay('assets/audio/giggle');
 
-    super.create();
     startTime = Date.now().getTime();
   }
 
