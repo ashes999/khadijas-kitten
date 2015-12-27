@@ -31,12 +31,6 @@ class Element extends FlxSprite {
     this.loadGraphic(this.imageFile);
   }
 
-  public function move(x:Int, y:Int) : Void
-  {
-    this.x = x;
-    this.y = y;
-  }
-
   /**
   Don't use this with withImage. It overrides the image from withImage. Note that
   the animation resets to the first frame after completion, and restarts on click.
