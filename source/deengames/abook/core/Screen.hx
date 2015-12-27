@@ -155,7 +155,36 @@ class Screen extends FlxState
         this.bgAudio.loadEmbedded('assets/audio/${this.data.backgroundAudio}${deengames.io.AudioManager.SOUND_EXT}', true);
         this.bgAudio.play();
       }
+
+      if (this.data.elements != null) {
+        var elements = cast(data.elements, Array<Dynamic>);
+        for (element in elements) {
+          processElement(element);
+        }
+      }
     }
+  }
+
+  // Create and process the element.
+  private function processElement(data:Dynamic) : Void
+  {
+    var e = new Element();
+
+    if (data.image != null) {
+      e.setImage('assets/images/${data.image}');
+    }
+    if (data.x != null && data.y != null) {
+      e.move(data.x, data.y);
+    }
+    if (data.animation != null) {
+      var a = data.animation;
+      e.setAnimation('assets/images/${a.image}', a.width, a.height, a.frames, a.fps);
+    }
+    if (data.clickAudio != null) {
+      e.setClickAudio('assets/audio/${data.clickAudio}');
+    }
+
+    add(e);
   }
 
   // Returns the data for the next sceen (which is enough to construct it)
