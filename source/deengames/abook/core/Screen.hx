@@ -348,7 +348,11 @@ class Screen extends FlxState
   {
     if (screenData != null && screenData.className != null) {
       // Create the specified type. Must have a constructor with no args.
-      return Type.createInstance(Type.resolveClass(screenData.className), []);
+      var t = Type.resolveClass(screenData.className);
+      if (t == null) {
+        throw 'Can\'t find instance of custom class ${screenData.className}. Add the "dump" haxeflag and make sure it appears in the output';
+      }
+      return Type.createInstance(t, []);
     } else {
       return new Screen(screenData);
     }

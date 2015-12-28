@@ -1,4 +1,4 @@
-package deengames.abook;
+package deengames.abook.khadijaskitten;
 
 import deengames.abook.core.Screen;
 

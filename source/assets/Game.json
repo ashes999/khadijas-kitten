@@ -34,8 +34,7 @@
     },
     {
       "name": "the end screen",
-      "comment": "no bg. may need to include fully qualified package for class name.",
-      "className": "deengames.abook.TheEndScreen",
+      "className": "deengames.abook.khadijaskitten.TheEndScreen",
       "audio": "intro-3",
       "hideAudioButton": true
     },
