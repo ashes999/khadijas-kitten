@@ -17,7 +17,6 @@ import deengames.abook.controls.PlayAudioButton;
 import deengames.analytics.FlurryWrapper;
 import deengames.analytics.GoogleAnalyticsWrapper;
 
-using StringTools;
 using deengames.extensions.StringExtensions;
 
 /**
@@ -159,55 +158,10 @@ class Screen extends FlxState
       if (this.data.elements != null) {
         var elements = cast(data.elements, Array<Dynamic>);
         for (element in elements) {
-          processElement(element);
+          add(Element.fromData(element));
         }
       }
     }
-  }
-
-  // Create and process the element.
-  private function processElement(data:Dynamic) : Void
-  {
-    var e = new Element();
-
-    if (data.image != null) {
-      e.setImage('assets/images/${data.image}');
-    }
-
-    if (data.x != null && data.y != null) {
-      var x:Int = data.x;
-      var y:Int = data.y;
-
-      if (data.placement != null) {
-        var placement:String = data.placement;
-        var normalized = placement.replace("-", "").replace(" ", "").toLowerCase();
-        if (normalized != "topleft" && normalized != "topright" && normalized != "bottomleft" && normalized != "bottomright") {
-          trace('Invalid placement value of ${placement}. Valid values are: top-left, top-right, bottom-left, bottom-right.');
-        } else {
-          if (placement.indexOf('bottom') > -1) {
-            y = Math.round(Main.gameHeight - e.height - y);
-          }
-          if (placement.indexOf('right') > -1) {
-            x = Math.round(Main.gameWidth - e.width - x);
-          }
-        }
-      }
-
-      e.x = x;
-      e.y = y;
-    } else if (data.placement != null) {
-      trace("Element has placement but no x/y coordinates; please add them: " + data);
-    }
-
-    if (data.animation != null) {
-      var a = data.animation;
-      e.setAnimation('assets/images/${a.image}', a.width, a.height, a.frames, a.fps);
-    }
-    if (data.clickAudio != null) {
-      e.setClickAudio('assets/audio/${data.clickAudio}');
-    }
-
-    add(e);
   }
 
   // Returns the data for the next sceen (which is enough to construct it)
