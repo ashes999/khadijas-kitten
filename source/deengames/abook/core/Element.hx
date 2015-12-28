@@ -6,6 +6,8 @@ import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.plugin.MouseEventManager;
 
+import deengames.abook.core.onClickCommands.ShowScreenCommand;
+
 using deengames.extensions.StringExtensions;
 using StringTools;
 
@@ -20,6 +22,9 @@ class Element extends FlxSprite {
   public var animationFile(default, null) : String;
   private var clickAudioFile(default, null) : String;
   private var clickAudioSound:FlxSound;
+
+  // TODO: a generic interface with .execute() works here too
+  private var onClickCommand:ShowScreenCommand;
 
   public function new() {
     super();
@@ -45,10 +50,10 @@ class Element extends FlxSprite {
           trace('Invalid placement value of ${placement}. Valid values are: top-left, top-right, bottom-left, bottom-right.');
         } else {
           if (placement.indexOf('bottom') > -1) {
-            y = Math.round(Main.gameHeight - e.height - y);
+            y = Main.gameHeight - Math.round(e.height) - y;
           }
           if (placement.indexOf('right') > -1) {
-            x = Math.round(Main.gameWidth - e.width - x);
+            x = Main.gameWidth - Math.round(e.width) - x;
           }
         }
       }
@@ -65,6 +70,34 @@ class Element extends FlxSprite {
     }
     if (data.clickAudio != null) {
       e.setClickAudio('assets/audio/${data.clickAudio}');
+    }
+
+    if (data.onClick != null) {
+      var onClick:String = data.onClick;
+      // validation
+      var normalized = onClick.toLowerCase();
+      if (normalized.indexOf('show(') != 0 || normalized.indexOf(')') != normalized.length - 1) {
+        throw 'Element ${data} has invalid on-click code: ${onClick}. Valid values are: show(screen name)';
+      } else {
+        var start = normalized.indexOf('(');
+        var stop = normalized.indexOf(')');
+        var screenName = onClick.substr(start + 1, stop - start - 1);
+
+        var screenFound = null;
+        for (screenData in Screen.screensData) {
+          if (screenData.name.toLowerCase() == screenName.toLowerCase()) {
+            screenFound = screenData;
+          }
+        }
+        if (screenFound == null) {
+          throw 'Element ${data} has onClick handler pointing to non-existing screen ${screenName}';
+        } else {
+          if (data.animation != null) {
+            trace('Warning: Element has an animation which will be overridden by the click handler. click=${onClick}, a=${data.animation}, e=${data}');
+          }
+          e.onClickCommand = new ShowScreenCommand(screenFound);
+        }
+      }
     }
 
     return e;
@@ -103,14 +136,18 @@ class Element extends FlxSprite {
   // Centralize stuff we do on click
   private function clickHandler(obj:FlxObject) : Void
   {
-    if (this.animation != null) {
-      this.animation.pause();
-      this.animation.play('main', true); // force restart
-    }
-
     if (this.clickAudioSound != null) {
       this.clickAudioSound.stop();
       this.clickAudioSound.play(true); // force restart
+    }
+
+    if (this.onClickCommand != null) {
+      this.onClickCommand.execute();
+    } else {
+      if (this.animation != null) {
+        this.animation.pause();
+        this.animation.play('main', true); // force restart
+      }
     }
   }
 }

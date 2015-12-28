@@ -44,7 +44,7 @@
       "hideAudioButton": true,
       "backgroundImage": "credits-bg.jpg",
       "elements": [
-        { "image": "back.png", "x": 32, "y": "32", "placement": "bottom-right", "onClick": "show(title screen)"}
+        { "image": "restart", "x": 32, "y": 32, "placement": "bottom-right", "onClick": "show(title screen)" }
       ]
     }
   ]

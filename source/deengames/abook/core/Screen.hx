@@ -298,7 +298,7 @@ class Screen extends FlxState
     Screen.transitionTo(instance);
   }
 
-  private static function createInstance(screenData:Dynamic) : Screen
+  public static function createInstance(screenData:Dynamic) : Screen
   {
     if (screenData != null && screenData.className != null) {
       // Create the specified type. Must have a constructor with no args.
