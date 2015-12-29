@@ -5,6 +5,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.plugin.MouseEventManager;
+import deengames.io.DebugLogger;
 
 import deengames.abook.core.onClickCommands.ShowScreenCommand;
 
@@ -47,7 +48,7 @@ class Element extends FlxSprite {
         var placement:String = data.placement;
         var normalized = placement.replace("-", "").replace(" ", "").toLowerCase();
         if (normalized != "topleft" && normalized != "topright" && normalized != "bottomleft" && normalized != "bottomright") {
-          trace('Invalid placement value of ${placement}. Valid values are: top-left, top-right, bottom-left, bottom-right.');
+          DebugLogger.log('Invalid placement value of ${placement}. Valid values are: top-left, top-right, bottom-left, bottom-right.');
         } else {
           if (placement.indexOf('bottom') > -1) {
             y = Main.gameHeight - Math.round(e.height) - y;
@@ -61,7 +62,7 @@ class Element extends FlxSprite {
       e.x = x;
       e.y = y;
     } else if (data.placement != null) {
-      trace("Element has placement but no x/y coordinates; please add them: " + data);
+      DebugLogger.log("Element has placement but no x/y coordinates; please add them: " + data);
     }
 
     if (data.animation != null) {
@@ -93,7 +94,7 @@ class Element extends FlxSprite {
           throw 'Element ${data} has onClick handler pointing to non-existing screen ${screenName}';
         } else {
           if (data.animation != null) {
-            trace('Warning: Element has an animation which will be overridden by the click handler. click=${onClick}, a=${data.animation}, e=${data}');
+            DebugLogger.log('Warning: Element has an animation which will be overridden by the click handler. click=${onClick}, a=${data.animation}, e=${data}');
           }
           e.onClickCommand = new ShowScreenCommand(screenFound);
         }
