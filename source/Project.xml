@@ -55,6 +55,7 @@
 	<!--------------------------------HAXEDEFINES-------------------------------->
 
 	<haxeflag name="--macro" value="include('deengames.abook.khadijaskitten')" />
+	<haxedef name="debug" />
 
 	<!--Enable the Flixel core recording system-->
 	<!--haxedef name="FLX_RECORD" /-->

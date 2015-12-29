@@ -13,6 +13,7 @@ import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
 import deengames.io.GestureManager;
+import deengames.io.DebugLogger;
 
 // Loads from startup screen.
 class SplashScreen extends Screen
@@ -31,6 +32,8 @@ class SplashScreen extends Screen
     this.loadAndPlay('assets/audio/giggle');
 
     startTime = Date.now().getTime();
+
+    DebugLogger.log("@@@ DEBUG MODE ENABLED @@@");
   }
 
   /**
@@ -39,6 +42,7 @@ class SplashScreen extends Screen
   */
   override public function destroy():Void
   {
+    DebugLogger.log("Bye!");
     super.destroy();
   }
 

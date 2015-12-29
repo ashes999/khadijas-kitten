@@ -306,7 +306,7 @@ class Screen extends FlxState
       if (t == null) {
         throw 'Can\'t find instance of custom class ${screenData.className}. Add the "dump" haxeflag and make sure it appears in the output';
       }
-      var obj = Type.createInstance(t, [screenData])
+      var obj = Type.createInstance(t, [screenData]);
       var screen = cast(obj, Screen);
       return screen;
     } else {
