@@ -11,11 +11,12 @@ class GameJsonWatcher {
 		#if debug
 			// Don't watch the file in the bin dir; watch the source one. We get four
 			// directories deep from source (export/linux64/neko/bin).
-			new deengames.io.FileWatcher().watch('../../../../${relativeFileName}').onChange(function() {
+			new deengames.io.FileWatcher().watch('../../../../${relativeFileName}')
+      .continueOnError().pollTime(0.167) // 60FPS, mmhmm...
+      .onChange(function() {
 				var currentScreenName = null;
 				if (Screen.currentScreenData != null) {
 					currentScreenName = Screen.currentScreenData.name;
-          trace('WE WERE IN: ${currentScreenName}');
 				}
 
 				var json = sys.io.File.getContent('../../../../${relativeFileName}');
@@ -24,16 +25,17 @@ class GameJsonWatcher {
 				var found = false;
 				for (data in Screen.screensData) {
 					if (data.name == currentScreenName) {
-            trace('FOUND: ${data.name}');
-						Screen.transitionTo(Screen.createInstance(data));
+            FlxG.switchState(Screen.createInstance(data));
 						found = true;
 						break;
 					}
 				}
 
 				if (!found) {
-          trace('NOT FOUND.');
-					FlxG.switchState(new deengames.abook.boot.SplashScreen());
+          deengames.io.DebugLogger.log('Could not find existing screen (name=${currentScreenName}) in ${relativeFileName}. Restarting.');
+					var firstScreen = Screen.createInstance(Screen.screensData[0]);
+          // Don't just switch screens; note what screen we're on.
+          Screen.transitionTo(firstScreen);
 				}
 			});
 			deengames.io.DebugLogger.log("Watching source/assets/Game.json");

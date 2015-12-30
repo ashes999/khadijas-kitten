@@ -9,6 +9,8 @@ class FileWatcher {
 
   private var fileName:String;
   private var callback:Void->Void;
+  private var ignoreErrors:Bool = false;
+  private var pollIntervalInSeconds:Float = 1;
 
   public function new() {
     #if !neko
@@ -16,7 +18,7 @@ class FileWatcher {
     #end
   }
 
-  public function watch(fileName:String)
+  public function watch(fileName:String) : FileWatcher
   {
     this.fileName = fileName;
 
@@ -26,12 +28,20 @@ class FileWatcher {
       var previousMtime = FileSystem.stat(fileName).mtime.getTime();
 
       while (true) {
-        Sys.sleep(1); // 1s
+        Sys.sleep(this.pollIntervalInSeconds); // 1s
         var mtime = FileSystem.stat(fileName).mtime.getTime();
         if (previousMtime != mtime) {
           previousMtime = mtime;
           if (this.callback != null) {
-            this.callback();
+            if (this.ignoreErrors) {
+              try {
+                this.callback();
+              } catch (anything:Dynamic) {
+                trace('FileWatcher for ${fileName} ignored an error: ${anything}');
+              }
+            } else {
+              this.callback();
+            }
           }
         }
       }
@@ -39,8 +49,21 @@ class FileWatcher {
     return this;
   }
 
-  public function onChange(callback:Void -> Void) {
+  public function onChange(callback:Void -> Void) : FileWatcher
+  {
     this.callback = callback;
+    return this;
+  }
+
+  public function continueOnError() : FileWatcher
+  {
+    this.ignoreErrors = true;
+    return this;
+  }
+
+  public function pollTime(seconds:Float) : FileWatcher
+  {
+    this.pollIntervalInSeconds = seconds;
     return this;
   }
 }
