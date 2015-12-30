@@ -40,7 +40,7 @@ class SplashScreen extends Screen
   * consider setting all objects this state uses to null to help garbage collection.
   */
   override public function destroy():Void
-  {    
+  {
     super.destroy();
   }
 
@@ -52,12 +52,8 @@ class SplashScreen extends Screen
     // Wait 3s + 0.5s fade-in, then fade out
     if (startTime > 0 && Date.now().getTime() - startTime >= 3500) {
       startTime = 0; // Execute this block only once
-      // Fade out over 0.5s
-      FlxG.camera.fade(FlxColor.BLACK, 1
-        , false,function() {
-        var instance = Screen.createInstance(Screen.screensData[0]);
-        FlxG.switchState(instance);
-      });
+      var instance = Screen.createInstance(Screen.screensData[0]);
+      Screen.transitionTo(instance);
     }
     super.update();
   }

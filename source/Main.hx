@@ -39,16 +39,7 @@ class Main extends Sprite
 		FlurryWrapper.startSession(Reg.flurryKey);
 		FlurryWrapper.logEvent('New Game');
 
-		#if neko
-		#if debug
-			// Don't watch the file in the bin dir; watch the source one. We get four
-			// directories deep from source (export/linux64/neko/bin).
-			new deengames.io.FileWatcher().watch('../../../../assets/Game.json').onChange(function() {
-				trace("Changed!");
-			});
-			deengames.io.DebugLogger.log("Watching source/assets/Game.json");
-		#end
-		#end
+		deengames.abook.debug.GameJsonWatcher.watchForChanges('assets/Game.json');
 	}
 
 	public function new()

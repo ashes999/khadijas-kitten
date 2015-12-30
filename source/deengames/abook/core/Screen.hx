@@ -51,6 +51,8 @@ class Screen extends FlxState
 
   private static inline var FADE_DURATION_SECONDS = 0.33;
 
+  public static var currentScreenData(default, null):Dynamic;
+
   public function new(?data:Dynamic = null)
   {
     super();
@@ -319,6 +321,7 @@ class Screen extends FlxState
     // 1/3s
     FlxG.camera.fade(FlxColor.BLACK, FADE_DURATION_SECONDS, false, function() {
       FlxG.switchState(target);
+      currentScreenData = target.data;
     });
   }
 
