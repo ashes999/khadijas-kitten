@@ -30,7 +30,9 @@ class FileWatcher {
         var mtime = FileSystem.stat(fileName).mtime.getTime();
         if (previousMtime != mtime) {
           previousMtime = mtime;
-          trace("CHANGE!");
+          if (this.callback != null) {
+            this.callback();
+          }
         }
       }
     });
