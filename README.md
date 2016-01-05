@@ -1,5 +1,3 @@
-#[Khadija's Kitten](http://deengames.github.io/khadijas-kitten)
-
 The second of many abooks. If you're working on the third, copy this repository as a base and trim game-specific screen classes (there shouldn't be many of those).
 
 # Configuring Game.json
