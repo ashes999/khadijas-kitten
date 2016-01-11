@@ -1,4 +1,4 @@
-The second of many abooks. If you're working on the third, copy this repository as a base and trim game-specific screen classes (there shouldn't be many of those).
+The framework and a technical demo of an abook. If you're working on the next abook game, copy this repository as a base and trim game-specific screen classes (there shouldn't be many of those).
 
 # Configuring Game.json
 
