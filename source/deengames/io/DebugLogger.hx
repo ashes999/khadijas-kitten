@@ -1,7 +1,5 @@
 package deengames.io;
 
-using sys.io.FileOutput;
-
 /**
 Logs debug messages. Only if debug mode is enabled, though.
 You can enable debug mode by passing "-D debug" to the Haxe compiler.
@@ -23,6 +21,7 @@ class DebugLogger
     #if debug
       trace(message);
     #end
+
 
     #if neko
       if (firstMessage && sys.FileSystem.exists(LOG_FILE_NAME)) {
