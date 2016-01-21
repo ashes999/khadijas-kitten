@@ -5,14 +5,13 @@
     {
       "name": "title screen",
       "backgroundImage": "titlescreen",
-      "show": false,  
+      "show": false,
       "hideAudioButton": true,
       "elements": [
         { "image": "house", "x": 32, "y": 32,
           "placement": "top-left", "onClick": "show(credits screen)"
         },
         {
-          "image": "house",
           "animation": { "image": "monkey_helmet", "width": 50, "height": 55, "frames": 8, "fps": 8 },
           "clickAudio": "intro-1"
         }
@@ -20,7 +19,7 @@
     },
     {
       "name": "scene 14",
-      "backgroundImage": "scene-14.jpg",
+      "backgroundImage": "scene-15.jpg",
       "audio": "intro-1",
       "backgroundAudio": "brook"
     },

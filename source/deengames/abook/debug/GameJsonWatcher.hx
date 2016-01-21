@@ -11,6 +11,8 @@ class GameJsonWatcher {
 		#if debug
 			// Don't watch the file in the bin dir; watch the source one. We get four
 			// directories deep from source (export/linux64/neko/bin).
+      // TODO: we shouldn't need to do this now that the AssetWatcher is copying
+      // over all changed assets files (including Game.json).
 			new deengames.io.FileWatcher().watch('../../../../${relativeFileName}')
       .continueOnError().pollTime(0.167) // 60FPS, mmhmm...
       .onChange(function() {
@@ -18,6 +20,20 @@ class GameJsonWatcher {
 				if (Screen.currentScreenData != null) {
 					currentScreenName = Screen.currentScreenData.name;
 				}
+
+        // Issue the "lime update neko" command as early as possible, and block
+        // until it returns. Note that we're in export/linux64/neko/bin, so we
+        // have to specify the Project.xml file location.
+        var process = new sys.io.Process("lime", ["update", "../../../../Project.xml", "neko"]);
+        // calling exitCode() blocks until the process completes
+        trace('Reloaded assets. Process exit code is ${process.exitCode()}. Out is ${process.stdout.readAll()} @@@ err=${process.stderr.readAll()}');
+        process.close();
+        // If you are on a scene where you immediately use the new asset (in create()),
+        // this can crash. Unless you wait. (There's some race condition, and it's
+        // not possible to tell programmatically if the asset was loaded fully.)
+        // Well, wait.
+        // 0.5s breaks, 0.75s works
+        Sys.sleep(0.75);
 
 				var json = sys.io.File.getContent('../../../../${relativeFileName}');
 		    deengames.abook.ScreensJsonParser.parse(json);
