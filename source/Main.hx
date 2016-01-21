@@ -39,6 +39,10 @@ class Main extends Sprite
 		FlurryWrapper.startSession(Reg.flurryKey);
 		FlurryWrapper.logEvent('New Game');
 
+		// We don't technically need an asset watcher, because we know that whoever
+		// changed Game.json will also make asset changes. That works better,
+		// because we can't be easily sure if an asset file changed (watching an
+		// arbitrary subtree of files is a challenge).
 		deengames.abook.debug.GameJsonWatcher.watchForChanges('assets/Game.json');
 	}
 

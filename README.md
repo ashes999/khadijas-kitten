@@ -4,7 +4,9 @@ The framework and a technical demo of an abook. If you're working on the next ab
 
 ## Basic Configuration
 
-A `Game.json` file in `assets` drives the content currently. Here's how you can use it to create scenes with interactive elements, without writing a lick of code.
+A `Game.json` file in `assets` drives the content currently. **Any changes are automatically reloaded (including changed assets).** For more information, see the `Debugging` section.
+
+Here's how you can use `Game.json` to create scenes with interactive elements, without writing a lick of code.
 
 The basic structure includes `width` and `height` elements (the "virtual" or "game" size, which is scaled up/down to fit onto the current device screen). and an array of `screens`.
 
@@ -58,8 +60,10 @@ If you specify both `hideAudioButton` and `audio`, the audio will play once, but
   - Exists in a package which is included in `Project.xml` via a `haxeflag`: `<haxeflag name="--macro" value="include('deengames.foo.bar')" />`. Without this, the custom screen class won't be included in the binary.
 
 ## Debugging
-
-- When running in `neko`, **any changes to `Game.json` automatically reload the game content.** If the current screen still exists, the game reloads to that same screen.
 - Define `<haxedef name="debug" />` in `Project.xml` to enable debugging
+- When running in `neko` with the `debug` `haxedef` defined, **any changes to `Game.json` automatically reload the game content.**
+  - If the current screen still exists, the game reloads to that same screen.
+  - If you add or change any assets, simply re-save `Game.json` to trigger a rebundle/reload of the assets in-game.
+  - If you're on a scene, and you change the assets used in that screen, the game may crash; if so, increase the time in the `Sys.sleep` call in `GameJsonWatcher.hx`.
 - Even without `debug` enabled, running the app in `neko` generates a `debug.log` file with debug messages
 - Make calls to `deengames.io.DebugLogger.log(...)` to log debug messages in debug mode (and to `debug.log`).
