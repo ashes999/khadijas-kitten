@@ -26,7 +26,8 @@ class GameJsonWatcher {
         // have to specify the Project.xml file location.
         var process = new sys.io.Process("lime", ["update", "../../../../Project.xml", "neko"]);
         // calling exitCode() blocks until the process completes
-        trace('Reloaded assets. Process exit code is ${process.exitCode()}. Out is ${process.stdout.readAll()} @@@ err=${process.stderr.readAll()}');
+        var exitCode = process.exitCode();
+        trace('Reloaded assets. Process exit code is ${exitCode}. Out is ${process.stdout.readAll()} @@@ err=${process.stderr.readAll()}');
         process.close();
         // If you are on a scene where you immediately use the new asset (in create()),
         // this can crash. Unless you wait. (There's some race condition, and it's
