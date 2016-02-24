@@ -12,7 +12,9 @@
     {
       "name": "hungry, waiting",
       "backgroundImage": "scene-hungry-waiting",
-      "elements": []
+      "elements": [
+        { "image": "owl", "x": 200, "y": 300, "placement": "top-left" }
+      ]
     },
     {
       "name": "flying out",

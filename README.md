@@ -67,3 +67,57 @@ If you specify both `hideAudioButton` and `audio`, the audio will play once, but
   - If you're on a scene, and you change the assets used in that screen, the game may crash; if so, increase the time in the `Sys.sleep` call in `GameJsonWatcher.hx`.
 - Even without `debug` enabled, running the app in `neko` generates a `debug.log` file with debug messages
 - Make calls to `deengames.io.DebugLogger.log(...)` to log debug messages in debug mode (and to `debug.log`).
+
+## Sample
+
+Below is a sample `Game.json` config file that exercises all available functionality.
+
+```
+{
+  "width": 1024,
+  "height": 576,
+  "screens": [
+    {
+      "name": "title screen",
+      "backgroundImage": "titlescreen",
+      "show": false,
+      "hideAudioButton": true,
+      "elements": [
+        { "image": "house", "x": 32, "y": 32,
+          "placement": "top-left", "onClick": "show(credits screen)"
+        },
+        {
+          "animation": { "image": "monkey_helmet", "width": 50, "height": 55, "frames": 8, "fps": 8 },
+          "clickAudio": "intro-1"
+        }
+      ]
+    },
+    {
+      "name": "scene 14",
+      "backgroundImage": "scene-15.jpg",
+      "audio": "intro-1",
+      "backgroundAudio": "brook"
+    },
+    {
+      "name": "scene 27",
+      "backgroundImage": "scene-27.jpg",
+      "audio": "intro-2"
+    },
+    {
+      "name": "the end screen",
+      "className": "deengames.abook.khadijaskitten.TheEndScreen",
+      "audio": "intro-3",
+      "hideAudioButton": true
+    },
+    {
+      "name": "credits screen",
+      "show": false,
+      "hideAudioButton": true,
+      "backgroundImage": "credits-bg.jpg",
+      "elements": [
+        { "image": "restart", "x": 32, "y": 32, "placement": "bottom-right", "onClick": "show(title screen)" }
+      ]
+    }
+  ]
+}
+```

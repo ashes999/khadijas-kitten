@@ -29,7 +29,19 @@ class GameJsonWatcher {
         var process = new sys.io.Process("lime", ["update", "../../../../Project.xml", "neko"]);
         // calling exitCode() blocks until the process completes
         var exitCode = process.exitCode();
-        trace('Reloaded assets. Process exit code is ${exitCode}. Out is ${process.stdout.readAll()} @@@ err=${process.stderr.readAll()}');
+
+        var output:haxe.io.Bytes = process.stdout.readAll(); // executes process
+        var err:haxe.io.Bytes = process.stderr.readAll();
+
+        var message = 'Reloaded assets. Process exit code is ${exitCode}.';
+        if (output.length > 0) {
+          message += 'Out is ${output}';
+        }
+        if (err.length > 0) {
+          message += '@@@ err=${err}';
+        }
+        trace(message);
+
         process.close();
         // If you are on a scene where you immediately use the new asset (in create()),
         // this can crash. Unless you wait. (There's some race condition, and it's
