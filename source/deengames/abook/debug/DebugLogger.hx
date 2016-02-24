@@ -1,4 +1,6 @@
-package deengames.io;
+package deengames.abook.debug;
+
+import sys.io.FileOutput;
 
 /**
 Logs debug messages. Only if debug mode is enabled, though.

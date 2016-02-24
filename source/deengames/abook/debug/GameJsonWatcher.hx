@@ -1,7 +1,9 @@
 package deengames.abook.debug;
 
-import deengames.abook.core.Screen;
 import flixel.FlxG;
+
+import deengames.abook.core.Screen;
+import deengames.abook.debug.DebugLogger;
 
 // static class
 class GameJsonWatcher {
@@ -49,13 +51,13 @@ class GameJsonWatcher {
 				}
 
 				if (!found) {
-          deengames.io.DebugLogger.log('Could not find existing screen (name=${currentScreenName}) in ${relativeFileName}. Restarting.');
+          DebugLogger.log('Could not find existing screen (name=${currentScreenName}) in ${relativeFileName}. Restarting.');
 					var firstScreen = Screen.createInstance(Screen.screensData[0]);
           // Don't just switch screens; note what screen we're on.
           Screen.transitionTo(firstScreen);
 				}
 			});
-			deengames.io.DebugLogger.log("Watching source/assets/Game.json");
+      DebugLogger.log("Watching source/assets/Game.json");
 		#end
 		#end
   }

@@ -5,13 +5,16 @@ import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 import flash.events.Event;
 import flash.Lib;
+
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.FlxSprite;
-import deengames.abook.core.Screen;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
+
+import deengames.abook.core.Screen;
+import deengames.abook.debug.DebugLogger;
 import deengames.io.GestureManager;
 
 // Loads from startup screen.
@@ -32,7 +35,7 @@ class SplashScreen extends Screen
 
     startTime = Date.now().getTime();
 
-    deengames.io.DebugLogger.log("@@@ DEBUG MODE ENABLED @@@");
+    DebugLogger.log("@@@ DEBUG MODE ENABLED @@@");
   }
 
   /**

@@ -5,7 +5,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.plugin.MouseEventManager;
-import deengames.io.DebugLogger;
+import deengames.abook.debug.DebugLogger;
 
 import deengames.abook.core.onClickCommands.ShowScreenCommand;
 
