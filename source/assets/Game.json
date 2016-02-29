@@ -4,51 +4,40 @@
   "screens": [
     {
       "name": "title screen",
-      "backgroundImage": "titlescreen",
       "show": false,
       "hideAudioButton": true,
       "elements": []
     },
     {
       "name": "hungry, waiting",
-      "backgroundImage": "scene-hungry-waiting",
-      "elements": [
-        { "image": "owl", "x": 200, "y": 300, "placement": "top-left" }
-      ]
     },
     {
       "name": "flying out",
-      "backgroundImage": "scene-flying-out",
       "elements": []
     },
     {
-      "name": "spot rat",
-      "backgroundImage": "scene-see-rat",
+      "name": "lands on tree",
       "elements": []
     },
     {
       "name": "mini-game",
-      "backgroundImage": "scene-mini-game",
       "elements": []
     },
     {
-      "name": "satiated",
-      "backgroundImage": "scene-satiated",
+      "name": "full, new home",
       "elements": []
     },
     {
       "name": "owl pellet",
-      "backgroundImage": "scene-owl-pellet",
       "elements": []
     },
     {
-      "name": "settles in",
-      "backgroundImage": "scene-settles-for-night",
+      "name": "settles in, dua",
       "elements": []
     },
     {
       "name": "the end",
-      "backgroundImage": "the-end",
+      "hideAudioButton": true,      
       "elements": [
         { "image": "restart", "x": 32, "y": 32, "placement": "bottom-right", "onClick": "show(hungry, waiting)" }
       ]
