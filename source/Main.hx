@@ -43,7 +43,8 @@ class Main extends Sprite
 		// changed Game.json will also make asset changes. That works better,
 		// because we can't be easily sure if an asset file changed (watching an
 		// arbitrary subtree of files is a challenge).
-		deengames.abook.debug.GameJsonWatcher.watchForChanges('assets/Game.json');
+		// deengames.abook.debug.AssetsWatcher.watchForChanges('assets/Game.json');
+		deengames.abook.debug.AssetsWatcher.watchForChanges('assets');
 	}
 
 	public function new()
