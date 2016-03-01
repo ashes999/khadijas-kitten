@@ -61,10 +61,8 @@ If you specify both `hideAudioButton` and `audio`, the audio will play once, but
 
 ## Debugging
 - Define `<haxedef name="debug" />` in `Project.xml` to enable debugging
-- When running in `neko` with the `debug` `haxedef` defined, **any changes to `Game.json` automatically reload the game content.**
+- When running in `neko` with the `debug` `haxedef` defined, **any changes to anything in `assets` automatically reload the game content.**
   - If the current screen still exists, the game reloads to that same screen.
-  - If you add or change any assets, simply re-save `Game.json` to trigger a rebundle/reload of the assets in-game.
-  - If you're on a scene, and you change the assets used in that screen, the game may crash; if so, increase the time in the `Sys.sleep` call in `GameJsonWatcher.hx`.
 - Even without `debug` enabled, running the app in `neko` generates a `debug.log` file with debug messages
 - Make calls to `deengames.io.DebugLogger.log(...)` to log debug messages in debug mode (and to `debug.log`).
 
