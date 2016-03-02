@@ -27,12 +27,14 @@ class GestureManager
       var gesture:Gesture = Gesture.Swipe; // TODO: detect, implement more
       var gestureStop:FlxPoint = FlxG.mouse.getScreenPosition();
       var vector:FlxPoint = new FlxPoint(gestureStop.x - gestureStart.x, gestureStop.y - gestureStart.y);
+      trace('Swipe from ${gestureStart.x}, ${gestureStart.y} to ${gestureStop.x}, ${gestureStop.y}');
 
-      if ((vector.x * vector.x) + (vector.y + vector.y) <= 25) {
-        // Too small to tell what the user wants; movement of 4x4 pixels or so
+      var swipeMagnitude:Float = (vector.x * vector.x) + (vector.y * vector.y);
+      if (swipeMagnitude <= 100) {
+        // Too small to tell what the user wants; movement of a few pixels
         return;
       } else {
-
+        trace('Swipe magnitude is ${swipeMagnitude}');
         var swipeDirection:SwipeDirection;
         if (Math.abs(vector.x) >= Math.abs(vector.y)) {
             swipeDirection = vector.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;

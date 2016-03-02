@@ -40,14 +40,16 @@ class DirectoryWatcher {
           var mtime:Date = FileSystem.stat(file).mtime;
           map.set(file, mtime);
 
-          if (lastSeen != null && lastSeen.get(file) == null) {
-            trace('New file: ${file}');
-            reload = true;
-          } else {
-            if (lastSeen != null && lastSeen.get(file).getTime() != mtime.getTime())
-            {
-              trace('Changed file: ${file}');
+          if (this.lastSeen != null) {
+            if (this.lastSeen.get(file) == null) {
+              trace('New file: ${file}');
               reload = true;
+            } else {
+              if (lastSeen.get(file).getTime() != mtime.getTime())
+              {
+                trace('Changed file: ${file}');
+                reload = true;
+              }
             }
           }
         }
@@ -77,6 +79,11 @@ class DirectoryWatcher {
               this.callback();
             }
           }
+        }
+
+        if (this.lastSeen == null)
+        {
+          this.lastSeen = map;          
         }
       }
     });

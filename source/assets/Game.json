@@ -8,7 +8,11 @@
       "show": false,
       "hideAudioButton": true,
       "elements": [
-        { "image": "text-title", "x": 16, "y": 224 }
+        {
+          "image": "owl-titlescreen", "x": 320, "y": 64,
+          "clickAudio": "title-screen"
+        },
+        { "image": "text-title", "x": 16, "y": 450 }
       ]
     },
     {
