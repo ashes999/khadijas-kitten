@@ -4,6 +4,7 @@
   "screens": [
     {
       "name": "title screen",
+      "audio": "title-screen",
       "show": false,
       "hideAudioButton": true,
       "elements": [
@@ -12,6 +13,7 @@
     },
     {
       "name": "hungry, waiting",
+      "audio": "speech-hungry-waiting",
       "elements": [
         { "image": "background-day.jpg"},
         { "image": "text-hungry-waiting" }
@@ -19,6 +21,7 @@
     },
     {
       "name": "flying out",
+      "audio": "speech-flying-out",
       "elements": [
         { "image": "background-night.jpg"},
         { "image": "text-flying-out" }
@@ -26,6 +29,7 @@
     },
     {
       "name": "lands on tree",
+      "audio": "speech-lands-on-tree",
       "elements": [
         { "image": "background-night.jpg"},
         { "image": "text-lands-on-tree" }
@@ -33,6 +37,7 @@
     },
     {
       "name": "mini-game",
+      "audio": "speech-mini-game",
       "elements": [
         { "image": "background-night.jpg"},
         { "image": "text-mini-game" }
@@ -40,6 +45,7 @@
     },
     {
       "name": "full, new home",
+      "audio": "speech-full-new-home",
       "elements": [
         { "image": "background-night.jpg"},
         { "image": "text-full-new-home" }
@@ -47,6 +53,7 @@
     },
     {
       "name": "owl pellet",
+      "audio": "speech-owl-pellet",
       "elements": [
         { "image": "background-night.jpg"},
         { "image": "text-owl-pellet" }
@@ -54,6 +61,7 @@
     },
     {
       "name": "settles in, dua",
+      "audio": "speech-settles-in",
       "elements": [
         { "image": "background-night.jpg"},
         { "image": "text-settles-in" }
@@ -61,6 +69,7 @@
     },
     {
       "name": "the end",
+      "audio": "the-end",
       "hideAudioButton": true,
       "elements": [
         { "image": "text-the-end", "x": 32, "y": 224 },
