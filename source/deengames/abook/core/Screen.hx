@@ -64,6 +64,8 @@ class Screen extends FlxState
   */
   override public function create() : Void
   {
+    super.create();
+
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
     var next = Screen.getNextScreenData(this);
@@ -75,8 +77,6 @@ class Screen extends FlxState
     if (previous != null) {
       this.previousScreenData = previous;
     }
-
-    super.create();
 
     // Process the JSON data, and create elements, set the background/audio, etc.
     this.processData();

@@ -28,10 +28,10 @@ class SplashScreen extends Screen
   override public function create():Void
   {
     super.create();
-    this.hideAudioButton();
 
     var title:FlxSprite = this.addAndCenter('assets/images/dg-logo');
     this.loadAndPlay('assets/audio/giggle');
+    this.hideAudioButton();
 
     startTime = Date.now().getTime();
 
@@ -63,6 +63,6 @@ class SplashScreen extends Screen
 
   override private function onSwipe(direction:SwipeDirection) : Void
   {
-    // Do nothing
+    // Do nothing. Can't swipe away the splash screen!
   }
 }

@@ -16,14 +16,11 @@ class Preloader extends FlxPreloader
 	var logo:Sprite = new Sprite();
 	private static inline var FADE_FROM_PERCENT = 0.75;
 
-	public function new(minDisplayTime:Float = 2, ?allowedUrls:Array<String>)
+	public function new(minDisplayTime:Float = 1, ?allowedUrls:Array<String>)
 	{
 		super(minDisplayTime, allowedUrls);
 	}
 
-	// this class mimics the look of the levelup bar from playstate but is drawn programmatically.
-	// this is to prevent importing anything unnecessary, like PNG files.
-	// as a result, everything is hand-coded to use 4x pixels, like the rest of the game.
 	override private function create():Void
 	{
 		this._width = Lib.current.stage.stageWidth;
@@ -46,8 +43,6 @@ class Preloader extends FlxPreloader
 		addChild(logo); //Adds the graphic to the preloader's buffer.
 	}
 
-	// fill the bar as progress continues. note that it only updates every 4 pixels, mimicking the 4x resolution
-	// of the rest of the game.
 	override public function update(percent:Float):Void
 	{
 		// 60 FPS, two rotations per second

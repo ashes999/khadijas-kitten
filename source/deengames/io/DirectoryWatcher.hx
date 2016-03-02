@@ -11,8 +11,9 @@ class DirectoryWatcher {
   private var callback:Void->Void;
   private var ignoreErrors:Bool = false;
   private var pollIntervalInSeconds:Float = 1;
-  // last seen mtime
-  private var lastSeen:Map<String, Date> = new Map<String, Date>();
+
+  // last seen mtime. Null for the first pass (so we don't print out the list of all assets as changed).
+  private var lastSeen:Map<String, Date>;
 
   public function new() {
     #if !neko
@@ -39,11 +40,11 @@ class DirectoryWatcher {
           var mtime:Date = FileSystem.stat(file).mtime;
           map.set(file, mtime);
 
-          if (lastSeen.get(file) == null) {
+          if (lastSeen != null && lastSeen.get(file) == null) {
             trace('New file: ${file}');
             reload = true;
           } else {
-            if (lastSeen.get(file).getTime() != mtime.getTime())
+            if (lastSeen != null && lastSeen.get(file).getTime() != mtime.getTime())
             {
               trace('Changed file: ${file}');
               reload = true;
@@ -52,12 +53,14 @@ class DirectoryWatcher {
         }
 
         // Go through files we saw last time, and see if any are missing.
-        for (file in lastSeen.keys())
-        {
-          if (map.get(file) == null)
+        if (lastSeen != null) {
+          for (file in lastSeen.keys())
           {
-            trace('Deleted file: ${file}');
-            reload = true;
+            if (map.get(file) == null)
+            {
+              trace('Deleted file: ${file}');
+              reload = true;
+            }
           }
         }
 

@@ -1,6 +1,8 @@
 package deengames.abook.debug;
 
+#if neko
 import sys.io.FileOutput;
+#end
 
 /**
 Logs debug messages. Only if debug mode is enabled, though.
@@ -23,7 +25,6 @@ class DebugLogger
     #if debug
       trace(message);
     #end
-
 
     #if neko
       if (firstMessage && sys.FileSystem.exists(LOG_FILE_NAME)) {
