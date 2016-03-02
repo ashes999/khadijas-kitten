@@ -20,21 +20,19 @@ class GestureManager
 
   // Call this every tick
   public function update() : Void {
-    if (FlxG.mouse.pressed && gestureStart == null) {
+    if (FlxG.mouse.pressed && this.gestureStart == null) {
       // TODO: use world position
       this.gestureStart = FlxG.mouse.getScreenPosition();
     } else if (!FlxG.mouse.pressed && gestureStart != null) {
       var gesture:Gesture = Gesture.Swipe; // TODO: detect, implement more
       var gestureStop:FlxPoint = FlxG.mouse.getScreenPosition();
       var vector:FlxPoint = new FlxPoint(gestureStop.x - gestureStart.x, gestureStop.y - gestureStart.y);
-      trace('Swipe from ${gestureStart.x}, ${gestureStart.y} to ${gestureStop.x}, ${gestureStop.y}');
 
       var swipeMagnitude:Float = (vector.x * vector.x) + (vector.y * vector.y);
-      if (swipeMagnitude <= 100) {
-        // Too small to tell what the user wants; movement of a few pixels
-        return;
-      } else {
-        trace('Swipe magnitude is ${swipeMagnitude}');
+      // Make sure it's not too small to tell what the user wants (a few pixels of movement)
+      // Note that this value is in virtual pixels, i.e. if the game is scaled down to the
+      // device, a tiny physical movement with register as a large magnitude
+      if (swipeMagnitude >= 500) {
         var swipeDirection:SwipeDirection;
         if (Math.abs(vector.x) >= Math.abs(vector.y)) {
             swipeDirection = vector.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;
@@ -46,9 +44,9 @@ class GestureManager
           var callback:SwipeDirection->Void = this.callbacks.get(Gesture.Swipe);
           callback(swipeDirection);
         }
-
-        gestureStart = null;
       }
+
+      this.gestureStart = null;
     }
   }
 }
