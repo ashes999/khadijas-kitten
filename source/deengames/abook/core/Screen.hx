@@ -66,12 +66,6 @@ class Screen extends FlxState
   {
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
-    if (data != null && data.audio != true) {
-      this.hideAudioButton();
-    } else {
-      this.playAudioButton = new PlayAudioButton(this);
-    }
-
     var next = Screen.getNextScreenData(this);
     if (next != null) {
       this.nextScreenData = next;
@@ -146,12 +140,6 @@ class Screen extends FlxState
       if (this.data.backgroundImage != null) {
         this.addAndCenter('assets/images/${this.data.backgroundImage}');
       }
-      if (this.data.audio != null) {
-        this.loadAndPlay('assets/audio/${this.data.audio}');
-      }
-      if (this.data.hideAudioButton == true) {
-        this.hideAudioButton();
-      }
       if (this.data.backgroundAudio != null) {
         this.bgAudio.loadEmbedded('assets/audio/${this.data.backgroundAudio}${deengames.io.AudioManager.SOUND_EXT}', true);
         this.bgAudio.play();
@@ -162,6 +150,14 @@ class Screen extends FlxState
         for (element in elements) {
           add(Element.fromData(element));
         }
+      }
+
+      // Audio button last, so it draws on top of all elements
+      if (this.data.audio != null) {
+        this.loadAndPlay('assets/audio/${this.data.audio}');
+      }
+      if (this.data.hideAudioButton == true) {
+        this.hideAudioButton();
       }
     }
   }

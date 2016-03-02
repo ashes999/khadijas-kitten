@@ -8,8 +8,8 @@ import flixel.plugin.MouseEventManager;
 import deengames.abook.core.Screen;
 
 class PlayAudioButton {
-  private var audio:FlxSound;
   private var buttonSprite:FlxSprite;
+  private var audio:FlxSound;
 
   public function new(screen:Screen) {
     this.buttonSprite = screen.addAndCenter('assets/images/play-sound.png');
