@@ -22,7 +22,7 @@
         { "image": "background-day.jpg"},
         { "image": "text-hungry-waiting" },
         { "image": "owl-box", "x": 250, "y": 100, "clickAudio": "speech-info-owl-box" },
-        { "image": "owl", "x": 285, "y": 130 }
+        { "image": "owl", "x": 285, "y": 130, "clickAudio": "speech-owl-nothing-to-eat" }
       ]
     },
     {

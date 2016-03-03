@@ -6,17 +6,17 @@ import flixel.FlxG;
 import flixel.plugin.MouseEventManager;
 
 import deengames.abook.core.Screen;
+import deengames.abook.io.SingletonAudioPlayer;
 
 class PlayAudioButton {
   private var buttonSprite:FlxSprite;
-  private var audio:FlxSound;
 
-  public function new(screen:Screen) {
+  public function new(screen:Screen, audioFile:String) {
     this.buttonSprite = screen.addAndCenter('assets/images/play-sound.png');
     buttonSprite.x = FlxG.width - buttonSprite.width - 32;
     buttonSprite.y = FlxG.height - buttonSprite.height - 32;
     MouseEventManager.add(buttonSprite, null, function(sprite:FlxSprite) {
-      this.play();
+      this.loadAndPlay(audioFile);
     });
   }
 
@@ -26,25 +26,17 @@ class PlayAudioButton {
     }
   }
 
-  public function play() : Void {
-    if (this.audio != null) {
-      this.audio.stop();
-      this.audio.play(true); // force restart
-    }
+  public function play(audio:FlxSound) : Void {
+    SingletonAudioPlayer.play(audio);    
   }
 
+  /** Uses SingletonAudioPlayer, so it doesn't play at the same time as any elements. */
   public function loadAndPlay(file:String):Void {
-    if (this.audio != null) {
-      this.audio.stop();
-    }
-
-    this.audio = FlxG.sound.load('${file}${deengames.io.AudioManager.SOUND_EXT}');
-    this.audio.play(true);
+    var audio:FlxSound = FlxG.sound.load('${file}${deengames.io.AudioManager.SOUND_EXT}');
+    this.play(audio);
   }
   
   public function stopAudio():Void {
-    if (this.audio != null) {
-      this.audio.stop();
-    }
+    SingletonAudioPlayer.stop();    
   }
 }

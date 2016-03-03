@@ -13,7 +13,7 @@ import flixel.system.FlxSound;
 
 import deengames.io.GestureManager;
 import deengames.abook.controls.PlayAudioButton;
-
+import deengames.abook.io.SingletonAudioPlayer;
 import deengames.analytics.FlurryWrapper;
 import deengames.analytics.GoogleAnalyticsWrapper;
 
@@ -40,7 +40,6 @@ class Screen extends FlxState
   We destroy/recreate scenes on demand, using the JSON data. */
   public static var screensData:Array<Dynamic> = new Array<Dynamic>();
   public static var currentScreenData(default, null):Dynamic;
-  public static var currentScreen(default, null):Screen;
 
   private var nextScreenData:Dynamic;
   private var previousScreenData:Dynamic;
@@ -66,7 +65,6 @@ class Screen extends FlxState
   {
     super.create();
     
-    Screen.currentScreen = this;
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
     var next = Screen.getNextScreenData(this);
@@ -339,7 +337,7 @@ class Screen extends FlxState
   private function loadAndPlay(file:String) : Void
   {
     if (this.playAudioButton == null) {
-      this.playAudioButton = new PlayAudioButton(this);
+      this.playAudioButton = new PlayAudioButton(this, file);
     }
     this.playAudioButton.loadAndPlay(file);
   }

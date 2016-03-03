@@ -5,8 +5,9 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.plugin.MouseEventManager;
-import deengames.abook.debug.DebugLogger;
 
+import deengames.abook.debug.DebugLogger;
+import deengames.abook.io.SingletonAudioPlayer;
 import deengames.abook.core.onClickCommands.ShowScreenCommand;
 
 using deengames.extensions.StringExtensions;
@@ -139,9 +140,7 @@ class Element extends FlxSprite {
   {
     if (this.clickAudioSound != null) {
       // Stop the current screen audio if it's going
-      Screen.currentScreen.stopAudio();
-      this.clickAudioSound.stop();
-      this.clickAudioSound.play(true); // force restart
+      SingletonAudioPlayer.play(this.clickAudioSound);
     }
 
     if (this.onClickCommand != null) {
