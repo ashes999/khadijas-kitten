@@ -39,6 +39,8 @@ class Screen extends FlxState
   (If you want to keep state, use the Reg class, or some other mechanism.)
   We destroy/recreate scenes on demand, using the JSON data. */
   public static var screensData:Array<Dynamic> = new Array<Dynamic>();
+  public static var currentScreenData(default, null):Dynamic;
+  public static var currentScreen(default, null):Screen;
 
   private var nextScreenData:Dynamic;
   private var previousScreenData:Dynamic;
@@ -50,8 +52,6 @@ class Screen extends FlxState
   private var data:Dynamic;
 
   private static inline var FADE_DURATION_SECONDS = 0.33;
-
-  public static var currentScreenData(default, null):Dynamic;
 
   public function new(?data:Dynamic = null)
   {
@@ -65,7 +65,8 @@ class Screen extends FlxState
   override public function create() : Void
   {
     super.create();
-
+    
+    Screen.currentScreen = this;
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
     var next = Screen.getNextScreenData(this);
@@ -209,6 +210,39 @@ class Screen extends FlxState
     centerOnScreen(sprite);
     return sprite;
   }
+  
+  public function stopAudio():Void
+  {
+    if (this.playAudioButton != null)
+    {
+        this.playAudioButton.stopAudio();
+    }
+  }
+  
+  public static function createInstance(screenData:Dynamic) : Screen
+  {
+    if (screenData != null && screenData.className != null) {
+      // Create the specified type. Must have a constructor with no args.
+      var t = Type.resolveClass(screenData.className);
+      if (t == null) {
+        throw 'Can\'t find instance of custom class ${screenData.className}. Add the "dump" haxeflag and make sure it appears in the output';
+      }
+      var obj = Type.createInstance(t, [screenData]);
+      var screen = cast(obj, Screen);
+      return screen;
+    } else {
+      return new Screen(screenData);
+    }
+  }
+
+  public static function transitionTo(target:Screen) : Void
+  {
+    // 1/3s
+    FlxG.camera.fade(FlxColor.BLACK, FADE_DURATION_SECONDS, false, function() {
+      FlxG.switchState(target);
+      currentScreenData = target.data;
+    });
+  }
 
   private function addSprite(fileName:String) : FlxSprite
   {
@@ -294,31 +328,6 @@ class Screen extends FlxState
     logScreen(this.previousScreenData, 'Previous');
     var instance = Screen.createInstance(this.previousScreenData);
     Screen.transitionTo(instance);
-  }
-
-  public static function createInstance(screenData:Dynamic) : Screen
-  {
-    if (screenData != null && screenData.className != null) {
-      // Create the specified type. Must have a constructor with no args.
-      var t = Type.resolveClass(screenData.className);
-      if (t == null) {
-        throw 'Can\'t find instance of custom class ${screenData.className}. Add the "dump" haxeflag and make sure it appears in the output';
-      }
-      var obj = Type.createInstance(t, [screenData]);
-      var screen = cast(obj, Screen);
-      return screen;
-    } else {
-      return new Screen(screenData);
-    }
-  }
-
-  public static function transitionTo(target:Screen) : Void
-  {
-    // 1/3s
-    FlxG.camera.fade(FlxColor.BLACK, FADE_DURATION_SECONDS, false, function() {
-      FlxG.switchState(target);
-      currentScreenData = target.data;
-    });
   }
 
   /** s = screen data */

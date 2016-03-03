@@ -41,4 +41,10 @@ class PlayAudioButton {
     this.audio = FlxG.sound.load('${file}${deengames.io.AudioManager.SOUND_EXT}');
     this.audio.play(true);
   }
+  
+  public function stopAudio():Void {
+    if (this.audio != null) {
+      this.audio.stop();
+    }
+  }
 }

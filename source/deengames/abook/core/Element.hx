@@ -138,6 +138,8 @@ class Element extends FlxSprite {
   private function clickHandler(obj:FlxObject) : Void
   {
     if (this.clickAudioSound != null) {
+      // Stop the current screen audio if it's going
+      Screen.currentScreen.stopAudio();
       this.clickAudioSound.stop();
       this.clickAudioSound.play(true); // force restart
     }
