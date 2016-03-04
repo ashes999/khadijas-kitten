@@ -8,18 +8,15 @@
       "show": false,
       "hideAudioButton": true,
       "elements": [
-        {
-          "image": "owl-titlescreen", "x": 320, "y": 64,
-          "clickAudio": "title-screen"
-        },
+        { "image": "owl-large", "x": 320, "y": 64, "clickAudio": "title-screen" },
         { "image": "text-title", "x": 16, "y": 450 }
       ]
     },
     {
       "name": "hungry, waiting",
+      "backgroundImage": "background-day.jpg",      
       "audio": "speech-hungry-waiting",
       "elements": [
-        { "image": "background-day.jpg"},
         { "image": "text-hungry-waiting" },
         { "image": "owl-box", "x": 250, "y": 100, "clickAudio": "speech-info-owl-box" },
         { "image": "owl", "x": 285, "y": 130, "clickAudio": "speech-owl-nothing-to-eat" }
@@ -27,54 +24,62 @@
     },
     {
       "name": "flying out",
+      "backgroundImage": "background-night.jpg",      
       "audio": "speech-flying-out",
       "elements": [
-        { "image": "background-night.jpg"},
-        { "image": "text-flying-out" }
+        { "image": "text-flying-out" },
+        { "image": "owl", "x": 600, "y": 150, "clickAudio": "ya-razzaq" }        
       ]
     },
     {
       "name": "lands on tree",
+      "backgroundImage": "background-night.jpg",      
       "audio": "speech-lands-on-tree",
       "elements": [
-        { "image": "background-night.jpg"},
-        { "image": "text-lands-on-tree" }
+        { "image": "text-lands-on-tree" },
+        { "image": "owl", "x": 448, "y": 150, "clickAudio": "speech-i-spy-a-rat" },
+        { "image": "rat", "x": 448, "y": 450, "clickAudio": "rat-squeak" }
       ]
     },
     {
       "name": "mini-game",
+      "backgroundImage": "background-night.jpg",      
       "audio": "speech-mini-game",
       "elements": [
-        { "image": "background-night.jpg"},
         { "image": "text-mini-game" }
       ]
     },
     {
       "name": "full, new home",
+      "backgroundImage": "background-night.jpg",      
       "audio": "speech-full-new-home",
       "elements": [
-        { "image": "background-night.jpg"},
-        { "image": "text-full-new-home" }
+        { "image": "text-full-new-home" },
+        { "image": "owl-large", "x": 450, "y": 120, "clickAudio": "speech-alhamdulillah-tasty" }        
       ]
     },
     {
       "name": "owl pellet",
+      "backgroundImage": "background-night.jpg",      
       "audio": "speech-owl-pellet",
       "elements": [
-        { "image": "background-night.jpg"},
-        { "image": "text-owl-pellet" }
+        { "image": "text-owl-pellet" },
+        { "image": "owl-large", "x": 550, "y": 164, "clickAudio": "speech-out-bones-fur" },      
+        { "image": "owl-pellet", "x": 250, "y": 400, "clickAudio": "speech-owl-pellet-info" }        
       ]
     },
     {
       "name": "settles in, dua",
+      "backgroundImage": "background-night.jpg",      
       "audio": "speech-settles-in",
       "elements": [
-        { "image": "background-night.jpg"},
-        { "image": "text-settles-in" }
+        { "image": "text-settles-in" },
+        { "image": "owl", "x": 550, "y": 250, "clickAudio": "speech-arabic-dua" }      
       ]
     },
     {
       "name": "the end",
+      "backgroundImage": "background-night.jpg",      
       "audio": "the-end",
       "hideAudioButton": true,
       "elements": [
