@@ -38,7 +38,7 @@
       "elements": [
         { "image": "text-lands-on-tree" },
         { "image": "owl", "x": 448, "y": 150, "clickAudio": "speech-i-spy-a-mouse" },
-        { "image": "rat", "x": 448, "y": 450, "clickAudio": "rat-squeak" }
+        { "image": "mouse", "x": 448, "y": 450, "clickAudio": "mouse-squeak" }
       ]
     },
     {
