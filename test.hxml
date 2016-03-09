@@ -1,9 +1,0 @@
-## Neko
--main TestMain
--lib munit
-
--cp source
--cp test
-
--neko build/neko_test.n
-
