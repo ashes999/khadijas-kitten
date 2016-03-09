@@ -6,8 +6,8 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
-import flixel.util.FlxMath;
-import flixel.util.FlxPoint;
+import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.system.FlxSound;
 
@@ -96,10 +96,10 @@ class Screen extends FlxState
   /**
   * Function that is called once every frame.
   */
-  override public function update():Void
+  override public function update(elapsed:Float):Void
   {
     this.gestureManager.update();
-    super.update();
+    super.update(elapsed);
   }
 
   // Used to start a new session. HaxeFlixel resumes on reopen.

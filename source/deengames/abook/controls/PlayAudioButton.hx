@@ -3,7 +3,7 @@ package deengames.abook.controls;
 import flixel.system.FlxSound;
 import flixel.FlxSprite;
 import flixel.FlxG;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 
 import deengames.abook.core.Screen;
 import deengames.abook.io.SingletonAudioPlayer;
@@ -15,7 +15,7 @@ class PlayAudioButton {
     this.buttonSprite = screen.addAndCenter('assets/images/play-sound.png');
     buttonSprite.x = FlxG.width - buttonSprite.width - 32;
     buttonSprite.y = FlxG.height - buttonSprite.height - 32;
-    MouseEventManager.add(buttonSprite, null, function(sprite:FlxSprite) {
+    FlxMouseEventManager.add(buttonSprite, null, function(sprite:FlxSprite) {
       this.loadAndPlay(audioFile);
     });
   }

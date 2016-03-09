@@ -1,6 +1,6 @@
 package deengames.io;
 
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.FlxG;
 
 class GestureManager

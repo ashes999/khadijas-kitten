@@ -4,7 +4,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
-import flixel.plugin.MouseEventManager;
+import flixel.input.mouse.FlxMouseEventManager;
 
 import deengames.abook.debug.DebugLogger;
 import deengames.abook.io.SingletonAudioPlayer;
@@ -30,7 +30,7 @@ class Element extends FlxSprite {
 
   public function new() {
     super();
-    MouseEventManager.add(this, clickHandler);
+    FlxMouseEventManager.add(this, clickHandler);
   }
 
   public static function fromData(data:Dynamic) : Element

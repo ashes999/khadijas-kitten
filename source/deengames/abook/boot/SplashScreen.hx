@@ -11,7 +11,6 @@ import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxColor;
-import flixel.plugin.MouseEventManager;
 
 import deengames.abook.core.Screen;
 import deengames.abook.debug.DebugLogger;
@@ -50,7 +49,7 @@ class SplashScreen extends Screen
   /**
   * Function that is called once every frame.
   */
-  override public function update():Void
+  override public function update(elapsed:Float):Void
   {
     // Wait 3s + 0.5s fade-in, then fade out
     if (startTime > 0 && Date.now().getTime() - startTime >= 3500) {
@@ -58,7 +57,7 @@ class SplashScreen extends Screen
       var instance = Screen.createInstance(Screen.screensData[0]);
       Screen.transitionTo(instance);
     }
-    super.update();
+    super.update(elapsed);
   }
 
   override private function onSwipe(direction:SwipeDirection) : Void
