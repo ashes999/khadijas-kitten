@@ -30,7 +30,8 @@
       "elements": [
         { "image": "text-flying-out" },
         { "image": "owl", "x": 600, "y": 150, "clickAudio": "ya-razzaq" }        
-      ]
+      ],
+      "className": "deengames.abook.owlicious.FlyingOutScreen"
     },
     {
       "name": "lands on tree",
