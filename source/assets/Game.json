@@ -39,9 +39,11 @@
       "audio": "speech-lands-on-tree",
       "elements": [
         { "image": "text-lands-on-tree" },
-        { "image": "owl", "x": 448, "y": 150, "clickAudio": "speech-i-spy-a-mouse" },
-        { "image": "mouse", "x": 448, "y": 450, "clickAudio": "mouse-squeak" }
-      ]
+        { "image": "owl", "x": 448, "y": 400, "clickAudio": "speech-i-spy-a-mouse" },
+        { "image": "mouse", "x": 140, "y": 375, "clickAudio": "mouse-squeak" },
+        { "image": "mouse", "x": 800, "y": 275, "clickAudio": "mouse-squeak" }
+      ],
+      "className": "deengames.abook.owlicious.FindMiceScreen"      
     },
     {
       "name": "mini-game",
