@@ -28,8 +28,8 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-flying-out",
       "elements": [
-        { "image": "text-flying-out" },
-        { "image": "owl", "x": 600, "y": 150, "z": 10, "clickAudio": "ya-razzaq" }        
+        { "image": "text-flying-out", "z": 1000 },
+        { "image": "owl", "x": 600, "y": 150, "z": 5, "clickAudio": "ya-razzaq" }        
       ],
       "className": "deengames.abook.owlicious.FlyingOutScreen"
     },

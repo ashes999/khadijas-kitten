@@ -23,7 +23,7 @@ class Element extends FlxSprite {
 
   public var imageFile(default, null) : String;
   public var animationFile(default, null) : String;
-  public var z(default, set):Int;
+  public var z(default, null):Int = 0;
   private var clickAudioFile(default, null) : String;
   private var clickAudioSound:FlxSound;
 

@@ -41,11 +41,13 @@ class Screen extends FlxState
   public static var screensData:Array<Dynamic> = new Array<Dynamic>();
   public static var currentScreenData(default, null):Dynamic;
 
+  public var elements:Array<Element> = new Array<Element>();
+
   private var nextScreenData:Dynamic;
   private var previousScreenData:Dynamic;
   private var gestureManager:GestureManager = new GestureManager();
   private var playAudioButton:PlayAudioButton;
-
+  
   private var bgAudio:FlxSound = new FlxSound();
 
   private var data:Dynamic;
@@ -147,7 +149,9 @@ class Screen extends FlxState
       if (this.data.elements != null) {
         var elements = cast(data.elements, Array<Dynamic>);
         for (element in elements) {
-          add(Element.fromData(element));
+            var e:Element = Element.fromData(element);
+            this.elements.push(e);
+            add(e);
         }
       }
 
@@ -158,7 +162,33 @@ class Screen extends FlxState
       if (this.data.hideAudioButton == true) {
         this.hideAudioButton();
       }
-    }
+      
+      this.sortElementsByZ();
+    }    
+  }
+  
+  // HIDEOUS hack: allow sorting by Z (elements have a Z) by removing/readding everything.
+  // This may have hideous side-effects.
+  private function sortElementsByZ():Void
+  {
+      for (e in this.elements)
+      {
+          this.remove(e);
+      }
+      
+      haxe.ds.ArraySort.sort(this.elements, function(e1:Element, e2:Element):Int {
+         if (e1.z > e2.z) {
+             return 1;
+         } else if (e2.z > e1.z) {
+             return -1;
+         } else {
+             return 0;
+         }
+      });
+      
+      for (e in this.elements) {
+          this.add(e);
+      }
   }
 
   // Returns the data for the next sceen (which is enough to construct it)
