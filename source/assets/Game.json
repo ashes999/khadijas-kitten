@@ -9,7 +9,8 @@
       "hideAudioButton": true,
       "elements": [
         { "image": "owl-large", "x": 320, "y": 64, "clickAudio": "title-screen" },
-        { "image": "text-title", "x": 16, "y": 450 }
+        { "image": "text-title", "x": 16, "y": 450 },
+        { "image": "swipe-to-begin", "x": 850, "y": 32 }
       ]
     },
     {
