@@ -27,6 +27,8 @@ class FlyingOutScreen extends Screen {
     
     override public function update(elapsed:Float):Void
     {
+        super.update(elapsed);
+        
         for (cloud in this.clouds) {
             cloud.update(elapsed);
             if (cloud.zChanged == true)

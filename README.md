@@ -58,7 +58,9 @@ If you specify both `hideAudioButton` and `audio`, the audio will play once, but
   - Extends from `deengames.abook.core.Screen`
   - Contains a `create` function which calls `super.create()`.
   - Exists in a package which is included in `Project.xml` via a `haxeflag`: `<haxeflag name="--macro" value="include('deengames.foo.bar')" />`. Without this, the custom screen class won't be included in the binary.
+- Optional custom screen functionality:
   - You can include all other data as normal (eg. add elements, specify a background image/audio, etc.). If `super.create` is the first call in the `create` method, the other data is loaded first.
+  - Make sure you call `super.update(elasped)` if you override `update`.
 
 ## Debugging
 - Define `<haxedef name="debug" />` in `Project.xml` to enable debugging
