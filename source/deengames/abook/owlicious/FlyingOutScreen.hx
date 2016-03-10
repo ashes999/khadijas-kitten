@@ -1,12 +1,13 @@
 package deengames.abook.owlicious;
 
-import flixel.FlxSprite;
 import deengames.abook.core.Screen;
+import deengames.abook.core.Element;
+
 import Main;
 
 class FlyingOutScreen extends Screen {
     
-    private var clouds:Array<FlxSprite> = new Array<FlxSprite>();
+    private var clouds:Array<Element> = new Array<Element>();
     
     override public function create():Void
     {
@@ -31,7 +32,7 @@ class FlyingOutScreen extends Screen {
     }
 }
 
-class Cloud extends FlxSprite
+class Cloud extends Element
 {
     public function new(size:Int)
     {
@@ -55,5 +56,8 @@ class Cloud extends FlxSprite
         // Randomize y
         this.y = Math.random() * (Main.gameHeight - this.height);
         this.velocity.x = -1 * ((Math.random() * 500) + 300); // 300-800
+        // Owl's z is 10, so half clouds are over and half are under
+        // -10..10
+        this.z = (Math.random() * 20) - 10;
     }
 }

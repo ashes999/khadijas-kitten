@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
+import flixel.util.FlxSort;
 import flixel.input.mouse.FlxMouseEventManager;
 
 import deengames.abook.debug.DebugLogger;
@@ -22,6 +23,7 @@ class Element extends FlxSprite {
 
   public var imageFile(default, null) : String;
   public var animationFile(default, null) : String;
+  public var z(default, set):Int;
   private var clickAudioFile(default, null) : String;
   private var clickAudioSound:FlxSound;
 
@@ -64,6 +66,12 @@ class Element extends FlxSprite {
       e.y = y;
     } else if (data.placement != null) {
       DebugLogger.log("Element has placement but no x/y coordinates; please add them: " + data);
+    }
+    
+    if (data.z != null) {
+        e.z = data.z;
+    } else {
+        e.z = 0;
     }
 
     if (data.animation != null) {
@@ -134,7 +142,7 @@ class Element extends FlxSprite {
     this.clickAudioFile = fileName;
     this.clickAudioSound = FlxG.sound.load(this.clickAudioFile + deengames.io.AudioManager.SOUND_EXT);
   }
-
+  
   // Centralize stuff we do on click
   private function clickHandler(obj:FlxObject) : Void
   {

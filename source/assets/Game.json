@@ -29,7 +29,7 @@
       "audio": "speech-flying-out",
       "elements": [
         { "image": "text-flying-out" },
-        { "image": "owl", "x": 600, "y": 150, "clickAudio": "ya-razzaq" }        
+        { "image": "owl", "x": 600, "y": 150, "z": 10, "clickAudio": "ya-razzaq" }        
       ],
       "className": "deengames.abook.owlicious.FlyingOutScreen"
     },

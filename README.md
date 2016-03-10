@@ -41,7 +41,7 @@ Elements can include an image (or spritesheet/animation), and an audio to play o
 ]
 ```
 
-In this example, the first element is a monkey sprite positioned at `(32, 32)` which plays `assets/audio/sfx/monkey-noises` when clicked. The second example is a spritesheet of `monkey_helmet` at `(64, 96)`. The animation frames are `50x55` pixels each. The first frame shows until the player clicks on it, at which point all eight frames play at 8fps.
+In this example, the first element is a monkey sprite positioned at `(32, 32)` which plays `assets/audio/sfx/monkey-noises` when clicked. The second example is a spritesheet of `monkey_helmet` at `(64, 96)`. The animation frames are `50x55` pixels each. The first frame shows until the player clicks on it, at which point all eight frames play at 8fps. You can also specify a `z` value (higher values are drawn on top of lower values).
 
 Elements appear relative to the top-left corner of the screen by default. To position them relative to a different corner, specify `placement` with one of `["top-left", "top-right", "bottom-left", "bottom-right"]` instead.
 
