@@ -1,9 +1,10 @@
 package deengames.abook.owlicious;
 
-import deengames.abook.core.Screen;
-import flixel.addons.display.FlxExtendedSprite;
-import flixel.addons.plugin.FlxMouseControl;
 import flixel.FlxG;
+import flixel.addons.display.FlxExtendedSprite;
+import flixel.input.mouse.FlxMouseEventManager;
+
+import deengames.abook.core.Screen;
 
 import Main;
 
@@ -13,8 +14,8 @@ class FindMiceScreen extends Screen {
     
     override public function create():Void
     {
+        
         super.create();
-        FlxG.plugins.add(new FlxMouseControl());
         this.obstacles.push(new Obstacle("bush", 620, 150));
         this.obstacles.push(new Obstacle("bush", 760, 400));
         this.obstacles.push(new Obstacle("bush", 120, 350));
@@ -23,6 +24,7 @@ class FindMiceScreen extends Screen {
         
         for (o in obstacles) {
             add(o);
+            FlxMouseEventManager.add(o, o.onMouseDown, o.onMouseUp);
         }
     }
     
@@ -39,5 +41,15 @@ class Obstacle extends FlxExtendedSprite
         super(x, y);
         this.loadGraphic('assets/images/${type}.png');
         this.enableMouseDrag();
+    }
+    
+    public function onMouseDown(me:FlxExtendedSprite):Void
+    {
+        this.startDrag();
+    }
+    
+    public function onMouseUp(me:FlxExtendedSprite):Void
+    {
+        this.stopDrag();
     }
 }

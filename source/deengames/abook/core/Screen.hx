@@ -100,7 +100,7 @@ class Screen extends FlxState
   */
   override public function update(elapsed:Float):Void
   {
-    this.gestureManager.update();
+    this.gestureManager.update(elapsed);
     super.update(elapsed);
   }
 
