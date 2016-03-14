@@ -13,11 +13,10 @@ class FlyingOutScreen extends Screen {
     {
         super.create();
         
-        // 1x 64, 2x 128, 1x 256
-        this.clouds.push(new Cloud(64));        
-        this.clouds.push(new Cloud(128));        
-        this.clouds.push(new Cloud(128));        
+        this.clouds.push(new Cloud(256));        
         this.clouds.push(new Cloud(256));
+        this.clouds.push(new Cloud(128));        
+        this.clouds.push(new Cloud(128));        
         
         for (cloud in clouds) {
             add(cloud);
@@ -46,7 +45,7 @@ class Cloud extends Element
     public function new(size:Int)
     {
         super();
-        this.setAnimation('assets/images/cloud-256.png', 256, 256, 4, 8, false);
+        this.loadGraphic('assets/images/cloud-${size}.png');
         this.resetPosition();
         this.x = Math.random() * Main.gameWidth; // Initially, not all at RHS
         
@@ -73,7 +72,13 @@ class Cloud extends Element
         // 0...10
         this.z = Math.round((Math.random() * 10));
         this.zChanged = true;
-        // Reset frame if popped
-        this.animation.frameIndex = 0;
+        // Reset if popped
+        this.alpha = 1;
+    }
+    
+    override private function clickHandler(object:flixel.FlxObject):Void
+    {
+        super.clickHandler(object);
+        this.alpha = 0;
     }
 }
