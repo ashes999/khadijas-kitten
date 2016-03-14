@@ -46,9 +46,11 @@ class Cloud extends Element
     public function new(size:Int)
     {
         super();
-        this.loadGraphic('assets/images/cloud-${size}.png');
+        this.setAnimation('assets/images/cloud-256.png', 256, 256, 4, 8, false);
         this.resetPosition();
         this.x = Math.random() * Main.gameWidth; // Initially, not all at RHS
+        
+        this.setClickAudio('assets/audio/bubble-pop');
     }
     
     override public function update(elapsed:Float):Void
@@ -66,10 +68,12 @@ class Cloud extends Element
         this.x = Main.gameWidth;
         // Randomize y
         this.y = Math.random() * (Main.gameHeight - this.height);
-        this.velocity.x = -1 * ((Math.random() * 500) + 300); // 300-800
+        this.velocity.x = -1 * ((Math.random() * 200) + 300); // 200-500
         // Owl's z is 5, so half clouds are over and half are under
         // 0...10
         this.z = Math.round((Math.random() * 10));
         this.zChanged = true;
+        // Reset frame if popped
+        this.animation.frameIndex = 0;
     }
 }
