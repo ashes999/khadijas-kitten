@@ -13,6 +13,7 @@ import flixel.system.FlxSound;
 
 import deengames.io.GestureManager;
 import deengames.abook.controls.PlayAudioButton;
+import deengames.abook.controls.ChangeScreenButton;
 import deengames.abook.io.SingletonAudioPlayer;
 import deengames.analytics.FlurryWrapper;
 import deengames.analytics.GoogleAnalyticsWrapper;
@@ -46,7 +47,10 @@ class Screen extends FlxState
   private var nextScreenData:Dynamic;
   private var previousScreenData:Dynamic;
   private var gestureManager:GestureManager = new GestureManager();
+  
   private var playAudioButton:PlayAudioButton;
+  private var nextButton:ChangeScreenButton;
+  private var previousButton:ChangeScreenButton;
   
   private var bgAudio:FlxSound = new FlxSound();
 
@@ -69,18 +73,22 @@ class Screen extends FlxState
     
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 
+    // Process the JSON data, and create elements, set the background/audio, etc.
+    this.processData();
+
     var next = Screen.getNextScreenData(this);
     if (next != null) {
       this.nextScreenData = next;
+      this.nextButton = new ChangeScreenButton(next, true);
+      add(this.nextButton);
     }
 
     var previous = Screen.getPreviousScreenData(this);
     if (previous != null) {
       this.previousScreenData = previous;
+      this.previousButton = new ChangeScreenButton(previous, false);
+      add(this.previousButton);
     }
-
-    // Process the JSON data, and create elements, set the background/audio, etc.
-    this.processData();
 
     // Fade in
     FlxG.camera.flash(FlxColor.BLACK, FADE_DURATION_SECONDS);
@@ -188,6 +196,19 @@ class Screen extends FlxState
       
       for (e in this.elements) {
           this.add(e);
+      }
+      
+      // Make sure our next/previous buttons are always on top
+      if (this.nextButton != null)
+      {
+          this.remove(this.nextButton);
+          this.add(this.nextButton);
+      }
+      
+      if (this.previousButton != null)
+      {
+          this.remove(this.previousButton);
+          add(this.previousButton);
       }
   }
 
