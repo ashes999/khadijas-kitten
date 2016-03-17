@@ -213,12 +213,14 @@ class Screen extends FlxState
          {
              return -1;
          }
-         else{
+         else
+         {
              return 0;
          }
       });
       
-      for (e in this.elements) {
+      for (e in this.elements)
+      {
           this.add(e);
       }
       
