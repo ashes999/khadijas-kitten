@@ -205,11 +205,15 @@ class Screen extends FlxState
       }
       
       haxe.ds.ArraySort.sort(this.elements, function(e1:Element, e2:Element):Int {
-         if (e1.z > e2.z) {
+         if (e1.z > e2.z)
+         {
              return 1;
-         } else if (e2.z > e1.z) {
+         }
+         else if (e2.z > e1.z)
+         {
              return -1;
-         } else {
+         }
+         else{
              return 0;
          }
       });
