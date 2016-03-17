@@ -35,10 +35,9 @@ class Element extends FlxSprite {
     FlxMouseEventManager.add(this, clickHandler);
   }
 
-  public static function fromData(data:Dynamic) : Element
+  // e is normally an instance of Element. Unless you want to use a custom class.
+  public static function populateFromData(data:Dynamic, e:Dynamic):Void
   {
-    var e = new Element();
-
     if (data.image != null) {
       e.setImage('assets/images/${data.image}');
     }
@@ -109,14 +108,6 @@ class Element extends FlxSprite {
         }
       }
     }
-    
-    if (data.className != null)
-    {
-        // Create an instance; pass the json data to the constructor
-        Type.createInstance(Type.resolveClass(data.className), [data]);
-    }
-
-    return e;
   }
 
 

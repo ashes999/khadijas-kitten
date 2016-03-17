@@ -159,8 +159,24 @@ class Screen extends FlxState
       if (this.data.elements != null) {
         var elements = cast(data.elements, Array<Dynamic>);
         for (element in elements) {
-            var e:Element = Element.fromData(element);
-            this.elements.push(e);
+            // Normally, this is an instance of Element. But, if the user specified
+            // a custom class, we use that, instead.
+            var e:Dynamic;
+            if (element.className != null)
+            {
+                // Create an instance; pass the json snippet for the element to the constructor
+                e = Type.createInstance(Type.resolveClass(element.className), [element]);
+            }
+            else
+            {
+                e = new Element();    
+            }
+            
+            Element.populateFromData(element, e);
+            if (Std.is(e, Element))
+            {
+                this.elements.push(e);
+            }
             add(e);
         }
       }

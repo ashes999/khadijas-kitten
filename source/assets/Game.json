@@ -44,10 +44,17 @@
       "elements": [
         { "image": "text-lands-on-tree" },
         { "image": "owl", "x": 448, "y": 400, "clickAudio": "speech-i-spy-a-mouse" },
+        
         { "image": "mouse", "x": 130, "y": 350, "clickAudio": "mouse-squeak" },
-        { "image": "mouse", "x": 810, "y": 255, "clickAudio": "mouse-squeak" }
-      ],
-      "className": "deengames.abook.owlicious.screens.FindMiceScreen"      
+        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", "x": 120, "y": 350 },              
+        
+        { "image": "mouse", "x": 810, "y": 255, "clickAudio": "mouse-squeak" },
+        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "rock", "x": 800, "y": 250 },
+        
+        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", "x": 620, "y": 150 },      
+        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", "x": 760, "y": 400 },      
+        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "rock", "x": 250, "y": 200 }      
+      ]
     },
     {
       "name": "mini-game",
