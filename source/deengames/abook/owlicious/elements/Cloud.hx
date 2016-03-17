@@ -41,7 +41,7 @@ class Cloud extends Element
         this.alpha = 1;
     }
     
-    override private function clickHandler(object:flixel.FlxObject):Void
+    override public function clickHandler(object:flixel.FlxObject):Void
     {
         super.clickHandler(object);
         this.alpha = 0;

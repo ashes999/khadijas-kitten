@@ -6,7 +6,7 @@ import flixel.FlxObject;
 import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
 
-class RunawayMouse extends Element
+class HidingMouse extends Element
 {
     public function new(json:Dynamic)
     {
@@ -18,9 +18,9 @@ class RunawayMouse extends Element
         super.update(elapsed);
         for (member in Screen.currentScreen.members)
         {
-            if (Std.is(member, RunawayMouse))
+            if (Std.is(member, HidingMouse))
             {
-                var mouse:RunawayMouse = cast(member, RunawayMouse);
+                var mouse:HidingMouse = cast(member, HidingMouse);
                 if (mouse.y > Main.gameHeight)
                 {
                     mouse.destroy();
@@ -29,7 +29,7 @@ class RunawayMouse extends Element
         }
     }
     
-    override private function clickHandler(obj:FlxObject):Void
+    override public function clickHandler(obj:FlxObject):Void
     {
         super.clickHandler(obj);
         this.velocity.y += 100; // run off-screen. faster.

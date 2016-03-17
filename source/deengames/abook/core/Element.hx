@@ -142,9 +142,18 @@ class Element extends FlxSprite {
     this.clickAudioFile = fileName;
     this.clickAudioSound = FlxG.sound.load(this.clickAudioFile + deengames.io.AudioManager.SOUND_EXT);
   }
+
+  /**
+  Called after the object is initialized and fully created.
+  */
+  public function create():Void
+  {
+  }
   
-  // Centralize stuff we do on click
-  private function clickHandler(obj:FlxObject) : Void
+  /**
+  Centralizes logic that executes on click.
+  */
+  public function clickHandler(obj:FlxObject) : Void
   {
     if (this.clickAudioSound != null) {
       // Stop the current screen audio if it's going

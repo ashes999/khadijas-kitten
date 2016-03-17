@@ -173,11 +173,13 @@ class Screen extends FlxState
             }
             
             Element.populateFromData(element, e);
+            add(e);
+            
             if (Std.is(e, Element))
             {
                 this.elements.push(e);
-            }
-            add(e);
+                e.create();
+            }            
         }
       }
 
