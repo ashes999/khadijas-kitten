@@ -109,6 +109,12 @@ class Element extends FlxSprite {
         }
       }
     }
+    
+    if (data.className != null)
+    {
+        // Create an instance; pass the json data to the constructor
+        Type.createInstance(Type.resolveClass(data.className), [data]);
+    }
 
     return e;
   }
