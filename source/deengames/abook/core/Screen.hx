@@ -41,7 +41,6 @@ class Screen extends FlxState
   We destroy/recreate scenes on demand, using the JSON data. */
   public static var screensData:Array<Dynamic> = new Array<Dynamic>();
   public static var currentScreenData(default, null):Dynamic;
-  public static var currentScreen:Screen;
 
   public var elements:Array<Element> = new Array<Element>();
 
@@ -71,7 +70,6 @@ class Screen extends FlxState
   override public function create() : Void
   {
     super.create();
-    Screen.currentScreen = this;
     
     this.gestureManager.onGesture(Gesture.Swipe, onSwipe);
 

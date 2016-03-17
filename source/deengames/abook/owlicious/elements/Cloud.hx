@@ -1,6 +1,5 @@
 package deengames.abook.owlicious.elements;
 
-import deengames.abook.core.Screen;
 import deengames.abook.core.Element;
 
 class Cloud extends Element
@@ -16,10 +15,6 @@ class Cloud extends Element
         this.x = Math.random() * Main.gameWidth; // Initially, not all at RHS
         
         this.setClickAudio('assets/audio/bubble-pop');
-        
-        var screen:Screen = Screen.currentScreen;
-        screen.add(this);
-        screen.elements.push(this);
     }
     
     override public function update(elapsed:Float):Void
