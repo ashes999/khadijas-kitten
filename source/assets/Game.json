@@ -30,12 +30,12 @@
       "elements": [
         { "image": "text-flying-out", "z": 1000 },
         { "image": "owl", "x": 600, "y": 150, "z": 5, "clickAudio": "speech-ya-razzaq" },
-        { "className": "deengames.abook.owlicious.Cloud", "size": 256 },
-        { "className": "deengames.abook.owlicious.Cloud", "size": 256 },
-        { "className": "deengames.abook.owlicious.Cloud", "size": 128 },
-        { "className": "deengames.abook.owlicious.Cloud", "size": 128 }
+        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 256 },
+        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 256 },
+        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 128 },
+        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 128 }
       ],
-      "className": "deengames.abook.owlicious.FlyingOutScreen"
+      "className": "deengames.abook.owlicious.screens.FlyingOutScreen"
     },
     {
       "name": "lands on tree",
@@ -47,7 +47,7 @@
         { "image": "mouse", "x": 130, "y": 350, "clickAudio": "mouse-squeak" },
         { "image": "mouse", "x": 810, "y": 255, "clickAudio": "mouse-squeak" }
       ],
-      "className": "deengames.abook.owlicious.FindMiceScreen"      
+      "className": "deengames.abook.owlicious.screens.FindMiceScreen"      
     },
     {
       "name": "mini-game",

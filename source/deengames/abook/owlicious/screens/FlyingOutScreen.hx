@@ -1,8 +1,8 @@
-package deengames.abook.owlicious;
+package deengames.abook.owlicious.screens;
 
 import deengames.abook.core.Screen;
 import deengames.abook.core.Element;
-import deengames.abook.owlicious.Cloud;
+import deengames.abook.owlicious.elements.Cloud;
 
 import Main;
 

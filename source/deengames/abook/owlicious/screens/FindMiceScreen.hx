@@ -1,4 +1,4 @@
-package deengames.abook.owlicious;
+package deengames.abook.owlicious.screens;
 
 import flixel.FlxG;
 import flixel.addons.display.FlxExtendedSprite;

@@ -1,4 +1,4 @@
-package deengames.abook.owlicious;
+package deengames.abook.owlicious.elements;
 
 import deengames.abook.core.Screen;
 import deengames.abook.core.Element;
