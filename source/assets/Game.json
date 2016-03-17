@@ -69,13 +69,19 @@
         { "image": "tree", "x": 700, "y": 250 },
         { "image": "tree", "x": 100, "y": 200 },
         { "image": "tree", "x": 400, "y": 150 },
+        
         { "className": "deengames.abook.owlicious.elements.HuntingOwl", "image": "owl", "x": 450, "y": 100 },
-        { "className": "deengames.abook.owlicious.elements.HidingMouse", "image": "mouse", "x": 810, "y": 255, "clickAudio": "mouse-squeak" },
-        { "className": "deengames.abook.owlicious.elements.HidingMouse", "image": "mouse", "x": 410, "y": 355, "clickAudio": "mouse-squeak" },
+        
         { "image": "bush", "x": 50, "y": 450, "clickAudio": "rustle" },
-        { "image": "bush", "x": 300, "y": 350, "clickAudio": "rustle" },
+        
+        { "className": "deengames.abook.owlicious.elements.MouseBush",
+            "image": "bush", "x": 300, "y": 350, "clickAudio": "rustle" },
+        
         { "image": "bush", "x": 450, "y": 450, "clickAudio": "rustle" },
-        { "image": "bush", "x": 550, "y": 400, "clickAudio": "rustle" },
+        
+        { "className": "deengames.abook.owlicious.elements.MouseBush", 
+            "image": "bush", "x": 550, "y": 400, "clickAudio": "rustle" },
+        
         { "image": "bush", "x": 800, "y": 450, "clickAudio": "rustle" }                
       ]
     },

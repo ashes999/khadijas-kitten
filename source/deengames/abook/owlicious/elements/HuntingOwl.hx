@@ -4,12 +4,13 @@ import flixel.FlxObject;
 
 import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
+import deengames.io.AudioManager;
 
 class HuntingOwl extends Element
 {
     private static inline var MOVE_SPEED:Int = 250;
     
-    private var currentPrey:HidingMouse;
+    private var currentPrey:RunningMouse;
     private var roostX:Float;
     private var roostY:Float;
     private var size:Int;
@@ -30,6 +31,14 @@ class HuntingOwl extends Element
         this.size = Math.round((this.width + this.height) / 4);
     }
     
+    public function gotAway(m:RunningMouse)
+    {
+        if (this.currentPrey == m)
+        {
+            this.currentPrey = null;
+        }
+    }
+    
     override public function update(elapsed:Float):Void
     {        
         super.update(elapsed);
@@ -38,11 +47,10 @@ class HuntingOwl extends Element
             // Find a mouse to prey on
             for (e in Screen.currentScreen.elements)
             {
-                if (Std.is(e, HidingMouse))
+                if (Std.is(e, RunningMouse))
                 {
-                    var mouse:HidingMouse = cast(e, HidingMouse);
+                    var mouse:RunningMouse = cast(e, RunningMouse);
                     currentPrey = mouse;
-                    trace('Fresh meat at ${currentPrey.x}, ${currentPrey.y}');
                     break;
                 }
             }
@@ -55,6 +63,7 @@ class HuntingOwl extends Element
             {
                 // Gotcha!
                 // Play squeak noise
+                AudioManager.play("assets/audio/mouse-squeak");
                 currentPrey.destroy();
                 Screen.currentScreen.remove(currentPrey);
                 Screen.currentScreen.elements.remove(currentPrey);
