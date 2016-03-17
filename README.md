@@ -49,9 +49,9 @@ Elements can also specify an `onClick` handler, with the format `show(screen nam
 
 Elements can have a `className` that specifies the name of that element's class. An instance of that class will be created at runtime. Restrictions include:
 - The class name must be the full package and class name (eg. `deengames.abooks.owlicious.Cloud`)
-- The class must be a subclass/descendent of `Element`
 - The class must have a constructor which takes a single JSON parameter (the element's JSON).
-You can use the constructor to read/process any JSON parameters and initialize your instance appropriately.
+- The class must derive from `FlxBasic` so that you can call `FlxState.add(instance)`.
+You can use the constructor to read/process any JSON parameters and initialize your instance appropriately. 
 
 ## Advanced Screen Properties
 
