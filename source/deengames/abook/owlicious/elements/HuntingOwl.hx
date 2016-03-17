@@ -7,7 +7,7 @@ import deengames.abook.core.Screen;
 
 class HuntingOwl extends Element
 {
-    private static inline var MOVE_SPEED:Int = 50;
+    private static inline var MOVE_SPEED:Int = 250;
     
     private var currentPrey:HidingMouse;
     private var roostX:Float;
@@ -25,9 +25,9 @@ class HuntingOwl extends Element
         
         this.roostX = this.x;
         this.roostY = this.y;
-        // Approximate size is sqrt[(width^2) + height(^2)]
+        // Half our approximate size
         // If the mouse is this far away, we got him.
-        this.size = Math.round(Math.sqrt(Math.pow(this.width, 2) + Math.pow(this.height, 2)));
+        this.size = Math.round((this.width + this.height) / 4);
     }
     
     override public function update(elapsed:Float):Void
@@ -36,12 +36,13 @@ class HuntingOwl extends Element
         if (currentPrey == null)
         {
             // Find a mouse to prey on
-            for (member in Screen.currentScreen.members)
+            for (e in Screen.currentScreen.elements)
             {
-                if (Std.is(member, HidingMouse))
+                if (Std.is(e, HidingMouse))
                 {
-                    var mouse:HidingMouse = cast(member, HidingMouse);
+                    var mouse:HidingMouse = cast(e, HidingMouse);
                     currentPrey = mouse;
+                    trace('Fresh meat at ${currentPrey.x}, ${currentPrey.y}');
                     break;
                 }
             }
@@ -55,6 +56,8 @@ class HuntingOwl extends Element
                 // Gotcha!
                 // Play squeak noise
                 currentPrey.destroy();
+                Screen.currentScreen.remove(currentPrey);
+                Screen.currentScreen.elements.remove(currentPrey);
                 currentPrey = null;
             }
             else

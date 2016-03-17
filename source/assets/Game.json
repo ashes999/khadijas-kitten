@@ -69,7 +69,9 @@
         { "image": "tree", "x": 700, "y": 250 },
         { "image": "tree", "x": 100, "y": 200 },
         { "image": "tree", "x": 400, "y": 150 },
-        { "image": "owl", "x": 450, "y": 100, "className": "deengames.abook.owlicious.elements.HuntingOwl" }
+        { "className": "deengames.abook.owlicious.elements.HuntingOwl", "image": "owl", "x": 450, "y": 100 },
+        { "className": "deengames.abook.owlicious.elements.HidingMouse", "image": "mouse", "x": 810, "y": 255, "clickAudio": "mouse-squeak" },
+        { "className": "deengames.abook.owlicious.elements.HidingMouse", "image": "mouse", "x": 410, "y": 355, "clickAudio": "mouse-squeak" }        
       ]
     },
     {
