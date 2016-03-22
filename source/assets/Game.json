@@ -46,8 +46,7 @@
         { "className": "deengames.abook.owlicious.elements.Cloud", "size": 256 },
         { "className": "deengames.abook.owlicious.elements.Cloud", "size": 128 },
         { "className": "deengames.abook.owlicious.elements.Cloud", "size": 128 }
-      ],
-      "className": "deengames.abook.owlicious.screens.FlyingOutScreen"
+      ]
     },
     {
       "name": "lands on tree",

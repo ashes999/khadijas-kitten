@@ -143,7 +143,51 @@ class Screen extends FlxState
     FlurryWrapper.endSession();
     super.onFocusLost();
   }
-
+  
+  
+  
+  // Allow sorting by Z (elements have a Z) by removing/re-adding everything.
+  public function sortElementsByZ():Void
+  {
+      for (e in this.elements)
+      {
+          this.remove(e);
+      }
+      
+      haxe.ds.ArraySort.sort(this.elements, function(e1:Element, e2:Element):Int {
+         if (e1.z > e2.z)
+         {
+             return 1;
+         }
+         else if (e2.z > e1.z)
+         {
+             return -1;
+         }
+         else
+         {
+             return 0;
+         }
+      });
+      
+      for (e in this.elements)
+      {
+          this.add(e);
+      }
+      
+      // Make sure our next/previous buttons are always on top
+      if (this.nextButton != null)
+      {
+          this.remove(this.nextButton);
+          this.add(this.nextButton);
+      }
+      
+      if (this.previousButton != null)
+      {
+          this.remove(this.previousButton);
+          add(this.previousButton);
+      }
+  }
+  
   private function processData() : Void
   {
     // Populate functionality based on data.
@@ -193,49 +237,6 @@ class Screen extends FlxState
       
       this.sortElementsByZ();
     }    
-  }
-  
-  // HIDEOUS hack: allow sorting by Z (elements have a Z) by removing/readding everything.
-  // This may have hideous side-effects.
-  private function sortElementsByZ():Void
-  {
-      for (e in this.elements)
-      {
-          this.remove(e);
-      }
-      
-      haxe.ds.ArraySort.sort(this.elements, function(e1:Element, e2:Element):Int {
-         if (e1.z > e2.z)
-         {
-             return 1;
-         }
-         else if (e2.z > e1.z)
-         {
-             return -1;
-         }
-         else
-         {
-             return 0;
-         }
-      });
-      
-      for (e in this.elements)
-      {
-          this.add(e);
-      }
-      
-      // Make sure our next/previous buttons are always on top
-      if (this.nextButton != null)
-      {
-          this.remove(this.nextButton);
-          this.add(this.nextButton);
-      }
-      
-      if (this.previousButton != null)
-      {
-          this.remove(this.previousButton);
-          add(this.previousButton);
-      }
   }
 
   // Returns the data for the next sceen (which is enough to construct it)
