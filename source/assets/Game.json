@@ -14,6 +14,18 @@
       ]
     },
     {
+      "name": "instructions",
+      "audio": "speech-instructions",
+      "show": true,
+      "hideAudioButton": true,
+      "elements": [
+        { "image": "text-instructions" },
+        { "image": "swipe-to-begin", "x": 300, "y": 250 },
+        { "image": "click", "x": 600, "y": 250 },
+        { "image": "interactables", "x": 550, "y": 180 }
+      ]
+    },
+    {
       "name": "hungry, waiting",
       "backgroundImage": "background-day.jpg",      
       "audio": "speech-hungry-waiting",
