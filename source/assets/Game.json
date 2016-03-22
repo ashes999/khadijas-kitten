@@ -112,7 +112,9 @@
       "elements": [
         { "image": "text-owl-pellet" },
         { "className": "deengames.abook.owlicious.elements.CoughingOwl",
-            "image": "owl-large", "x": 550, "y": 164, "clickAudio": "speech-out-bones-fur" }   
+            "image": "owl-large", "x": 550, "y": 164, "clickAudio": "speech-out-bones-fur" },
+            
+        { "image": "owl-pellet", "x": 332, "y": 449, "clickAudio": "speech-owl-pellet-info" }
       ]
     },
     {
