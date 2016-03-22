@@ -16,7 +16,7 @@ class Preloader extends FlxPreloader
 	var logo:Sprite = new Sprite();
 	private static inline var FADE_FROM_PERCENT = 0.75;
 
-	public function new(minDisplayTime:Float = 1, ?allowedUrls:Array<String>)
+	public function new(minDisplayTime:Float = 0, ?allowedUrls:Array<String>)
 	{
 		super(minDisplayTime, allowedUrls);
 	}
