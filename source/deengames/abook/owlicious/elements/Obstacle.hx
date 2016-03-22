@@ -1,9 +1,9 @@
 package deengames.abook.owlicious.elements;
 
-import flixel.addons.display.FlxExtendedSprite;
+import deengames.abook.core.Element;
 import flixel.input.mouse.FlxMouseEventManager;
 
-class Obstacle extends FlxExtendedSprite
+class Obstacle extends Element
 {
     public function new(json:Dynamic)
     {
@@ -16,12 +16,12 @@ class Obstacle extends FlxExtendedSprite
         FlxMouseEventManager.add(this, this.onMouseDown, this.onMouseUp);
     }
     
-    public function onMouseDown(me:FlxExtendedSprite):Void
+    public function onMouseDown(me:Element):Void
     {
         this.startDrag();
     }
     
-    public function onMouseUp(me:FlxExtendedSprite):Void
+    public function onMouseUp(me:Element):Void
     {
         this.stopDrag();
     }

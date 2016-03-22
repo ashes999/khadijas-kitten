@@ -1,17 +1,18 @@
 package deengames.abook.core;
 
+import deengames.abook.core.onClickCommands.ShowScreenCommand;
+import deengames.abook.debug.DebugLogger;
+import deengames.abook.io.SingletonAudioPlayer;
+using deengames.extensions.StringExtensions;
+
+import flixel.addons.display.FlxExtendedSprite;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.input.mouse.FlxMouseEventManager;
 import flixel.system.FlxSound;
 import flixel.util.FlxSort;
-import flixel.input.mouse.FlxMouseEventManager;
 
-import deengames.abook.debug.DebugLogger;
-import deengames.abook.io.SingletonAudioPlayer;
-import deengames.abook.core.onClickCommands.ShowScreenCommand;
-
-using deengames.extensions.StringExtensions;
 using StringTools;
 
 /**
@@ -19,7 +20,7 @@ A basic interactive element, it displays a static image (or the first frame of
 an animation). When you click on it, it starts an animation (optional), and plays
 an audio file (optional).
 **/
-class Element extends FlxSprite {
+class Element extends FlxExtendedSprite {
 
   public var imageFile(default, null) : String;
   public var animationFile(default, null) : String;
@@ -67,9 +68,12 @@ class Element extends FlxSprite {
       DebugLogger.log("Element has placement but no x/y coordinates; please add them: " + data);
     }
     
-    if (data.z != null) {
+    if (data.z != null)
+    {
         e.z = data.z;
-    } else {
+    }
+    else
+    {
         e.z = 0;
     }
 
