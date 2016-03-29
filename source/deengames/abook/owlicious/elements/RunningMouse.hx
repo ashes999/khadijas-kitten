@@ -18,12 +18,13 @@ class RunningMouse extends Element
         // +- 20% velocity
         var modifier = 1 + (Math.random() * 0.4) - 0.2;
         this.velocity.x *= modifier;
+        this.velocity.y = Math.random() * 50;
     }
     
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
-        if (this.x < -this.width || this.x > Main.gameWidth)
+        if (this.x < -this.width || this.x > Main.gameWidth || this.y >= Main.gameHeight)
         {
             // Notify the owl that we got away
             for (e in Screen.currentScreen.elements)
