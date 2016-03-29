@@ -59,16 +59,23 @@
         { "className": "deengames.abook.owlicious.elements.HidingMouse", 
             "image": "mouse", "x": 130, "y": 350, "clickAudio": "mouse-squeak" },
             
-        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", "x": 120, "y": 350 },              
+        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", 
+            "x": 120, "y": 350, "clickAudio": "rustle" },              
         
         { "className": "deengames.abook.owlicious.elements.HidingMouse",
             "image": "mouse", "x": 810, "y": 255, "clickAudio": "mouse-squeak" },
             
-        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "rock", "x": 800, "y": 250 },
+        { "className": "deengames.abook.owlicious.elements.Obstacle", 
+            "type": "rock", "x": 800, "y": 250, "clickAudio": "rocks" },
         
-        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", "x": 620, "y": 150 },      
-        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", "x": 760, "y": 400 },      
-        { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "rock", "x": 250, "y": 200 }      
+        { "className": "deengames.abook.owlicious.elements.Obstacle", 
+            "type": "bush", "x": 620, "y": 150, "clickAudio": "rustle" },  
+                
+        { "className": "deengames.abook.owlicious.elements.Obstacle",
+            "type": "bush", "x": 760, "y": 400, "clickAudio": "rustle" }, 
+                 
+        { "className": "deengames.abook.owlicious.elements.Obstacle",
+            "type": "rock", "x": 250, "y": 200, "clickAudio": "rocks" }      
       ]
     },
     {
@@ -77,11 +84,12 @@
       "audio": "speech-mini-game",
       "elements": [
         { "image": "text-mini-game" },
-        { "image": "tree", "x": 700, "y": 250 },
-        { "image": "tree", "x": 100, "y": 200 },
-        { "image": "tree", "x": 400, "y": 150 },
+        { "image": "tree", "x": 700, "y": 250, "clickAudio": "rustle" },
+        { "image": "tree", "x": 100, "y": 200, "clickAudio": "rustle" },
+        { "image": "tree", "x": 400, "y": 150, "clickAudio": "rustle" },
         
-        { "className": "deengames.abook.owlicious.elements.HuntingOwl", "image": "owl", "x": 450, "y": 100 },
+        { "className": "deengames.abook.owlicious.elements.HuntingOwl",
+            "image": "owl", "x": 450, "y": 100, "clickAudio": "owl-hoot" },
         
         { "image": "bush", "x": 50, "y": 450, "clickAudio": "rustle" },
         

@@ -18,6 +18,8 @@ class Obstacle extends Element
     
     public function onMouseDown(me:Element):Void
     {
+        // execute audio if it exists
+        this.clickHandler(null);
         this.startDrag();
     }
     
