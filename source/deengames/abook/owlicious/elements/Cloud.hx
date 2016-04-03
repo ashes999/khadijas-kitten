@@ -25,7 +25,7 @@ class Cloud extends Element
     public function resetPosition():Void
     {
         // Pick cloud image
-        var num = Math.round(Math.random() * 2) + 1; // 1-2
+        var num = Math.floor(Math.random() * 2) + 1;
         this.setImage('assets/images/cloud-${num}');
         
         // respawn on RHS of screen
