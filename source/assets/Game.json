@@ -75,7 +75,7 @@
             "type": "bush", "x": 760, "y": 400, "clickAudio": "rustle" }, 
                  
         { "className": "deengames.abook.owlicious.elements.Obstacle",
-            "type": "rock", "x": 250, "y": 200, "clickAudio": "rocks" }      
+            "type": "rock-2", "x": 250, "y": 200, "clickAudio": "rocks" }      
       ]
     },
     {
@@ -84,9 +84,9 @@
       "audio": "speech-mini-game",
       "elements": [
         { "image": "text-mini-game" },
-        { "image": "tree", "x": 700, "y": 250, "clickAudio": "rustle" },
         { "image": "tree", "x": 100, "y": 200, "clickAudio": "rustle" },
-        { "image": "tree", "x": 400, "y": 150, "clickAudio": "rustle" },
+        { "image": "tree-2", "x": 400, "y": 150, "clickAudio": "rustle" },
+        { "image": "tree", "x": 700, "y": 250, "clickAudio": "rustle" },
         
         { "className": "deengames.abook.owlicious.elements.HuntingOwl",
             "image": "owl", "x": 450, "y": 100, "clickAudio": "owl-hoot" },
