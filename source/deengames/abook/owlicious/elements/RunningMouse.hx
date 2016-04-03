@@ -4,14 +4,16 @@ import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
 import flixel.FlxObject;
 
+// mouse or rat
 class RunningMouse extends Element
 {
     private static inline var RUN_SPEED:Int = 200;
     
     public function new(x:Float, y:Float, runDirection:String)
     {
+        var species = (Math.round(Math.random() * 100) % 2) == 0 ? "mouse" : "rat";
         super();
-        this.setImage('assets/images/mouse-running');
+        this.setImage('assets/images/${species}-running');
         this.x = x;
         this.y = y + 32;
         this.setClickAudio("assets/audio/mouse-squeak");        

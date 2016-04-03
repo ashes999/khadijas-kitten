@@ -57,7 +57,7 @@
         { "image": "owl", "x": 448, "y": 400, "clickAudio": "speech-i-spy-a-mouse" },
         
         { "className": "deengames.abook.owlicious.elements.HidingMouse", 
-            "image": "mouse", "x": 130, "y": 350, "clickAudio": "mouse-squeak" },
+            "image": "rat", "x": 130, "y": 350, "clickAudio": "mouse-squeak" },
             
         { "className": "deengames.abook.owlicious.elements.Obstacle", "type": "bush", 
             "x": 120, "y": 350, "clickAudio": "rustle" },              
