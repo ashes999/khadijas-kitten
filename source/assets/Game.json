@@ -42,10 +42,10 @@
       "elements": [
         { "image": "text-flying-out", "z": 1000 },
         { "image": "owl", "x": 600, "y": 150, "z": 5, "clickAudio": "speech-ya-razzaq" },
-        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 256 },
-        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 256 },
-        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 128 },
-        { "className": "deengames.abook.owlicious.elements.Cloud", "size": 128 }
+        { "className": "deengames.abook.owlicious.elements.Cloud" },
+        { "className": "deengames.abook.owlicious.elements.Cloud" },
+        { "className": "deengames.abook.owlicious.elements.Cloud", "scale": 0.5 },
+        { "className": "deengames.abook.owlicious.elements.Cloud", "scale": 0.5 }
       ]
     },
     {

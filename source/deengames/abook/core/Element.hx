@@ -20,26 +20,36 @@ A basic interactive element, it displays a static image (or the first frame of
 an animation). When you click on it, it starts an animation (optional), and plays
 an audio file (optional).
 **/
-class Element extends FlxExtendedSprite {
+class Element extends FlxExtendedSprite
+{
 
-  public var imageFile(default, null) : String;
   public var animationFile(default, null) : String;
+  public var imageFile(default, null) : String;
+  public var scaleTo(default, null):Float = 1.0;
   public var z(default, null):Int = 0;
+  
   private var clickAudioFile(default, null) : String;
   private var clickAudioSound:FlxSound;
-
+    
   // TODO: a generic interface with .execute() works here too
   private var onClickCommand:ShowScreenCommand;
 
-  public function new() {
+  public function new(json:Dynamic = null)
+  {
     super();
     FlxMouseEventManager.add(this, clickHandler);
   }
 
   // e is normally an instance of Element. Unless you want to use a custom class.
   public static function populateFromData(data:Dynamic, e:Dynamic):Void
-  {
-    if (data.image != null) {
+  {      
+    if (data.scale != null)
+    {
+        e.scaleTo = data.scale;
+    }
+    
+    if (data.image != null)
+    {
       e.setImage('assets/images/${data.image}');
     }
 
@@ -77,11 +87,14 @@ class Element extends FlxExtendedSprite {
         e.z = 0;
     }
 
-    if (data.animation != null) {
+    if (data.animation != null)
+    {
       var a = data.animation;
       e.setAnimation('assets/images/${a.image}', a.width, a.height, a.frames, a.fps);
     }
-    if (data.clickAudio != null) {
+    
+    if (data.clickAudio != null)
+    {
       e.setClickAudio('assets/audio/${data.clickAudio}');
     }
 
@@ -89,23 +102,32 @@ class Element extends FlxExtendedSprite {
       var onClick:String = data.onClick;
       // validation
       var normalized = onClick.toLowerCase();
-      if (normalized.indexOf('show(') != 0 || normalized.indexOf(')') != normalized.length - 1) {
+      if (normalized.indexOf('show(') != 0 || normalized.indexOf(')') != normalized.length - 1)
+      {
         throw 'Element ${data} has invalid on-click code: ${onClick}. Valid values are: show(screen name)';
-      } else {
+      }
+      else
+      {
         var start = normalized.indexOf('(');
         var stop = normalized.indexOf(')');
         var screenName = onClick.substr(start + 1, stop - start - 1);
 
         var screenFound = null;
-        for (screenData in Screen.screensData) {
-          if (screenData.name.toLowerCase() == screenName.toLowerCase()) {
+        for (screenData in Screen.screensData)
+        {
+          if (screenData.name.toLowerCase() == screenName.toLowerCase())
+          {
             screenFound = screenData;
           }
         }
-        if (screenFound == null) {
+        if (screenFound == null)
+        {
           throw 'Element ${data} has onClick handler pointing to non-existing screen ${screenName}';
-        } else {
-          if (data.animation != null) {
+        }
+        else
+        {
+          if (data.animation != null)
+          {
             DebugLogger.log('Warning: Element has an animation which will be overridden by the click handler. click=${onClick}, a=${data.animation}, e=${data}');
           }
           e.onClickCommand = new ShowScreenCommand(screenFound);
@@ -119,6 +141,7 @@ class Element extends FlxExtendedSprite {
   {
     this.imageFile = imageFile.addExtension();
     this.loadGraphic(this.imageFile);
+    this.scaleIfRequired();
   }
 
   /**
@@ -136,6 +159,7 @@ class Element extends FlxExtendedSprite {
         range.push(0); // reset to first image on completion
     }
     this.animation.add('main', range, fps, false); // false => no loop
+    this.scaleIfRequired();
   }
 
   /**
@@ -172,5 +196,16 @@ class Element extends FlxExtendedSprite {
         this.animation.play('main', true); // force restart
       }
     }
+  }
+  
+  private function scaleIfRequired():Void
+  {
+      // Image/animation set; scale (proportionally)
+      // Don't use FlxSprite.scale, because performance
+      // sucks on Flash. (up to 10x slower!)
+      if (this.scaleTo != 1.0)
+      {
+          this.setGraphicSize(Math.round(this.width * this.scaleTo), 0);
+      }
   }
 }

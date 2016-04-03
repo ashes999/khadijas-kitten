@@ -7,9 +7,7 @@ class Cloud extends Element
 {
     public function new(json:Dynamic)
     {
-        super();
-        var size:Int = json.size;
-        this.loadGraphic('assets/images/cloud-${size}.png');
+        super(json);
         this.resetPosition();
         this.x = Math.random() * Main.gameWidth; // Initially, not all at RHS
         
@@ -26,6 +24,10 @@ class Cloud extends Element
     
     public function resetPosition():Void
     {
+        // Pick cloud image
+        var num = Math.round(Math.random() * 2) + 1; // 1-2
+        this.setImage('assets/images/cloud-${num}');
+        
         // respawn on RHS of screen
         this.x = Main.gameWidth;
         // Randomize y
