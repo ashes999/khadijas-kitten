@@ -2,6 +2,7 @@ package deengames.abook.owlicious.elements;
 
 import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
+import flixel.FlxObject;
 
 class RunningMouse extends Element
 {
@@ -10,7 +11,7 @@ class RunningMouse extends Element
     public function new(x:Float, y:Float, runDirection:String)
     {
         super();
-        this.setImage('assets/images/mouse-running-${runDirection}');
+        this.setImage('assets/images/mouse-running');
         this.x = x;
         this.y = y + 32;
         this.setClickAudio("assets/audio/mouse-squeak");        
@@ -19,6 +20,10 @@ class RunningMouse extends Element
         var modifier = 1 + (Math.random() * 0.4) - 0.2;
         this.velocity.x *= modifier;
         this.velocity.y = Math.random() * 50;
+        if (runDirection == "left")
+        {
+            this.flipX = true;
+        }
     }
     
     override public function update(elapsed:Float):Void
