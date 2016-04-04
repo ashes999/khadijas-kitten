@@ -75,7 +75,7 @@
             "type": "bush", "x": 760, "y": 400, "clickAudio": "rustle" }, 
                  
         { "className": "deengames.abook.owlicious.elements.Obstacle",
-            "type": "rock-2", "x": 250, "y": 200, "clickAudio": "rocks" }      
+            "type": "rock", "x": 250, "y": 200, "clickAudio": "rocks" }      
       ]
     },
     {
