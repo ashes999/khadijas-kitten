@@ -8,10 +8,10 @@ class Cloud extends Element
     public function new(json:Dynamic)
     {
         super(json);
-        this.resetPosition();
-        this.x = Math.random() * Main.gameWidth; // Initially, not all at RHS
-        
         this.setClickAudio('assets/audio/bubble-pop');
+        this.resetPosition();
+        
+        this.x = Math.random() * Main.gameWidth; // Initially, not all at RHS
     }
     
     override public function update(elapsed:Float):Void
@@ -40,6 +40,10 @@ class Cloud extends Element
         // 0...10
         this.z = Math.round((Math.random() * 10));        
         Screen.currentScreen.sortElementsByZ();
+        
+        // 0.8-1.2
+        var pitch:Float = 0.8 + (Math.random() * 0.4);
+        this.setAudioPitch(pitch);
     }
     
     override public function clickHandler(object:flixel.FlxObject):Void

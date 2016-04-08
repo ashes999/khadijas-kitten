@@ -31,6 +31,9 @@ class HidingMouse extends Element
     
     override public function clickHandler(obj:FlxObject):Void
     {
+        // 0.8-1.2
+        var pitch:Float = 0.8 + (Math.random() * 0.4);
+        this.setAudioPitch(pitch);
         super.clickHandler(obj);
         this.velocity.y += 100; // run off-screen. faster.
     }    

@@ -170,13 +170,6 @@ class Element extends FlxExtendedSprite
     this.clickAudioFile = fileName;
     this.clickAudioSound = FlxG.sound.load(this.clickAudioFile + deengames.io.AudioManager.SOUND_EXT);
   }
-
-  /**
-  Called after the object is initialized and fully created.
-  */
-  public function create():Void
-  {
-  }
   
   /**
   Centralizes logic that executes on click.
@@ -196,6 +189,23 @@ class Element extends FlxExtendedSprite
         this.animation.play('main', true); // force restart
       }
     }
+  }
+  
+  public function setAudioPitch(pitch:Float):Void
+  {
+      if (this.clickAudioSound == null)
+      {
+          throw "Element doesn't have audio!";
+      }
+      
+      this.clickAudioSound.pitch = pitch;
+  }
+  
+  /**
+  Called after the object is initialized and fully created. Override it.
+  */
+  public function create():Void
+  {
   }
   
   private function scaleIfRequired():Void

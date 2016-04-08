@@ -19,7 +19,9 @@ class MouseBush extends Element
     {
         var direction = (Math.round(Math.random() * 100) % 2) == 0 ? "left" : "right";
         // Play audio on a separate thread
-        AudioManager.play(this.clickAudioFile);
+        // 0.8-1.2
+        var pitch:Float = 0.8 + (Math.random() * 0.4);
+        AudioManager.play(this.clickAudioFile, pitch);
         var screen:Screen = Screen.currentScreen;
         var yModifier = Math.random() * 32;
         var m = new RunningMouse(this.x, this.y + yModifier, direction);
