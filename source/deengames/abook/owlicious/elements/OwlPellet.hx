@@ -10,22 +10,21 @@ class OwlPellet extends Element
     private var stopX:Float;
     private var stopY:Float;
     
-    public function new(owl:Element)
+    public function new()
     {
         super();
         
         this.setImage('assets/images/owl-pellet');
         this.setClickAudio('assets/audio/speech-owl-pellet-info');
         
-        this.x = owl.x + (owl.width - this.width) / 2;
-        this.y = owl.y + owl.height - this.height;
-        
+        this.x = 750 - (this.width / 2);
+        this.y = 410 - (this.height / 2);
 
-        this.stopX = this.x - 300;
+        this.stopX = this.x - 350;
         this.stopY = this.y + 100;
         
         // Double the distance to travel => 0.5s travel time
-        this.velocity = new FlxPoint(-600, 200);
+        this.velocity = new FlxPoint(2*(this.stopX - this.x), 2*(this.stopY - this.y));
     }
     
     override public function update(elapsed:Float):Void

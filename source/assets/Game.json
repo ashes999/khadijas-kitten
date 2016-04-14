@@ -8,8 +8,8 @@
       "show": false,
       "hideAudioButton": true,
       "elements": [
-        { "image": "owl-large", "x": 320, "y": 64, "clickAudio": "title-screen" },
-        { "image": "text-title", "x": 16, "y": 350 },
+        { "image": "owl-large", "x": 320, "y": 120, "clickAudio": "title-screen" },
+        { "image": "text-title", "x": 16, "y": 0 },
         { "image": "swipe-to-begin", "x": 900, "y": 450 }
       ]
     },
@@ -110,7 +110,7 @@
       "audio": "speech-full-new-home",
       "elements": [
         { "image": "text-full-new-home" },
-        { "image": "owl-large", "x": 450, "y": 120, "clickAudio": "speech-alhamdulillah-tasty" }        
+        { "image": "owl-large", "x": 150, "y": 120, "clickAudio": "speech-alhamdulillah-tasty" }        
       ]
     },
     {
@@ -120,9 +120,9 @@
       "elements": [
         { "image": "text-owl-pellet" },
         { "className": "deengames.abook.owlicious.elements.CoughingOwl",
-            "image": "owl-large", "x": 550, "y": 164, "clickAudio": "speech-out-bones-fur" },
+            "image": "owl-large", "x": 550, "y": 64, "clickAudio": "speech-out-bones-fur" },
             
-        { "image": "owl-pellet", "x": 332, "y": 449, "clickAudio": "speech-owl-pellet-info" }
+        { "image": "owl-pellet", "x": 280, "y": 450, "clickAudio": "speech-owl-pellet-info" }
       ]
     },
     {

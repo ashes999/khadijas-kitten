@@ -20,7 +20,7 @@ class CoughingOwl extends Element
         // Play audio on a separate thread
         var screen:Screen = Screen.currentScreen;
         // Come out of your mouth (width / 2, height)
-        var pellet = new OwlPellet(this);
+        var pellet = new OwlPellet();
         screen.add(pellet);
         screen.elements.push(pellet);
     }    
