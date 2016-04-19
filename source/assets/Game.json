@@ -84,9 +84,9 @@
       "audio": "speech-mini-game",
       "elements": [
         { "image": "text-mini-game" },
-        { "image": "tree", "x": 100, "y": 200, "clickAudio": "rustle" },
-        { "image": "tree-2", "x": 400, "y": 150, "clickAudio": "rustle" },
-        { "image": "tree", "x": 700, "y": 250, "clickAudio": "rustle" },
+        { "image": "tree", "x": -100, "y": -300, "clickAudio": "rustle" },
+        { "image": "tree", "x": 170, "y": -100, "clickAudio": "rustle" },
+        { "image": "tree", "x": 700, "y": -300, "clickAudio": "rustle" },
         
         { "className": "deengames.abook.owlicious.elements.HuntingOwl",
             "image": "owl", "x": 450, "y": 100, "clickAudio": "owl-hoot" },
@@ -96,10 +96,10 @@
         { "className": "deengames.abook.owlicious.elements.MouseBush",
             "image": "bush-2", "x": 300, "y": 350, "clickAudio": "rustle" },
         
-        { "image": "bush-2", "x": 450, "y": 450, "clickAudio": "rustle" },
+        { "image": "bush-2", "x": 500, "y": 450, "clickAudio": "rustle" },
         
         { "className": "deengames.abook.owlicious.elements.MouseBush", 
-            "image": "bush", "x": 550, "y": 400, "clickAudio": "rustle" },
+            "image": "bush", "x": 650, "y": 400, "clickAudio": "rustle" },
         
         { "image": "bush-2", "x": 800, "y": 450, "clickAudio": "rustle" }                
       ]
