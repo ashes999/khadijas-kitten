@@ -10,7 +10,6 @@ class SingletonAudioPlayer {
 	public static function play(sound:FlxSound) {
 		stop();
 		lastSound = sound;
-        sound.pitch = 1.0;
 		sound.play();
 	}
 	

@@ -27,6 +27,7 @@ class Element extends FlxExtendedSprite
   public var imageFile(default, null) : String;
   public var scaleTo(default, null):Float = 1.0;
   public var z(default, null):Int = 0;
+  private var pitch:Float = 1.0;
   
   private var clickAudioFile(default, null) : String;
   private var clickAudioSound:FlxSound;
@@ -168,7 +169,14 @@ class Element extends FlxExtendedSprite
   public function setClickAudio(fileName:String) : Void
   {
     this.clickAudioFile = fileName;
-    this.clickAudioSound = FlxG.sound.load(this.clickAudioFile + deengames.io.AudioManager.SOUND_EXT);
+    if (this.pitch != 1)
+    {
+        this.clickAudioSound = FlxG.sound.load('${this.clickAudioFile}-${this.pitch}${deengames.io.AudioManager.SOUND_EXT}');    
+    }
+    else
+    {
+        this.clickAudioSound = FlxG.sound.load('${this.clickAudioFile}${deengames.io.AudioManager.SOUND_EXT}');
+    }
   }
   
   /**
@@ -198,7 +206,8 @@ class Element extends FlxExtendedSprite
           throw "Element doesn't have audio!";
       }
       
-      this.clickAudioSound.pitch = pitch;
+      this.pitch = pitch;
+      this.setClickAudio(this.clickAudioFile);
   }
   
   /**

@@ -63,7 +63,7 @@ class HuntingOwl extends Element
             {
                 // Gotcha!
                 // Play squeak noise
-                AudioManager.play("assets/audio/mouse-squeak");
+                currentPrey.clickHandler(this);
                 currentPrey.destroy();
                 Screen.currentScreen.remove(currentPrey);
                 Screen.currentScreen.elements.remove(currentPrey);

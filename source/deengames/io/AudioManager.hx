@@ -8,9 +8,16 @@ class AudioManager {
 
   private function new() { } // static class
 
-  public static function play(name:String, pitch:Float = 1.0) : Void {
-    var sound:FlxSound = FlxG.sound.load(name + SOUND_EXT);
-    sound.pitch = pitch;
+  public static function play(name:String, pitch:Float) : Void {
+    var sound:FlxSound;
+    if (pitch != 1)
+    {
+        sound = FlxG.sound.load('${name}-${pitch}${SOUND_EXT}');
+    }
+    else
+    {
+         sound = FlxG.sound.load('${name}$${SOUND_EXT}');
+    }
     sound.play();
   }
 }

@@ -2,6 +2,9 @@ package deengames.abook.owlicious.elements;
 
 import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
+import deengames.io.AudioManager;
+import deengames.math.DiscreteRandom;
+
 import flixel.FlxObject;
 
 // mouse or rat
@@ -14,9 +17,9 @@ class RunningMouse extends Element
         var species = (Math.round(Math.random() * 100) % 2) == 0 ? "mouse" : "rat";
         super();
         this.setImage('assets/images/${species}-running');
+        this.setClickAudio("assets/audio/mouse-squeak");        
         this.x = x;
         this.y = y + 32;
-        this.setClickAudio("assets/audio/mouse-squeak");        
         this.velocity.x = (runDirection == "left" ? -1 : 1) * RUN_SPEED;
         // +- 20% velocity
         var modifier = 1 + (Math.random() * 0.4) - 0.2;
@@ -48,13 +51,5 @@ class RunningMouse extends Element
             Screen.currentScreen.elements.remove(this);
             this.destroy();
         }
-    }
-    
-    override public function clickHandler(obj:FlxObject):Void
-    {
-        // 0.8-1.2
-        var pitch:Float = 0.8 + (Math.random() * 0.4);
-        this.setAudioPitch(pitch);
-        super.clickHandler(obj);
     }
 }

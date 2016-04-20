@@ -2,9 +2,10 @@ package deengames.abook.owlicious.elements;
 
 import flixel.FlxObject;
 
-import deengames.io.AudioManager;
 import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
+import deengames.io.AudioManager;
+import deengames.math.DiscreteRandom;
 
 class MouseBush extends Element
 {
@@ -20,8 +21,8 @@ class MouseBush extends Element
         var direction = (Math.round(Math.random() * 100) % 2) == 0 ? "left" : "right";
         // Play audio on a separate thread
         // 0.8-1.2
-        var pitch:Float = 0.8 + (Math.random() * 0.4);
-        AudioManager.play(this.clickAudioFile, pitch);
+        var pitch:Float = DiscreteRandom.pick([0.8, 1.0, 1.2]);
+        AudioManager.play(this.clickAudioFile, 1.2);
         var screen:Screen = Screen.currentScreen;
         var yModifier = Math.random() * 32;
         var m = new RunningMouse(this.x, this.y + yModifier, direction);

@@ -5,6 +5,7 @@ import flixel.FlxObject;
 
 import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
+import deengames.math.DiscreteRandom;
 
 class HidingMouse extends Element
 {
@@ -32,7 +33,7 @@ class HidingMouse extends Element
     override public function clickHandler(obj:FlxObject):Void
     {
         // 0.8-1.2
-        var pitch:Float = 0.8 + (Math.random() * 0.4);
+        var pitch:Float = DiscreteRandom.pick([0.8, 1.0, 1.2]);
         this.setAudioPitch(pitch);
         super.clickHandler(obj);
         this.velocity.y += 100; // run off-screen. faster.

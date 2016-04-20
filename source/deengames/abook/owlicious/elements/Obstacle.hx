@@ -1,6 +1,8 @@
 package deengames.abook.owlicious.elements;
 
 import deengames.abook.core.Element;
+import deengames.math.DiscreteRandom;
+
 import flixel.input.mouse.FlxMouseEventManager;
 
 class Obstacle extends Element
@@ -20,7 +22,7 @@ class Obstacle extends Element
     public function onMouseDown(me:Element):Void
     {
         // 0.8-1.2
-        var pitch:Float = 0.8 + (Math.random() * 0.4);
+        var pitch:Float = DiscreteRandom.pick([0.8, 1.0, 1.2]);
         this.setAudioPitch(pitch);
         
         // Execute audio

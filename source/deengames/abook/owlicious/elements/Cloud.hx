@@ -2,6 +2,7 @@ package deengames.abook.owlicious.elements;
 
 import deengames.abook.core.Element;
 import deengames.abook.core.Screen;
+import deengames.math.DiscreteRandom;
 
 class Cloud extends Element
 {
@@ -41,8 +42,7 @@ class Cloud extends Element
         this.z = Math.round((Math.random() * 10));        
         Screen.currentScreen.sortElementsByZ();
         
-        // 0.8-1.2
-        var pitch:Float = 0.8 + (Math.random() * 0.4);
+        var pitch:Float = DiscreteRandom.pick([0.8, 1.0, 1.2]);
         this.setAudioPitch(pitch);
     }
     
