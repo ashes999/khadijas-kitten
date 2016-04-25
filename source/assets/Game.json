@@ -83,7 +83,7 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-mini-game",
       "elements": [
-        { "image": "text-mini-game" },
+        { "image": "text-mini-game", "z": 999 },
         { "image": "tree", "x": -100, "y": -300, "clickAudio": "rustle" },
         { "image": "tree", "x": 170, "y": -100, "clickAudio": "rustle" },
         { "image": "tree", "x": 700, "y": -300, "clickAudio": "rustle" },
@@ -109,8 +109,9 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-full-new-home",
       "elements": [
-        { "image": "text-full-new-home" },
-        { "image": "owl-large", "x": 150, "y": 120, "clickAudio": "speech-alhamdulillah-tasty" }        
+        { "image": "text-full-new-home", "z": 999 },
+        { "image": "tree-large", "x": -160, "y": -340, "clickAudio": "rustle" },
+        { "image": "owl-large", "x": 150, "y": 20, "clickAudio": "speech-alhamdulillah-tasty" }
       ]
     },
     {
