@@ -57,7 +57,6 @@ class Element extends FlxExtendedSprite
     
     if (data.scale != null)
     {
-        trace("!!! enter");
         var raw:String = data.scale;
         // Scale: eg. "50%"
         var stopIndex:Int = raw.indexOf("%");
@@ -68,7 +67,6 @@ class Element extends FlxExtendedSprite
         var scale:String = raw.substring(0, stopIndex);
         var scaleFloat = Std.parseInt(raw) / 100; // 50 => 0.5
         e.scaleTo = scaleFloat;
-        trace('!!! data: scale is ${scaleFloat}');
         e.scaleIfRequired();
     }
 
@@ -236,8 +234,8 @@ class Element extends FlxExtendedSprite
       // sucks on Flash. (up to 10x slower!)
       if (this.scaleTo != 1.0)
       {
-          trace("!!! scaling to " + this.scaleTo);
           this.setGraphicSize(Math.round(this.width * this.scaleTo), 0);
+          this.updateHitbox();
       }
   }
 }
