@@ -43,15 +43,33 @@ class Element extends FlxExtendedSprite
 
   // e is normally an instance of Element. Unless you want to use a custom class.
   public static function populateFromData(data:Dynamic, e:Dynamic):Void
-  {      
-    if (data.scale != null)
-    {
-        e.scaleTo = data.scale;
-    }
-    
+  {    
     if (data.image != null)
     {
       e.setImage('assets/images/${data.image}');
+    }
+    
+    if (data.animation != null)
+    {
+      var a = data.animation;
+      e.setAnimation('assets/images/${a.image}', a.width, a.height, a.frames, a.fps);
+    }
+    
+    if (data.scale != null)
+    {
+        trace("!!! enter");
+        var raw:String = data.scale;
+        // Scale: eg. "50%"
+        var stopIndex:Int = raw.indexOf("%");
+        if (stopIndex == -1)
+        {
+            throw '${raw} is not a valid scale percentage; please enter a string like: 33%';
+        }
+        var scale:String = raw.substring(0, stopIndex);
+        var scaleFloat = Std.parseInt(raw) / 100; // 50 => 0.5
+        e.scaleTo = scaleFloat;
+        trace('!!! data: scale is ${scaleFloat}');
+        e.scaleIfRequired();
     }
 
     if (data.x != null && data.y != null) {
@@ -87,13 +105,7 @@ class Element extends FlxExtendedSprite
     {
         e.z = 0;
     }
-
-    if (data.animation != null)
-    {
-      var a = data.animation;
-      e.setAnimation('assets/images/${a.image}', a.width, a.height, a.frames, a.fps);
-    }
-    
+        
     if (data.clickAudio != null)
     {
       e.setClickAudio('assets/audio/${data.clickAudio}');
@@ -224,6 +236,7 @@ class Element extends FlxExtendedSprite
       // sucks on Flash. (up to 10x slower!)
       if (this.scaleTo != 1.0)
       {
+          trace("!!! scaling to " + this.scaleTo);
           this.setGraphicSize(Math.round(this.width * this.scaleTo), 0);
       }
   }

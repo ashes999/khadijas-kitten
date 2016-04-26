@@ -44,8 +44,8 @@
         { "image": "owl", "x": 600, "y": 150, "z": 5, "clickAudio": "speech-ya-razzaq" },
         { "className": "deengames.abook.owlicious.elements.Cloud" },
         { "className": "deengames.abook.owlicious.elements.Cloud" },
-        { "className": "deengames.abook.owlicious.elements.Cloud", "scale": 0.5 },
-        { "className": "deengames.abook.owlicious.elements.Cloud", "scale": 0.5 }
+        { "className": "deengames.abook.owlicious.elements.Cloud", "scale": "50%" },
+        { "className": "deengames.abook.owlicious.elements.Cloud", "scale": "50%" }
       ]
     },
     {
@@ -111,7 +111,8 @@
       "elements": [
         { "image": "text-full-new-home", "z": 999 },
         { "image": "tree-large", "x": -160, "y": -340, "clickAudio": "rustle" },
-        { "image": "owl-large", "x": 150, "y": 20, "clickAudio": "speech-alhamdulillah-tasty" }
+        { "image": "crows-nest", "x": 100, "y": 270 },
+        { "image": "owl-large", "scale": "75%", "x": 180, "y": -20, "clickAudio": "speech-alhamdulillah-tasty" }
       ]
     },
     {
