@@ -133,8 +133,10 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-settles-in",
       "elements": [
-        { "image": "text-settles-in" },
-        { "image": "owl", "x": 550, "y": 250, "clickAudio": "speech-arabic-dua", "scale": "31%" }      
+        { "image": "tree", "x": -100, "y": 350, "clickAudio": "rustle", "scale": "30%", "effect": "silhouette(75)" },          
+        { "image": "tree", "x": 350, "y": 0, "clickAudio": "rustle", "scale": "43%", "effect": "silhouette(75)" },
+        { "image": "owl", "x": 650, "y": 200, "clickAudio": "speech-arabic-dua", "scale": "31%", "effect": "silhouette(75)" },
+        { "image": "text-settles-in" }
       ]
     },
     {

@@ -236,17 +236,31 @@ class Element extends FlxExtendedSprite
   
   private function applyEffect(effect:String):Void
   {
-      if (effect.toUpperCase() != "SILHOUETTE")
+      effect = effect.toUpperCase(); 
+      if (effect.indexOf("SILHOUETTE") == -1)
       {
           throw 'The effect ${effect} isn\'t implemented.';
       }
       
+      var silhouettePercent:Float = 1; // 100% black
+      
+      // Percent indicated in brackets, eg. silhouette(70)
+      if (effect.indexOf('(') > -1)
+      {
+          var raw = effect.substring(effect.indexOf('(') + 1, effect.indexOf(')'));
+          silhouettePercent = (Std.parseInt(raw) / 100); // 70% => 0.7
+      }
+      
+      // Specifying 1 (100% silhouette) gives us a RGB value of 0
+      // Specifying 30 (30% silhouette) gives us an RGB value of 0.7
+      silhouettePercent = 1 - silhouettePercent;
+      
       // Clone the bitmap data; otherwise, it's shared across all instances of this sprite
       var bitmapData = this.graphic.bitmap.clone();
       bitmapData.applyFilter(bitmapData, bitmapData.rect, new Point(), new ColorMatrixFilter([
-          0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0,
+          silhouettePercent, 0, 0, 0, 0,
+          0, silhouettePercent, 0, 0, 0,
+          0, 0, silhouettePercent, 0, 0,
           0, 0, 0, 1, 0 // identity row
       ]));
       this.graphic.bitmap = bitmapData;

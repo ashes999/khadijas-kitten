@@ -48,7 +48,7 @@ Elements appear relative to the top-left corner of the screen by default. To pos
 Elements can also specify an `onClick` handler, with the format `show(screen name)`. When clicked, the element transitions the player to the specified screen. (If the element has an animation, the animation doesn't play.)
 
 You can also specify an `effect` on an element. Effects include:
-- `silhouette`: blacks out the image
+- `silhouette`: blacks out the image. You can specify a darkness percentage, eg. `silhouette(75)` makes the image 75% dark
 
 ### Advanced Elements
 
