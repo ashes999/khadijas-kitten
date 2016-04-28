@@ -8,7 +8,7 @@
       "show": false,
       "hideAudioButton": true,
       "elements": [
-        { "image": "owl-large", "x": 320, "y": 120, "clickAudio": "title-screen" },
+        { "image": "owl", "x": 320, "y": 120, "clickAudio": "title-screen" },
         { "image": "text-title", "x": 16, "y": 0 },
         { "image": "swipe-to-begin", "x": 900, "y": 450 }
       ]
@@ -41,7 +41,7 @@
       "audio": "speech-flying-out",
       "elements": [
         { "image": "text-flying-out", "z": 1000 },
-        { "image": "owl", "x": 600, "y": 150, "z": 5, "clickAudio": "speech-ya-razzaq" },
+        { "image": "owl", "x": 600, "y": 150, "z": 5, "clickAudio": "speech-ya-razzaq", "scale": "31%" },
         { "className": "deengames.abook.owlicious.elements.Cloud" },
         { "className": "deengames.abook.owlicious.elements.Cloud" },
         { "className": "deengames.abook.owlicious.elements.Cloud", "scale": "50%" },
@@ -54,7 +54,7 @@
       "audio": "speech-lands-on-tree",
       "elements": [
         { "image": "text-lands-on-tree" },
-        { "image": "owl", "x": 448, "y": 400, "clickAudio": "speech-i-spy-a-mouse" },
+        { "image": "owl", "x": 448, "y": 400, "clickAudio": "speech-i-spy-a-mouse", "scale": "31%" },
         
         { "className": "deengames.abook.owlicious.elements.HidingMouse", 
             "image": "rat", "x": 130, "y": 350, "clickAudio": "mouse-squeak" },
@@ -84,12 +84,12 @@
       "audio": "speech-mini-game",
       "elements": [
         { "image": "text-mini-game", "z": 999 },
-        { "image": "tree", "x": -100, "y": -300, "clickAudio": "rustle" },
-        { "image": "tree", "x": 170, "y": -100, "clickAudio": "rustle" },
-        { "image": "tree", "x": 700, "y": -300, "clickAudio": "rustle" },
+        { "image": "tree", "x": -100, "y": -300, "clickAudio": "rustle", "scale": "43%" },
+        { "image": "tree", "x": 170, "y": -100, "clickAudio": "rustle", "scale": "43%" },
+        { "image": "tree", "x": 700, "y": -300, "clickAudio": "rustle", "scale": "43%" },
         
         { "className": "deengames.abook.owlicious.elements.HuntingOwl",
-            "image": "owl", "x": 450, "y": 100, "clickAudio": "owl-hoot" },
+            "image": "owl", "x": 450, "y": 100, "clickAudio": "owl-hoot", "scale": "31%" },
         
         { "image": "bush", "x": 50, "y": 450, "clickAudio": "rustle" },
         
@@ -110,9 +110,9 @@
       "audio": "speech-full-new-home",
       "elements": [
         { "image": "text-full-new-home", "z": 999 },
-        { "image": "tree-large", "x": -160, "y": -340, "clickAudio": "rustle" },
+        { "image": "tree", "x": -160, "y": -340, "clickAudio": "rustle" },
         { "image": "crows-nest", "x": 100, "y": 270 },
-        { "image": "owl-large", "scale": "75%", "x": 180, "y": -20, "clickAudio": "speech-alhamdulillah-tasty" }
+        { "image": "owl", "scale": "75%", "x": 240, "y": 40, "clickAudio": "speech-alhamdulillah-tasty" }
       ]
     },
     {
@@ -122,7 +122,7 @@
       "elements": [
         { "image": "text-owl-pellet" },
         { "className": "deengames.abook.owlicious.elements.CoughingOwl",
-            "image": "owl-large", "x": 550, "y": 64, "clickAudio": "speech-out-bones-fur" },
+            "image": "owl", "x": 550, "y": 64, "clickAudio": "speech-out-bones-fur" },
             
         { "image": "owl-pellet", "x": 280, "y": 450, "clickAudio": "speech-owl-pellet-info" }
       ]
@@ -133,7 +133,7 @@
       "audio": "speech-settles-in",
       "elements": [
         { "image": "text-settles-in" },
-        { "image": "owl", "x": 550, "y": 250, "clickAudio": "speech-arabic-dua" }      
+        { "image": "owl", "x": 550, "y": 250, "clickAudio": "speech-arabic-dua", "scale": "31%" }      
       ]
     },
     {
