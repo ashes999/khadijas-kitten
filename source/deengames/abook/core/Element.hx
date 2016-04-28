@@ -5,6 +5,7 @@ import deengames.abook.debug.DebugLogger;
 import deengames.abook.io.SingletonAudioPlayer;
 using deengames.extensions.StringExtensions;
 
+import flash.filters.ColorMatrixFilter;
 import flixel.addons.display.FlxExtendedSprite;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -12,6 +13,7 @@ import flixel.FlxSprite;
 import flixel.input.mouse.FlxMouseEventManager;
 import flixel.system.FlxSound;
 import flixel.util.FlxSort;
+import openfl.geom.Point;
 
 using StringTools;
 
@@ -102,6 +104,11 @@ class Element extends FlxExtendedSprite
     else
     {
         e.z = 0;
+    }
+    
+    if (data.effect != null)
+    {
+        e.applyEffect(data.effect);    
     }
         
     if (data.clickAudio != null)
@@ -225,6 +232,25 @@ class Element extends FlxExtendedSprite
   */
   public function create():Void
   {
+  }
+  
+  private function applyEffect(effect:String):Void
+  {
+      if (effect.toUpperCase() != "SILHOUETTE")
+      {
+          throw 'The effect ${effect} isn\'t implemented.';
+      }
+      
+      // Clone the bitmap data; otherwise, it's shared across all instances of this sprite
+      var bitmapData = this.graphic.bitmap.clone();
+      bitmapData.applyFilter(bitmapData, bitmapData.rect, new Point(), new ColorMatrixFilter([
+          0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0,
+          0, 0, 0, 1, 0 // identity row
+      ]));
+      this.graphic.bitmap = bitmapData;
+      this.dirty = true;
   }
   
   private function scaleIfRequired():Void
