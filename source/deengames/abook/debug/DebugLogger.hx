@@ -11,6 +11,7 @@ If you're using Lime, OpenFL, HaxeFlixel, etc. you can do it by editing your
 project XML file and specifying <haxedef name="debug" />
 Debug messages are logged to the console in neko, flash, etc.
 In neko, debug messages are also logged to debug.log, in the export dir.
+(If the process has access to that directory/file.)
 */
 // Static class
 class DebugLogger

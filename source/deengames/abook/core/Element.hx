@@ -25,13 +25,16 @@ an audio file (optional).
 class Element extends FlxExtendedSprite
 {
 
-  public var animationFile(default, null) : String;
-  public var imageFile(default, null) : String;
+  public var animationFile(default, null):String;
+  public var imageFile(default, null):String;
   public var scaleTo(default, null):Float = 1.0;
   public var z(default, null):Int = 0;
-  private var pitch:Float = 1.0;
+
+  private var originalWidth:Float = 0;
+  private var originalHeight:Float = 0;
   
-  private var clickAudioFile(default, null) : String;
+  private var pitch:Float = 1.0;
+  private var clickAudioFile(default, null):String;
   private var clickAudioSound:FlxSound;
     
   // TODO: a generic interface with .execute() works here too
@@ -70,6 +73,8 @@ class Element extends FlxExtendedSprite
         var scaleFloat = Std.parseInt(raw) / 100; // 50 => 0.5
         e.scaleTo = scaleFloat;
         e.scaleIfRequired();
+        
+        e.useHitboxForCollisionDeltection();
     }
 
     if (data.x != null && data.y != null) {
@@ -159,6 +164,8 @@ class Element extends FlxExtendedSprite
   {
     this.imageFile = imageFile.addExtension();
     this.loadGraphic(this.imageFile);
+    this.originalWidth = this.width;
+    this.originalHeight = this.height;
     this.scaleIfRequired();
   }
 
@@ -274,8 +281,17 @@ class Element extends FlxExtendedSprite
       // sucks on Flash. (up to 10x slower!)
       if (this.scaleTo != 1.0)
       {
-          this.setGraphicSize(Math.round(this.width * this.scaleTo), 0);
+          this.setGraphicSize(Math.round(this.originalWidth * this.scaleTo), 0);
           this.updateHitbox();
       }
+  }
+  
+  private function useHitboxForCollisionDeltection():Void
+  {
+      // FlxSprite and FlxExtendedSprite use pixel-perfect collisions, which doesn't include scale
+      // If scaled, we use hitbox detection instead. Srsly.
+      // See: https://github.com/HaxeFlixel/flixel/issues/1837
+      FlxMouseEventManager.remove(this);
+      FlxMouseEventManager.add(this, clickHandler, null, null, null, false, true, false);
   }
 }
