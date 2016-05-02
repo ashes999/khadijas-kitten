@@ -84,13 +84,22 @@ class Element extends FlxExtendedSprite
       if (data.placement != null) {
         var placement:String = data.placement;
         var normalized = placement.replace("-", "").replace(" ", "").toLowerCase();
-        if (normalized != "topleft" && normalized != "topright" && normalized != "bottomleft" && normalized != "bottomright") {
-          DebugLogger.log('Invalid placement value of ${placement}. Valid values are: top-left, top-right, bottom-left, bottom-right.');
-        } else {
-          if (placement.indexOf('bottom') > -1) {
+        if (normalized != "topleft" && normalized != "topright" && normalized != "bottomleft" && normalized != "bottomright" && normalized != "topcenter") {
+          DebugLogger.log('Invalid placement value of ${placement}. Valid values are: top-left, top-center, top-right, bottom-left, bottom-right.');
+        }
+        else 
+        {
+          if (placement.indexOf('bottom') > -1)
+          {
             y = Main.gameHeight - Math.round(e.height) - y;
           }
-          if (placement.indexOf('right') > -1) {
+          
+          if (placement.indexOf('center') > -1)
+          {
+            x = Math.round((Main.gameWidth - e.width) / 2);
+          }
+          else if (placement.indexOf('right') > -1)
+          {
             x = Main.gameWidth - Math.round(e.width) - x;
           }
         }

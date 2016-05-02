@@ -9,7 +9,7 @@
       "hideAudioButton": true,
       "elements": [
         { "image": "owl", "x": 320, "y": 120, "clickAudio": "title-screen" },
-        { "image": "text-title", "x": 16, "y": 0 },
+        { "image": "text-title", "x": 0, "y": 16, "placement": "top-center" },
         { "image": "swipe-to-begin", "x": 900, "y": 450 }
       ]
     },
@@ -19,7 +19,7 @@
       "show": true,
       "hideAudioButton": true,
       "elements": [
-        { "image": "text-instructions" },
+        { "image": "text-instructions", "placement": "top-center", "x": 0, "y": 16 },
         { "image": "swipe-to-begin", "x": 300, "y": 250 },
         { "image": "click", "x": 600, "y": 250 },
         { "image": "interactables", "x": 550, "y": 180 }
@@ -30,7 +30,7 @@
       "backgroundImage": "background-day.jpg",      
       "audio": "speech-hungry-waiting",
       "elements": [
-        { "image": "text-hungry-waiting" },
+        { "image": "text-hungry-waiting", "placement": "top-center", "x": 0, "y": 16 },
         { "image": "owl-box", "x": 250, "y": 100, "clickAudio": "speech-info-owl-box" },
         { "image": "owl-head", "x": 295, "y": 155, "clickAudio": "speech-owl-nothing-to-eat" }
       ]
@@ -40,7 +40,7 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-flying-out",
       "elements": [
-        { "image": "text-flying-out", "z": 1000 },
+        { "image": "text-flying-out", "z": 999, "placement": "top-center", "x": 0, "y": 16 },
         { "image": "owl", "x": 600, "y": 150, "z": 5, "clickAudio": "speech-ya-razzaq", "scale": "31%" },
         { "className": "deengames.abook.owlicious.elements.Cloud" },
         { "className": "deengames.abook.owlicious.elements.Cloud" },
@@ -53,7 +53,7 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-lands-on-tree",
       "elements": [
-        { "image": "text-lands-on-tree" },
+        { "image": "text-lands-on-tree", "placement": "top-center", "x": 0, "y": 16 },
         { "image": "owl", "x": 448, "y": 400, "clickAudio": "speech-i-spy-a-mouse", "scale": "31%" },
         
         { "className": "deengames.abook.owlicious.elements.HidingMouse", 
@@ -83,7 +83,7 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-mini-game",
       "elements": [
-        { "image": "text-mini-game", "z": 999 },
+        { "image": "text-mini-game", "z": 999, "placement": "top-center", "x": 0, "y": 16 },
         { "image": "tree", "x": -100, "y": -300, "clickAudio": "rustle", "scale": "43%" },
         { "image": "tree", "x": 170, "y": -100, "clickAudio": "rustle", "scale": "43%" },
         { "image": "tree", "x": 700, "y": -300, "clickAudio": "rustle", "scale": "43%" },
@@ -109,7 +109,7 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-full-new-home",
       "elements": [
-        { "image": "text-full-new-home", "z": 999 },
+        { "image": "text-full-new-home", "z": 999, "placement": "top-center", "x": 0, "y": 16 },
         { "image": "tree", "x": -160, "y": -340, "clickAudio": "rustle" },
         { "image": "crows-nest", "x": 100, "y": 270 },
         { "image": "owl", "scale": "75%", "x": 240, "y": 40, "clickAudio": "speech-alhamdulillah-tasty" }
@@ -120,9 +120,9 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-owl-pellet",
       "elements": [
+        { "image": "text-owl-pellet", "placement": "top-center", "x": 0, "y": 16, "z": 999 },
         { "image": "tree", "x": 150, "y": -350, "clickAudio": "rustle" },
         { "image": "crows-nest", "x": 460, "y": 410, "clickAudio": "rustle" },            
-        { "image": "text-owl-pellet" },
         { "className": "deengames.abook.owlicious.elements.CoughingOwl",
             "image": "owl", "x": 550, "y": 64, "clickAudio": "speech-out-bones-fur" },
         { "image": "owl-pellet", "x": 280, "y": 450, "clickAudio": "speech-owl-pellet-info" }
@@ -133,10 +133,10 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-settles-in",
       "elements": [
+        { "image": "text-settles-in", "placement": "top-center", "x": 0, "y": 16, "z": 999 },
         { "image": "tree", "x": -100, "y": 350, "clickAudio": "rustle", "scale": "30%", "effect": "silhouette(75)" },          
         { "image": "tree", "x": 350, "y": 0, "clickAudio": "rustle", "scale": "43%", "effect": "silhouette(75)" },
-        { "image": "owl", "x": 650, "y": 200, "clickAudio": "speech-arabic-dua", "scale": "31%", "effect": "silhouette(75)" },
-        { "image": "text-settles-in" }
+        { "image": "owl", "x": 650, "y": 200, "clickAudio": "speech-arabic-dua", "scale": "31%", "effect": "silhouette(75)" }
       ]
     },
     {
@@ -145,7 +145,7 @@
       "audio": "the-end",
       "hideAudioButton": true,
       "elements": [
-        { "image": "text-the-end", "x": 32, "y": 224 },
+        { "image": "text-the-end", "placement": "top-center", "x": 0, "y": 224 },
         { "image": "restart", "x": 32, "y": 32, "placement": "bottom-right", "onClick": "show(hungry, waiting)" }
       ]
     }
