@@ -29,6 +29,8 @@ Seven scenes make up the game content. Students can flip back and forth through 
 - Clouds that pop
 - Regurgitation of an owl pellet
 
+Owlicious can be completed in a few minutes, and can be easily integrated into a classroom session.
+
 # Accessibility
 
 Owlicious contains some features that make it easier for young students to use:
