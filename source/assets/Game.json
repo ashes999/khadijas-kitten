@@ -31,7 +31,7 @@
       "backgroundImage": "background-day.jpg",      
       "audio": "speech-hungry-waiting",
       "elements": [
-        { "image": "tree", "x": -250, "y": -700, "clickAudio": "rustle" },          
+        { "image": "tree-2", "x": -210, "y": -800, "clickAudio": "rustle" },          
         { "image": "text-hungry-waiting", "placement": "top-center", "x": 0, "y": 16 },
         { "image": "owl-box", "x": 250, "y": 100, "clickAudio": "speech-info-owl-box" },
         { "image": "owl-head", "x": 295, "y": 155, "clickAudio": "speech-owl-nothing-to-eat" }
