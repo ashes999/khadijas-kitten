@@ -52,7 +52,7 @@
     },
     {
       "name": "lands on tree",
-      "backgroundImage": "background-night.jpg",      
+      "backgroundImage": "dirt-grass-background.png",      
       "audio": "speech-lands-on-tree",
       "elements": [
         { "image": "text-lands-on-tree", "placement": "top-center", "x": 0, "y": 16 },
