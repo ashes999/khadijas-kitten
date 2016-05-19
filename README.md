@@ -4,7 +4,7 @@ The framework and a technical demo of an abook. If you're working on the next ab
 
 ## Basic Configuration
 
-A `Game.json` file in `assets` drives the content currently. **Any changes are automatically reloaded (including changed assets).** For more information, see the `Debugging` section.
+A `Game.json` file in `assets` drives the content currently. **Any changes are automatically reloaded (including changed assets) when you use `-debug`.** For more information, see the `Debugging` section.
 
 Here's how you can use `Game.json` to create scenes with interactive elements, without writing a lick of code.
 
@@ -77,8 +77,8 @@ If you specify both `hideAudioButton` and `audio`, the audio will play once, but
   - Make sure you call `super.update(elasped)` if you override `update`.
 
 ## Debugging
-- Define `<haxedef name="debug" />` in `Project.xml` to enable debugging
-- When running in `neko` with the `debug` `haxedef` defined, **any changes to anything in `assets` automatically reload the game content.**
+- Run `lime test <platform> -debug` to enable debugging.
+- When running in `neko` with the `-debug` flag, **any changes to anything in `assets` automatically reload the game content.**
   - If the current screen still exists, the game reloads to that same screen.
 - Even without `debug` enabled, running the app in `neko` generates a `debug.log` file with debug messages
 - Make calls to `deengames.io.DebugLogger.log(...)` to log debug messages in debug mode (and to `debug.log`).
