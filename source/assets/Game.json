@@ -85,6 +85,7 @@
       "backgroundImage": "background-night.jpg",      
       "audio": "speech-mini-game",
       "elements": [
+        { "image": "ground", "x": 0, "y": 301 },
         { "image": "text-mini-game", "z": 999, "placement": "top-center", "x": 0, "y": 16 },
         { "image": "tree", "x": -100, "y": -300, "clickAudio": "rustle", "scale": "43%" },
         { "image": "tree", "x": 170, "y": -100, "clickAudio": "rustle", "scale": "43%" },
@@ -132,18 +133,17 @@
     },
     {
       "name": "settles in, dua",
-      "backgroundImage": "background-night.jpg",      
+      "backgroundImage": "background-sunset.jpg",      
       "audio": "speech-settles-in",
       "elements": [
         { "image": "text-settles-in", "placement": "top-center", "x": 0, "y": 16, "z": 999 },
-        { "image": "tree", "x": -100, "y": 350, "clickAudio": "rustle", "scale": "30%", "effect": "silhouette(75)" },          
-        { "image": "tree", "x": 350, "y": 0, "clickAudio": "rustle", "scale": "43%", "effect": "silhouette(75)" },
-        { "image": "owl", "x": 650, "y": 200, "clickAudio": "speech-arabic-dua", "scale": "31%", "effect": "silhouette(75)" }
+        { "image": "tree", "x": -100, "y": 350, "clickAudio": "rustle", "scale": "30%", "effect": "silhouette(65)" },          
+        { "image": "tree", "x": 350, "y": 0, "clickAudio": "rustle", "scale": "43%", "effect": "silhouette(65)" },
+        { "image": "owl", "x": 650, "y": 200, "clickAudio": "speech-arabic-dua", "scale": "31%", "effect": "silhouette(65)" }
       ]
     },
     {
       "name": "the end",
-      "backgroundImage": "background-night.jpg",      
       "audio": "the-end",
       "hideAudioButton": true,
       "elements": [
