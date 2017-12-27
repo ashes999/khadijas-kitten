@@ -2,7 +2,7 @@
 <project>
 	<!------------------------------APPLICATION SETTINGS------------------------->
 
-	<app title="Owlicious" file="Owlicious" main="Main" version="1.0.0" company="Deen Games" package="com.deengames.owlicious" />
+	<app title="Owlicious" file="Owlicious" main="Main" version="1.0.1" company="Deen Games" package="com.deengames.owlicious" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 	<!--or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"!-->
@@ -92,10 +92,7 @@
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
 	<icon path="assets/icon.svg" />
 
-	<certificate
-		path="android_release.keystore"
-    alias="deengamesproductionkey"
-		if="android" />
+	<!-- <certificate path="Keystore.dat" alias="deengamesproductionkey" if="android" /> -->
 
   <android permission="android.permission.INTERNET" />
 

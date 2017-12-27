@@ -5,3 +5,4 @@ vscode-project.hxml
 build
 report
 *.keystore
+Keystore.dat
