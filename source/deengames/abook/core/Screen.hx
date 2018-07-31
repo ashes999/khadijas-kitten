@@ -213,7 +213,7 @@ class Screen extends FlxState
             }
             else
             {
-                e = new Element();    
+                e = new Element(element.image);    
             }
             
             Element.populateFromData(element, e);

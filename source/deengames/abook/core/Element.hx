@@ -40,19 +40,33 @@ class Element extends FlxExtendedSprite
   // TODO: a generic interface with .execute() works here too
   private var onClickCommand:ShowScreenCommand;
 
-  public function new(json:Dynamic = null)
+  public function new(image:String = null)
   {
-    super();
+    if (image != null)
+    {
+      var imagePath = 'assets/images/${image.addExtension()}';
+      super(imagePath);
+    }
+    else
+    {
+      super();
+    }
+    
     FlxMouseEventManager.add(this, clickHandler);
   }
 
   // e is normally an instance of Element. Unless you want to use a custom class.
   public static function populateFromData(data:Dynamic, e:Dynamic):Void
   {    
-    if (data.image != null)
-    {
-      e.setImage('assets/images/${data.image}');
-    }
+    // This used to work, up to a point (HaxeFlixel 4.0.0?)
+    // After that, this crashes on Neko only. The solution
+    // is to pass in data.image in the constructor, and to
+    // the base-class constructor, instead of doing this here.
+    
+    //if (data.image != null)
+    //{
+    //  e.setImage('assets/images/${data.image}');
+    //}
     
     if (data.animation != null)
     {
